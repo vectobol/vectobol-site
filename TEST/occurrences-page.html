@@ -1,0 +1,2111 @@
+<div id="vectobol-widget">
+
+    <!-- TOP BAR (TOUJOURS VISIBLE) -->
+    <div id="filter-toggle-bar">
+
+        <div class="toggle-left">
+            <!-- bouton Filters injecté en JS -->
+        </div>
+
+        <div class="toggle-right">
+            <button id="toggle"></button>
+            <div id="count"></div>
+        </div>
+
+    </div>
+
+    <!-- PANEL (FILTRES UNIQUEMENT) -->
+    <div id="filter-panel">
+        <div id="filter-rows"></div>
+
+        <div class="controls">
+
+            <div class="left-controls">
+                <button id="add-group"></button>
+                <button id="reset"></button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- EXPRESSION -->
+    <div id="filter-expression-bar">
+        <div id="expression"></div>
+    </div>
+
+    <!-- MAP -->
+    <div id="map"></div>
+
+</div>
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+
+
+
+<style>
+#vectobol-widget{
+    font-family: Arial;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* MAP */
+#map{
+    width:100%;
+    height:78vh;
+    min-height:500px;
+    margin-top:10px;
+    border-radius:8px;
+}
+
+/* PANEL */
+#filter-panel{
+    background:#f6f7f9;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:10px;
+    font-size:12px;
+}
+
+/* GROUP */
+.filter-group{
+    background:#fff;
+    border:1px solid #d8dee5;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.group-header{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    gap:8px;
+    margin-bottom:8px;
+}
+
+
+/* ROW */
+.filter-row{
+    display:grid;
+    grid-template-columns:2.2fr 1.2fr 2.4fr 70px 90px 34px;
+    gap:6px;
+    margin-bottom:6px;
+    align-items:center;
+}
+
+/* CONDITION */
+.add-condition{
+    background:#f1c40f;
+    font-weight:700;
+    color:#000;
+    border-radius:6px;
+}
+
+/* DELETE */
+.del{
+    background:#d9534f;
+    color:#fff;
+    width:26px;
+    height:26px;
+    padding:0;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+}
+
+/* GROUP CONNECTOR */
+.group-connector{
+    display:flex;
+    justify-content:center;
+    margin:6px 0;
+}
+
+.group-connector select{
+    font-size:11px;
+    padding:3px 6px;
+    border-radius:6px;
+}
+
+.del-group{
+    background:#d9534f;
+    color:#fff;
+    border:none;
+    border-radius:6px;
+    padding:2px 6px;
+    cursor:pointer;
+    font-size:11px;
+}
+
+
+
+/* CONTROLS */
+.controls{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    width:100%;
+}
+
+.left-controls{
+    display:flex;
+    gap:6px;
+}
+
+.right-controls{
+    margin-left:auto;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+/* BUTTONS */
+#add-group{background:#2c7be5;color:#fff}
+#reset{background:#d9534f;color:#fff}
+#toggle{background:#444;color:#fff}
+
+/* COUNT */
+#count{
+    background:#2c7be5;
+    color:#fff;
+    padding:5px 10px;
+    border-radius:6px;
+    font-size:11px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+/* EXPRESSION */
+#expression{
+    margin-top:8px;
+    padding:8px;
+    background:#eef5ff;
+    border-left:3px solid #2c7be5;
+    font-size:11px;
+}
+
+
+
+#filter-toggle-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:6px;
+}
+
+.toggle-right{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+#filter-toggle-bar button{
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+
+.searchable-select{
+    position:relative;
+}
+
+.searchable-input{
+    width:100%;
+    box-sizing:border-box;
+}
+
+.searchable-list{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    max-height:220px;
+    overflow-y:auto;
+    background:#fff;
+    border:1px solid #ccc;
+    z-index:9999;
+    display:none;
+}
+
+.searchable-item{
+    padding:4px 6px;
+    cursor:pointer;
+}
+
+.searchable-item:hover{
+    background:#eef5ff;
+}
+
+@keyframes blinkError {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.expression-error {
+    color: red;
+    font-weight: bold;
+    animation: blinkError 1s infinite;
+}
+
+
+
+
+
+</style>
+
+
+
+<script>
+(function(){
+
+const getSampleKey = d =>
+    String(d.record_id);
+
+
+
+const state = {
+    data: [],
+    current: [],
+    index: {}
+};
+
+const CONFIG = {
+
+    excludedFields: new Set([
+        "record_id",
+        "latitude",
+        "longitude",
+        "species_key"
+    ]),
+
+    groups: {
+
+        "Taxonomy": [
+            "phylum",
+            "class",
+            "order",
+            "family",
+            "subfamily",
+            "tribe",
+            "genus",
+            "subgenus",
+            "species"
+        ],
+
+        "Geography": [
+            "sample_admin1",
+            "sample_admin2",
+            "sample_admin3",
+            "altitude"
+        ],
+
+        "Time": [
+            "year",
+            "month",
+            "day"
+        ],
+
+        "Sampling": [
+            "sample_type",
+            "sample_origen",
+            "sampling_method_ter",
+            "acuatic_location",
+            "artificial_container"
+        ],
+
+        "Identification": [
+            "identifiedby",
+            "identificationverificationstatus"
+        ]
+    }
+};
+
+
+const GROUP_LABELS = {
+
+    fr: {
+        Taxonomy: "Taxonomie",
+        Geography: "Géographie",
+        Time: "Date",
+        Sampling: "Capture",
+        Identification: "Identification"
+    },
+
+    en: {
+        Taxonomy: "Taxonomy",
+        Geography: "Geography",
+        Time: "Date",
+        Sampling: "Sampling",
+        Identification: "Identification"
+    },
+
+    es: {
+        Taxonomy: "Taxonomía",
+        Geography: "Geografía",
+        Time: "Fecha",
+        Sampling: "Captura",
+        Identification: "Identificación"
+    }
+};
+
+
+function t(type, key, subKey = null){
+
+    const lang = state.lang || "en";
+
+    if(type === "group"){
+        return GROUP_LABELS?.[lang]?.[key] ?? key;
+    }
+
+    if(type === "var"){
+        return state.labels?.[key]?.[lang] ?? key;
+    }
+
+    if(type === "value"){
+        return state.valueLabels?.[key]?.[subKey]?.[lang]
+            ?? subKey
+            ?? "";
+    }
+
+    if(type === "ui"){
+        return state.ui?.[lang]?.[key] ?? key;
+    }
+
+    return key;
+}
+
+
+
+function updateStaticTexts(){
+
+    const addBtn = document.getElementById("add-group");
+    const resetBtn = document.getElementById("reset");
+    const toggleBtn = document.getElementById("toggle");
+
+    if(addBtn){
+        addBtn.textContent = ui("addGroup");
+    }
+
+    if(resetBtn){
+        resetBtn.textContent = ui("reset");
+    }
+
+    if(toggleBtn){
+        toggleBtn.textContent =
+            clusterMode
+                ? ui("clustersOn")
+                : ui("clustersOff");
+    }
+
+    renumberGroups();
+}
+
+
+
+
+
+function setLanguage(lang){
+
+    const ast = buildAST();
+
+    state.lang = lang;
+
+    buildLabels(state.dictionary);
+
+    updateStaticTexts();
+
+    rebuildFiltersFromAST(ast);
+
+    apply();
+}
+
+
+function getValueLabelSafe(fieldKey, value){
+
+    const raw = state.valueLabels?.[fieldKey]?.[String(value)];
+
+    if (raw && typeof raw === "object") {
+        return raw[state.lang] || raw.en || raw.fr || String(value);
+    }
+
+    return String(value ?? "");
+}
+
+
+function rebuildFiltersFromAST(ast){
+
+    rebuildingUI = true;
+     suppressApply = true; 
+
+    const panel = document.getElementById("filter-rows");
+    panel.innerHTML = "";
+
+    if(!ast || !ast.length){
+        createGroup(panel);
+        rebuildingUI = false;
+         suppressApply = false; 
+        return;
+    }
+
+    ast.forEach((group, gi) => {
+
+        const g = document.createElement("div");
+        g.className = "filter-group";
+
+        const header = document.createElement("div");
+        header.className = "group-header";
+
+        const title = document.createElement("b");
+        title.textContent = `${ui("group")} ${gi + 1}`;
+
+        const del = document.createElement("button");
+        del.className = "del del-group";
+        del.textContent = "X";
+
+        header.append(title, del);
+
+        const body = document.createElement("div");
+
+        group.rows.forEach((r, ri) => {
+
+            const row = createRow(body, true);
+
+            const f = row.querySelector(".field");
+            const op = row.querySelector(".op");
+            const logic = row.querySelector(".intra");
+
+            // =========================
+            // FIELD
+            // =========================
+            f.value = r.f || "";
+
+            const type = state.varType?.[r.f] || "categorical";
+
+            op.innerHTML = `<option value="">${t("ui", "operator")}</option>`;
+            getOperators(type).forEach(o => {
+                const opt = document.createElement("option");
+                opt.value = o.v;
+                opt.textContent = o.l;
+                op.appendChild(opt);
+            });
+
+            op.value = r.o || "";
+
+            if (logic) logic.value = r.intra || "AND";
+
+            // =========================
+            // VALUE (CRITIQUE FIX)
+            // =========================
+            const valBox = row.querySelector(".val-box");
+
+            if (!valBox) return;
+
+            const input = valBox.querySelector(".val");
+            const searchable = valBox.querySelector(".searchable-input");
+
+            const value = r.v ?? "";
+
+            // ---- SEARCHABLE ----
+            if (searchable) {
+
+                // IMPORTANT: dataset = source of truth
+                searchable.dataset.value = value;
+
+                // affichage propre (label)
+                searchable.value = getValueLabelSafe(r.f, value);
+
+                // ⚠️ NE PAS déclencher input ici (cause souvent boucle / reset)
+            }
+
+            // ---- INPUT SIMPLE ----
+            if (input && !searchable) {
+
+                input.value = value;
+                input.dataset.value = value;
+            }
+
+            row.dataset.hydrated = "1";
+
+            body.appendChild(row);
+        });
+
+        g.append(header, body);
+        panel.appendChild(g);
+    });
+
+    rebuildingUI = false;
+     suppressApply = false; 
+}
+
+
+
+function getGroupedVariables(){
+
+    const G = k => normField(k);
+
+    const has = k => state.index[normField(k)] !== undefined;
+
+    return {
+        Taxonomy: (() => {
+            const r = [];
+            if (has("class")) r.push(G("class"));
+            if (has("order")) r.push(G("order"));
+            if (has("family")) r.push(G("family"));
+            if (has("subfamily")) r.push(G("subfamily"));
+            if (has("tribe")) r.push(G("tribe"));
+            if (has("genus")) r.push(G("genus"));
+            if (has("subgenus")) r.push(G("subgenus"));
+            if (has("species")) r.push(G("species"));
+            return r;
+        })(),
+
+        Geography: (() => {
+            const r = [];
+            if (has("sample_admin1")) r.push(G("sample_admin1"));
+            if (has("sample_admin2")) r.push(G("sample_admin2"));
+            if (has("sample_admin3")) r.push(G("sample_admin3"));
+            if (has("altitude")) r.push(G("altitude"));
+            return r;
+        })(),
+
+        Time: (() => {
+            const r = [];
+            if (has("date")) r.push(G("date"));
+            if (has("year")) r.push(G("year"));
+            if (has("month")) r.push(G("month"));
+            if (has("day")) r.push(G("day"));
+            return r;
+        })(),
+
+        Sampling: (() => {
+            const r = [];
+            if (has("sample_type")) r.push(G("sample_type"));
+            if (has("sample_origen")) r.push(G("sample_origen"));
+            if (has("sampling_method_ter")) r.push(G("sampling_method_ter"));
+            if (has("acuatic_location")) r.push(G("acuatic_location"));
+            if (has("artificial_container")) r.push(G("artificial_container"));
+            return r;
+        })(),
+
+        Identification: (() => {
+            const r = [];
+            if (has("identifiedby")) r.push(G("identifiedby"));
+            if (has("identificationverificationstatus")) r.push(G("identificationverificationstatus"));
+            return r;
+        })()
+    };
+}
+
+
+
+
+
+
+
+let map, clusterLayer, simpleLayer;
+let clusterMode = true;
+let refreshLock = false;
+
+let autoFit = false;
+let rebuildingUI = false; 
+let suppressApply = false;
+
+
+
+
+
+function detectType(values){
+
+    const clean = values
+        .map(v => (v === null || v === undefined ? "" : String(v).trim()))
+        .filter(v => v !== "");
+
+    const numeric = clean.filter(v => Number.isFinite(Number(v)));
+
+    const numericRatio = clean.length ? numeric.length / clean.length : 0;
+
+    if (numericRatio > 0.95) return "numeric";
+    if (clean.every(v => v === "true" || v === "false")) return "boolean";
+
+    return "categorical";
+}
+
+
+
+
+
+
+state.labels = {};
+state.variables = [];
+
+state.ui = {
+    fr: {
+        filters: "Filtres",
+        group: "Groupe",
+        reset: "Réinitialiser",
+        variable: "Variable",
+        operator: "Opérateur",
+        condition: "Condition",
+        addGroup: "+ groupe",
+        addCondition: "+ condition",
+        clustersOn: "Clusters: ON",
+        clustersOff: "Points: ON",
+        groupDelete: "Supprimer groupe",
+        missingOperator: "Opérateur manquant",
+          type: "Saisir une valeur",
+        missingValue: "Valeur manquante"
+    },
+    en: {
+        filters: "Filters",
+        group: "Group",
+        reset: "Reset",
+        variable: "Variable",
+        operator: "Operator",
+        condition: "Condition",
+        addGroup: "+ group",
+        addCondition: "+ condition",
+        clustersOn: "Clusters: ON",
+        clustersOff: "Points: ON",
+        groupDelete: "Delete group",
+         missingOperator: "Missing operator",
+         type: "Enter a value",
+         missingValue: "Missing value"
+    },
+    es: {
+        filters: "Filtros",
+        group: "Grupo",
+        reset: "Reiniciar",
+        variable: "Variable",
+        operator: "Operador",
+        condition: "Condición",
+        addGroup: "+ grupo",
+        addCondition: "+ condición",
+        clustersOn: "Clusters: ON",
+        clustersOff: "Puntos: ON",
+        groupDelete: "Eliminar grupo",
+        missingOperator: "Falta operador",
+        type: "Introducir un valor",
+        missingValue: "Falta valor"
+    }
+};
+
+
+function ui(key){
+    const lang = state.lang || "en";
+
+    return (
+        state.ui?.[lang]?.[key] ??
+        state.ui?.en?.[key] ??
+        key
+    );
+}
+
+
+
+
+function getOperators(type){
+
+    switch(type){
+
+        case "numeric":
+            return [
+                {v:"eq", l:"="},
+                {v:"neq", l:"!="},
+                {v:"gt", l:">"},
+                {v:"lt", l:"<"},
+                {v:"gte", l:"≥"},
+                {v:"lte", l:"≤"}
+            ];
+
+        case "boolean":
+            return [
+                {v:"eq", l:"="},
+                {v:"neq", l:"!="}
+            ];
+
+        case "categorical":
+            return [
+                {v:"eq", l:"="},
+                {v:"neq", l:"!="}
+            ];
+
+        default:
+            return [
+                {v:"eq", l:"="},
+                {v:"neq", l:"!="}
+            ];
+    }
+}
+
+function normField(k){
+    if (!k) return k;
+    return k.replace(/_taxo$/, "");
+}
+
+function buildLabels(dictionary){
+
+    state.labels = {};
+    state.valueLabels = {};
+
+    // -------- VARIABLES --------
+    dictionary.variables.forEach(v => {
+
+        // normalisation des clés (IMPORTANT pour ton cas _taxo)
+        const key = v.variable.replace(/_taxo$/, "");
+
+        state.labels[key] = {
+            fr: v.label_fr || v.label_en || key,
+            en: v.label_en || key,
+            es: v.label_es || v.label_en || key
+        };
+    });
+
+    // -------- VALUES --------
+    dictionary.values.forEach(v => {
+
+        const key = v.variable.replace(/_taxo$/, "");
+
+        if (!state.valueLabels[key]) {
+            state.valueLabels[key] = {};
+        }
+
+        state.valueLabels[key][String(v.code)] = {
+            fr: v.value_fr || v.value_en || String(v.code),
+            en: v.value_en || String(v.code),
+            es: v.value_es || v.value_en || String(v.code)
+        };
+    });
+}
+
+
+function buildVariableCatalog(dictionary){
+
+    state.catalog = {};
+
+    dictionary.variables.forEach(v => {
+
+        const k = v.variable;
+
+        state.catalog[k] = {
+            label: state.labels?.[k] || k,
+            exists: true
+        };
+    });
+}
+
+
+
+/* ================= MAP ================= */
+function initMap(){
+
+    map = L.map("map");
+
+    const boliviaBounds = [
+        [-22.9, -69.7],
+        [-9.7, -57.5]
+    ];
+
+    L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        { attribution: "&copy; OpenStreetMap contributors" }
+    ).addTo(map);
+
+    clusterLayer = L.markerClusterGroup();
+    simpleLayer = L.layerGroup();
+
+    clusterMode = true;
+
+    map.addLayer(clusterLayer);
+
+    map.fitBounds(boliviaBounds, {
+        padding: [20, 20]
+    });
+
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 200);
+}
+
+
+
+/* ================= INDEX ================= */
+
+function buildIndex(){
+
+    state.index = {};
+    state.varType = {};
+
+    const dict = state.dictionary;
+
+    state.data.forEach(r => {
+
+        Object.entries(r).forEach(([k, v]) => {
+
+            if(CONFIG.excludedFields.has(k)) return;
+            if(v === null || v === undefined || String(v).trim() === "") return;
+
+            const key = normField(k);
+
+            if(!state.index[key]) state.index[key] = new Set();
+            state.index[key].add(String(v));
+        });
+    });
+
+    if (dict?.variables?.length) {
+
+        dict.variables.forEach(v => {
+
+            const key = normField(v.variable);
+
+            if(!state.index[key]) {
+                state.index[key] = new Set();
+            }
+        });
+    }
+
+    Object.keys(state.index).forEach(k => {
+
+        const arr = [...state.index[k]].sort();
+        state.index[k] = arr;
+
+        state.varType[k] = state.valueLabels?.[k]
+            ? "categorical"
+            : detectType(arr);
+    });
+}
+
+
+function buildSamples(){
+
+    const map = new Map();
+
+    state.data.forEach(d => {
+
+        const key = getSampleKey(d);
+
+        if(!map.has(key)){
+
+            map.set(key, {
+                record_id: key,
+                sample_id: key,
+                latitude: d.latitude,
+                longitude: d.longitude,
+                species_set: new Set(),
+                raw: []
+            });
+        }
+
+        const s = map.get(key);
+
+        // -----------------------------
+        // NORMALISATION TAXONOMIQUE
+        // -----------------------------
+        let speciesName = null;
+
+        // Cas 1 : genus + species
+        if (d.genus && d.species) {
+
+            const genusRaw = d[normField("genus")] ?? d.genus;
+            const speciesRaw = d[normField("species")] ?? d.species;
+            
+            let genus = null;
+            let species = null;
+            
+            if (genusRaw) {
+                genus =
+                    String(genusRaw).charAt(0).toUpperCase() +
+                    String(genusRaw).slice(1).toLowerCase();
+            }
+            
+            if (speciesRaw) {
+                species = String(speciesRaw).toLowerCase();
+            }
+        
+            speciesName = `${genus} ${species}`;
+        }
+
+        // Cas 2 : species_key (fallback)
+        else if (d.species_key) {
+
+            const parts = d.species_key.replace(/_/g, " ").split(" ");
+        
+            const formatted = parts.map((p, i) =>
+                i === 0
+                    ? p.charAt(0).toUpperCase() + p.slice(1).toLowerCase()
+                    : p.toLowerCase()
+            ).join(" ");
+        
+            speciesName = formatted;
+        }
+
+        // Cas 3 : dernier fallback
+        else if (d.species) {
+            speciesName = d.species;
+        }
+
+        if (speciesName) {
+            s.species_set.add(speciesName);
+        }
+
+        s.raw.push(d);
+    });
+
+    state.samples = [...map.values()].map(s => ({
+        ...s,
+        species: [...s.species_set]
+    }));
+}
+
+
+
+function buildAST(){
+
+    const groups = document.querySelectorAll(".filter-group");
+    const ast = [];
+
+    groups.forEach(groupEl => {
+
+        const rows = [];
+        const rowEls = groupEl.querySelectorAll(".filter-row");
+
+        rowEls.forEach((row, i) => {
+
+            const f = row.querySelector(".field")?.value || "";
+            const op = row.querySelector(".op")?.value || "";
+
+            const logicEl = row.querySelector(".intra");
+            const intra = logicEl ? logicEl.value : "AND";
+
+            // =========================
+            // VALUE (ROBUST VERSION)
+            // =========================
+            let v = "";
+
+            const searchable = row.querySelector(".searchable-input");
+            const input = row.querySelector(".val");
+
+            if (searchable && searchable.dataset?.value !== undefined) {
+                v = searchable.dataset.value;
+            }
+            else if (input && input.dataset?.value !== undefined) {
+                v = input.dataset.value;
+            }
+            else if (input) {
+                v = input.value;
+            }
+
+            rows.push({
+                f,
+                o: op,
+                v,
+                intra: i === 0 ? "AND" : intra
+            });
+        });
+
+        const groupLogic = groupEl.querySelector(".group-logic")?.value || "AND";
+
+        ast.push({
+            logic: groupLogic,
+            rows
+        });
+    });
+
+    return ast;
+}
+
+
+function addGroupConnector(container, isFirst=false){
+
+    if(isFirst) return;
+
+    const div = document.createElement("div");
+    div.className = "group-connector";
+
+    const sel = document.createElement("select");
+    sel.className = "group-logic";
+    sel.innerHTML = `<option>AND</option><option>OR</option>`;
+    sel.onchange = () => apply();
+
+    div.appendChild(sel);
+    container.appendChild(div);
+}
+
+
+
+/* ================= COUNT ================= */
+
+
+function updateCount(){
+
+    const el = document.getElementById("count");
+
+    const lang = state.lang || "en";
+
+    const label = {
+        fr: "Nombre de points filtrés",
+        en: "Filtered points",
+        es: "Puntos filtrados"
+    };
+
+    const txt = label[lang] || label.en;
+
+    const n = Array.isArray(state.current)
+        ? state.current.length
+        : 0;
+
+    el.textContent = `${txt} : ${n}`;
+}
+
+
+
+
+
+
+function evaluateGroup(group, d){
+
+    if (!group.rows.length) return false;
+
+    const getVal = (d, f) => d[normField(f)];
+
+    let result = evalCondition(
+        getVal(d, group.rows[0].f),
+        group.rows[0].o,
+        group.rows[0].v
+    );
+
+    for (let i = 1; i < group.rows.length; i++) {
+
+        const prev = group.rows[i - 1];
+        const c = group.rows[i];
+
+        const op = (prev.intra || "AND").toUpperCase();
+
+        const current = evalCondition(
+            getVal(d, c.f),
+            c.o,
+            c.v
+        );
+
+        if (op === "AND") result = result && current;
+        else result = result || current;
+    }
+
+    return result;
+}
+
+
+
+function evaluateAST(ast, data){
+
+    if (!ast.length) return data;
+
+    return data.filter(d => {
+
+        let finalResult = null;
+
+        for (let g = 0; g < ast.length; g++) {
+
+            const group = ast[g];
+            const groupResult = evaluateGroup(group, d);
+
+            if (g === 0) {
+                finalResult = groupResult;
+                continue;
+            }
+
+            const logic = (group.logic || "AND").toUpperCase();
+
+            if (logic === "AND") {
+                finalResult = finalResult && groupResult;
+            } else if (logic === "OR") {
+                finalResult = finalResult || groupResult;
+            }
+        }
+
+        return Boolean(finalResult);
+    });
+}
+
+
+
+/* ================= EXPRESSION ================= */
+
+function updateExpression(ast){
+
+    const el = document.getElementById("expression");
+
+    const lang = state.lang || "en";
+
+    const emptyMsg =
+        lang === "fr" ? "Aucun filtre actif"
+      : lang === "es" ? "Sin filtro activo"
+      : "No active filter";
+
+    if(!ast || !ast.length){
+        el.textContent = emptyMsg;
+        return;
+    }
+
+    const groupsTxt = ast.map((g, i) => {
+
+        const rowsTxt = g.rows.map((r, j) => {
+
+            const label = t("var", r.f);
+
+            const opMap = {
+                eq: "=",
+                neq: "≠",
+                gt: ">",
+                lt: "<",
+                gte: "≥",
+                lte: "≤"
+            };
+
+            const op = opMap[r.o] || r.o;
+            const val = t("value", r.f, r.v);
+
+            if (j === 0) return `${label} ${op} ${val}`;
+
+            const link = (g.rows[j - 1].intra || "AND");
+
+            return `${link} ${label} ${op} ${val}`;
+        }).join(" ");
+
+        if (i === 0) return `( ${rowsTxt} )`;
+
+        const gLink = ast[i - 1]?.logic || "AND";
+
+        return `${gLink} ( ${rowsTxt} )`;
+
+    }).join(" ");
+
+    el.textContent = groupsTxt;
+}
+
+
+
+function isRealNumber(x){
+    return x !== null &&
+           x !== undefined &&
+           x !== "" &&
+           !Number.isNaN(Number(x));
+}
+
+
+
+
+
+function evalCondition(x, op, v){
+
+    if(x === null || x === undefined) return false;
+
+    const xNum = Number(x);
+    const vNum = Number(v);
+
+    const numeric = isRealNumber(x) && isRealNumber(v);
+
+    switch(op){
+
+        case "eq":
+            return numeric ? xNum === vNum : String(x) === String(v);
+
+        case "neq":
+            return numeric ? xNum !== vNum : String(x) !== String(v);
+
+        case "gt":
+            return numeric ? xNum > vNum : false;
+
+        case "lt":
+            return numeric ? xNum < vNum : false;
+
+        case "gte":
+            return numeric ? xNum >= vNum : false;
+
+        case "lte":
+            return numeric ? xNum <= vNum : false;
+
+        default:
+            return false;
+    }
+}    
+  
+
+
+
+
+
+function createSearchableValue(values, fieldKey){
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "searchable-select";
+
+    const input = document.createElement("input");
+    input.className = "val searchable-input";
+
+    const list = document.createElement("div");
+    list.className = "searchable-list";
+
+    const unique = [...new Set(values)]
+        .filter(v => v !== null && v !== undefined)
+        .map(String)
+        .sort();
+
+    function getLabel(v){
+
+        const raw = state.valueLabels?.[fieldKey]?.[v];
+
+        if (raw && typeof raw === "object") {
+            return raw[state.lang] || raw.en || raw.fr || v;
+        }
+
+        return raw || v;
+    }
+
+    function refresh(filter=""){
+
+        list.innerHTML = "";
+
+        const q = filter.toLowerCase();
+
+        unique
+            .filter(v => {
+
+                const label = getLabel(v);
+
+                return String(label)
+                    .toLowerCase()
+                    .includes(q);
+            })
+            .forEach(v => {
+
+                const label = capitalize(getLabel(v));
+
+                const item = document.createElement("div");
+                item.className = "searchable-item";
+                item.textContent = label;
+
+                item.onclick = () => {
+
+                    input.value = label;
+                    input.dataset.value = String(v);
+
+                    list.style.display = "none";
+
+                    apply();
+                };
+
+                list.appendChild(item);
+            });
+
+        list.style.display =
+            list.children.length ? "block" : "none";
+    }
+
+    input.addEventListener("focus", () => refresh(""));
+
+    input.addEventListener("input", () => {
+        if (rebuildingUI || suppressApply) return;
+
+        input.dataset.value = "";
+
+        refresh(input.value);
+
+        apply();
+    });
+
+    document.addEventListener("click", e => {
+        if (!wrapper.contains(e.target)) {
+            list.style.display = "none";
+        }
+    });
+
+    wrapper.append(input, list);
+
+    return {
+        element: wrapper,
+        getValue: () => input.dataset.value || ""
+    };
+}
+
+
+
+
+
+function updateFilterError(){
+
+    const el = document.getElementById("expression");
+    if(!el) return;
+
+    // reset propre
+    el.classList.remove("expression-error");
+
+    if(!state.filterError){
+        return;
+    }
+
+    el.classList.add("expression-error");
+
+    switch(state.filterError){
+
+        case "missing_operator":
+            el.textContent = ui("missingOperator");
+            break;
+
+        case "missing_value":
+            el.textContent = ui("missingValue");
+            break;
+
+        default:
+            el.textContent = ui("error") || "Error";
+    }
+}
+
+
+
+/* ================= APPLY ================= */
+
+let applyTimeout = null;
+
+
+
+function apply(){
+
+    if (booting || rebuildingUI || refreshLock) return;
+
+    clearTimeout(applyTimeout);
+
+    applyTimeout = setTimeout(() => {
+
+        if (booting || rebuildingUI) return;
+
+        refreshLock = true;
+
+        try {
+
+            // =========================
+            // RESET ERROR STATE
+            // =========================
+            state.filterError = null;
+
+            const ast = buildAST();
+
+            // =========================
+            // ❗ VALIDATION (AJOUT MANQUANT)
+            // =========================
+            for (const g of ast || []) {
+                for (const r of g.rows || []) {
+
+                    if (!r.f) continue;
+
+                    if (!r.o) {
+                        state.filterError = "missing_operator";
+                        break;
+                    }
+
+                    const isEmptyValue =
+                        r.v == null ||
+                        (typeof r.v === "string" && r.v.trim() === "");
+                    
+                    if (isEmptyValue) {
+                        state.filterError = "missing_value";
+                        break;
+                    }
+                }
+                if (state.filterError) break;
+            }
+
+            // =========================
+            // VALIDATION GLOBALE
+            // =========================
+            if (!ast || ast.length === 0) {
+
+                state.current = state.samples;
+
+                render(false);
+                updateCount();
+                updateExpression([]);
+                updateFilterError?.();
+
+                return;
+            }
+
+            // =========================
+            // SAFETY CHECK
+            // =========================
+            if (state.filterError) {
+
+                state.current = state.samples;
+
+                render(false);
+                updateCount();
+                updateExpression(ast);
+                updateFilterError?.();
+
+                return;
+            }
+
+            // =========================
+            // FILTERING
+            // =========================
+            const filteredOccurrences = evaluateAST(ast, state.data);
+
+            const allowedSamples = new Set(
+                filteredOccurrences.map(getSampleKey)
+            );
+
+            state.current = state.samples.filter(s =>
+                allowedSamples.has(s.sample_id)
+            );
+
+            // =========================
+            // RENDER
+            // =========================
+            render(false);
+            updateCount();
+            updateExpression(ast);
+
+            updateFilterError?.();
+
+        } finally {
+            refreshLock = false;
+        }
+
+    }, 50);
+}
+
+
+
+
+
+/* ================= ROW ================= */
+
+
+
+
+function capitalize(str){
+    if(!str) return "";
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+
+function createRow(container, hydrate = false){
+
+    const row = document.createElement("div");
+    row.className = "filter-row";
+
+    // =========================
+    // FIELD
+    // =========================
+    const f = document.createElement("select");
+    f.className = "field";
+    f.innerHTML = `<option value="">${t("ui", "variable")}</option>`;
+
+    Object.entries(getGroupedVariables()).forEach(([groupName, vars]) => {
+
+        const grp = document.createElement("optgroup");
+
+        grp.label = t("group", groupName);
+
+        vars.forEach(k => {
+
+            if(!state.index[k]) return;
+
+            const o = document.createElement("option");
+            o.value = k;
+            o.textContent = capitalize(t("var", k));
+
+            grp.appendChild(o);
+        });
+
+        f.appendChild(grp);
+    });
+
+    // =========================
+    // OPERATOR
+    // =========================
+    const op = document.createElement("select");
+    op.className = "op";
+    op.innerHTML = `<option value="">${t("ui", "operator")}</option>`;
+
+    // =========================
+    // VALUE BOX
+    // =========================
+    const valueBox = document.createElement("div");
+    valueBox.className = "val-box";
+
+    let valueEl;
+
+    function setSelect(values, fieldKey){
+
+        const search = createSearchableValue(values, fieldKey);
+
+        valueBox.innerHTML = "";
+        valueBox.appendChild(search.element);
+
+        valueEl = {
+            get value(){
+                return search.getValue();
+            }
+        };
+    }
+
+    function setInput(){
+
+        const input = document.createElement("input");
+        input.className = "val";
+        input.type = "text";
+        input.placeholder = t("ui", "type");
+
+        input.oninput = apply;
+
+        valueBox.innerHTML = "";
+        valueBox.appendChild(input);
+
+        valueEl = input;
+    }
+
+    // =========================
+    // FIELD CHANGE
+    // =========================
+    f.onchange = () => {
+        if (rebuildingUI) return;
+
+        const key = f.value;
+
+        if (!key) {
+
+            valueBox.innerHTML = "";
+            valueEl = null;
+
+            op.innerHTML = `<option value="">${t("ui", "operator")}</option>`;
+            op.selectedIndex = 0;
+
+            add.disabled = true;
+
+            apply();
+            return;
+        }
+
+        valueBox.innerHTML = "";
+        valueEl = null;
+
+        op.innerHTML = `<option value="">${t("ui", "operator")}</option>`;
+
+        const type = state.varType?.[key] || "categorical";
+        const values = state.index[key] || [];
+
+        getOperators(type).forEach(o => {
+            const opt = document.createElement("option");
+            opt.value = o.v;
+            opt.textContent = o.l;
+            op.appendChild(opt);
+        });
+
+        if (type === "numeric") {
+            setInput();
+        } else {
+            setSelect(values, key);
+        }
+
+        op.selectedIndex = 0;
+        add.disabled = false;
+
+        apply();
+    };
+
+    // =========================
+    // OPERATOR CHANGE
+    // =========================
+    op.onchange = () => {
+        if (booting || rebuildingUI) return;
+        apply();
+    };
+
+    // =========================
+    // LOGIC INTRA-GROUP
+    // =========================
+    const logic = document.createElement("select");
+    logic.className = "intra";
+    logic.innerHTML = `
+        <option value="AND">${t("logic", "AND")}</option>
+        <option value="OR">${t("logic", "OR")}</option>
+    `;
+    logic.value = "AND";
+    logic.onchange = () => {
+        if (booting || rebuildingUI) return;
+        apply();
+    };
+    // =========================
+    // ADD / DELETE ROW
+    // =========================
+    const add = document.createElement("button");
+    add.className = "add-condition";
+    add.textContent = t("ui", "addCondition");
+    add.disabled = true;
+
+    add.onclick = () => {
+        if (booting || rebuildingUI) return;
+        container.appendChild(createRow(container));
+    };
+
+    const del = document.createElement("button");
+    del.className = "del";
+    del.textContent = "X"; // ou t("ui","delete") si tu veux traduire aussi
+    del.onclick = () => {
+        row.remove();
+        apply();
+    };
+
+    // =========================
+    // ASSEMBLY
+    // =========================
+    row.append(f, op, valueBox, logic, add, del);
+
+    // =========================
+    // INIT ROW
+    // =========================
+    (function initRow(){
+        if (booting || rebuildingUI || hydrate) return;
+    
+        f.selectedIndex = 0;
+    
+        f.dispatchEvent(new Event("change"));
+    })();
+
+    return row;
+}
+
+
+
+
+function renumberGroups(){
+    document.querySelectorAll(".filter-group").forEach((g, i) => {
+        const title = g.querySelector("b");
+        if(title){
+            title.textContent = `${ui("group")} ${i + 1}`;
+        }
+    });
+}
+
+
+/* ================= GROUP ================= */
+
+
+function createGroup(container){
+
+    const isFirst = document.querySelectorAll(".filter-group").length === 0;
+
+    addGroupConnector(container, isFirst);
+
+    const g = document.createElement("div");
+    g.className = "filter-group";
+
+    const header = document.createElement("div");
+    header.className = "group-header";
+
+    const title = document.createElement("b");
+    title.textContent = ui("group");
+
+    const del = document.createElement("button");
+    del.className = "del del-group";
+    
+    del.textContent = "X";
+    del.title = ui("groupDelete");
+
+    del.onclick = () => {
+        g.remove();
+        renumberGroups();
+        apply();
+    };
+
+    header.append(title, del);
+
+    const body = document.createElement("div");
+    body.appendChild(createRow(body));
+
+    g.append(header, body);
+    container.appendChild(g);
+
+    renumberGroups();
+}
+
+
+
+
+
+/* ================= RENDER ================= */
+
+function safeCoord(v){
+    if(v === null || v === undefined) return NaN;
+    const n = parseFloat(String(v).trim());
+    return Number.isFinite(n) ? n : NaN;
+}
+
+
+
+
+
+
+function createPoint(lat, lon, d){
+
+    const sampleCode = d.sample_id ?? "";
+
+    const speciesList = d.species || [];
+
+    const m = L.circleMarker([lat, lon], {
+        radius: 4,
+        color: "#2c7be5",
+        fillColor: "#2c7be5",
+        fillOpacity: 0.9
+    });
+
+    const html = `
+        <div style="font-size:12px; line-height:1.4">
+
+           <b>Field code:</b> ${sampleCode}<br><br>
+
+            <b>Species (${speciesList.length}):</b><br>
+
+            ${speciesList.length
+                ? speciesList.map(s => `<i>${s}</i>`).join("<br>")
+                : "No species"
+            }
+
+        </div>
+    `;
+
+    m.bindPopup(html, {
+        maxWidth: 320,
+        closeButton: true,
+        autoPan: true
+    });
+
+    return m;
+}
+
+
+
+
+
+
+
+
+
+function render(zoom = true){
+
+    clusterLayer.clearLayers();
+    simpleLayer.clearLayers();
+
+    const bounds = [];
+
+    state.current.forEach(d => {
+
+        const lat = safeCoord(d.latitude);
+        const lon = safeCoord(d.longitude);
+    
+        if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+    
+        const m = createPoint(lat, lon, d);
+    
+        bounds.push([lat, lon]);
+    
+        if (clusterMode) clusterLayer.addLayer(m);
+        else simpleLayer.addLayer(m);
+    });
+
+    // IMPORTANT : switch propre
+    if (clusterMode) {
+
+        if (map.hasLayer(simpleLayer)) map.removeLayer(simpleLayer);
+        if (!map.hasLayer(clusterLayer)) map.addLayer(clusterLayer);
+
+    } else {
+
+        if (map.hasLayer(clusterLayer)) map.removeLayer(clusterLayer);
+        if (!map.hasLayer(simpleLayer)) map.addLayer(simpleLayer);
+    }
+
+    if (bounds.length && zoom && autoFit) {
+        map.fitBounds(bounds, { padding: [40, 40], maxZoom: 8 });
+    }
+
+    console.log({
+        mode: clusterMode ? "cluster" : "points",
+        markers: bounds.length
+    });
+}
+
+
+
+
+
+/* ================= INIT */
+
+function initUI(){
+
+    const lang = state.lang || "en";
+
+    /* =========================
+       TOP BAR
+    ========================= */
+    const bar = document.getElementById("filter-toggle-bar");
+    const btn = document.createElement("button");
+
+    const left = bar.querySelector(".toggle-left");
+
+    // state persistant
+    state.filtersVisible = state.filtersVisible ?? true;
+
+    function renderToggleText(){
+        btn.textContent = state.filtersVisible
+            ? `▼ ${ui("filters")}`
+            : `▲ ${ui("filters")}`;
+    }
+
+    renderToggleText();
+
+    btn.onclick = () => {
+
+        state.filtersVisible = !state.filtersVisible;
+
+        const panelEl = document.getElementById("filter-panel");
+        panelEl.style.display = state.filtersVisible ? "block" : "none";
+
+        renderToggleText();
+
+        setTimeout(() => {
+            if (map) map.invalidateSize();
+        }, 150);
+    };
+
+    left.innerHTML = "";
+    left.appendChild(btn);
+
+    /* =========================
+       FILTER PANEL
+    ========================= */
+    const panel = document.getElementById("filter-rows");
+
+    panel.innerHTML = "";
+    createGroup(panel);
+
+    /* =========================
+       BUTTONS
+    ========================= */
+    const addBtn = document.getElementById("add-group");
+    const resetBtn = document.getElementById("reset");
+    const toggleBtn = document.getElementById("toggle");
+
+    addBtn.style.background = "#2c7be5";
+    addBtn.style.color = "#fff";
+
+    resetBtn.style.background = "#d9534f";
+    resetBtn.style.color = "#fff";
+
+    toggleBtn.style.background = "#444";
+    toggleBtn.style.color = "#fff";
+
+    /* =========================
+       I18N
+    ========================= */
+    addBtn.textContent = ui("addGroup");
+    resetBtn.textContent = ui("reset");
+
+    function renderToggleClusterText(){
+        toggleBtn.textContent = clusterMode
+            ? ui("clustersOn")
+            : ui("clustersOff");
+    }
+
+    renderToggleClusterText();
+
+    /* =========================
+       EVENTS
+    ========================= */
+
+    addBtn.onclick = () => createGroup(panel);
+
+    resetBtn.onclick = () => {
+
+        panel.innerHTML = "";
+        createGroup(panel);
+
+        state.current = state.data;
+
+        render(false);
+        updateCount();
+        updateExpression(buildAST());
+    };
+
+    toggleBtn.onclick = () => {
+
+        clusterMode = !clusterMode;
+
+        renderToggleClusterText();
+
+        render(false);
+
+        if (clusterMode) {
+            map.removeLayer(simpleLayer);
+            map.addLayer(clusterLayer);
+        } else {
+            map.removeLayer(clusterLayer);
+            map.addLayer(simpleLayer);
+        }
+
+        setTimeout(() => {
+            map.invalidateSize();
+        }, 100);
+    };
+
+    /* =========================
+       LANGUAGE BINDING
+    ========================= */
+    function bindLanguageButtons(){
+
+        const fr = document.getElementById("lang-fr");
+        const en = document.getElementById("lang-en");
+        const es = document.getElementById("lang-es");
+
+        if(fr) fr.onclick = () => setLanguage("fr");
+        if(en) en.onclick = () => setLanguage("en");
+        if(es) es.onclick = () => setLanguage("es");
+    }
+
+    bindLanguageButtons();
+
+    /* =========================
+       SYNC UI STATE (important)
+    ========================= */
+    const panelEl = document.getElementById("filter-panel");
+    panelEl.style.display = state.filtersVisible ? "block" : "none";
+}
+
+/* ================= BOOT ================= */
+
+function getLang(){
+    const l =
+        (window.LANG ||
+        document.documentElement?.lang ||
+        navigator.language ||
+        "en").toLowerCase().slice(0,2);
+
+    return ["fr", "en", "es"].includes(l) ? l : "en";
+}
+
+
+
+
+
+let booting = true;
+
+function boot(){
+
+  
+
+    Promise.all([
+        fetch('/wp-content/data/vectobol/production/occurrences.json').then(r => {
+            if (!r.ok) throw new Error("occurrences.json not accessible");
+            return r.json();
+        }),
+        fetch('/wp-content/data/vectobol/production/dictionary.json').then(r => {
+            if (!r.ok) throw new Error("dictionary.json not accessible");
+            return r.json();
+        })
+    ])
+    .then(([data, dictionary]) => {
+
+         state.dictionary = dictionary;
+    
+        /* =========================
+           DATA INIT
+        ========================= */
+
+        state.data = Array.isArray(data) ? data : [];
+       
+       
+
+        state.lang = getLang();
+        
+
+        /* =========================
+           LABELS + CATALOG
+        ========================= */
+
+        buildLabels(dictionary);
+        buildVariableCatalog(dictionary);
+
+        
+        /* =========================
+           INDEX (CRITICAL BEFORE UI)
+        ========================= */
+
+        buildIndex();
+        
+         buildSamples();
+          state.current = [...state.samples];
+         
+        /* =========================
+           MAP
+        ========================= */
+
+        initMap();
+        
+
+        /* =========================
+           UI + FIRST RENDER
+        ========================= */
+
+        requestAnimationFrame(() => {
+
+            initUI();
+            
+
+            requestAnimationFrame(() => {
+
+                booting = false;
+
+                state.current = [...state.samples];
+                render(false);
+
+                if (map) map.invalidateSize();
+
+                render(false);
+                updateCount();
+                updateExpression([]);
+
+                
+
+            });
+        });
+
+    })
+    .catch(err => {
+        console.error("[BOOT] FATAL ERROR", err);
+    });
+    
+    
+   
+    
+}
+
+boot();
+
+})();
+
+
+</script>
