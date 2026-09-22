@@ -1,0 +1,3949 @@
+{
+  "variables": [
+    {
+      "variable": "record_id",
+      "label_fr": "Redcap ID",
+      "label_en": "Redcap ID",
+      "label_es": "Redcap ID"
+    },
+    {
+      "variable": "sample_id",
+      "label_fr": "Code échantillon",
+      "label_en": "Sample code",
+      "label_es": "Código de muestra"
+    },
+    {
+      "variable": "sample_origen",
+      "label_fr": "Origine",
+      "label_en": "Origin",
+      "label_es": "Origen"
+    },
+    {
+      "variable": "mision_code",
+      "label_fr": "Code de mission",
+      "label_en": "Mission code",
+      "label_es": "Código de misión"
+    },
+    {
+      "variable": "sample_type",
+      "label_fr": "Type de collecte",
+      "label_en": "Collection type",
+      "label_es": "Tipo de colecta"
+    },
+    {
+      "variable": "initial_date",
+      "label_fr": "Date de collecte",
+      "label_en": "Collection date",
+      "label_es": "Fecha de colecta"
+    },
+    {
+      "variable": "sample_positive_y_n",
+      "label_fr": "Échantillon positif",
+      "label_en": "Positive sample",
+      "label_es": "Muestra positiva"
+    },
+    {
+      "variable": "sample_latitude",
+      "label_fr": "Latitude",
+      "label_en": "Latitude",
+      "label_es": "Latitud"
+    },
+    {
+      "variable": "sample_longitude",
+      "label_fr": "Longitude",
+      "label_en": "Longitude",
+      "label_es": "Longitud"
+    },
+    {
+      "variable": "sample_altitude",
+      "label_fr": "Altitude",
+      "label_en": "Altitude",
+      "label_es": "Altitud"
+    },
+    {
+      "variable": "sample_admin1",
+      "label_fr": "Département",
+      "label_en": "Department",
+      "label_es": "Departamento"
+    },
+    {
+      "variable": "sample_admin2",
+      "label_fr": "Province",
+      "label_en": "Province",
+      "label_es": "Provincia"
+    },
+    {
+      "variable": "sample_admin3",
+      "label_fr": "Commune",
+      "label_en": "Municipality",
+      "label_es": "Municipio"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "label_fr": "Méthode de capture",
+      "label_en": "Sampling method",
+      "label_es": "Método de captura"
+    },
+    {
+      "variable": "acuatic_location",
+      "label_fr": "Type de gîte aquatique",
+      "label_en": "Aquatic habitat type",
+      "label_es": "Tipo de criadero acuático"
+    },
+    {
+      "variable": "artificial_container",
+      "label_fr": "Récipient artificiel",
+      "label_en": "Artificial container",
+      "label_es": "Recipiente artificial"
+    },
+    {
+      "variable": "identifiedby",
+      "label_fr": "Identifié par",
+      "label_en": "Identified by",
+      "label_es": "Identificado por"
+    },
+    {
+      "variable": "identificationverificationstatus",
+      "label_fr": "Identification vérifiée",
+      "label_en": "Identification verified",
+      "label_es": "Identificación verificada"
+    },
+    {
+      "variable": "year",
+      "label_fr": "Année",
+      "label_en": "Year",
+      "label_es": "Año"
+    },
+    {
+      "variable": "month",
+      "label_fr": "Mois",
+      "label_en": "Month",
+      "label_es": "Mes"
+    },
+    {
+      "variable": "day",
+      "label_fr": "Jour",
+      "label_en": "Day",
+      "label_es": "Día"
+    },
+    {
+      "variable": "order_taxo",
+      "label_fr": "Ordre",
+      "label_en": "Order",
+      "label_es": "Orden"
+    },
+    {
+      "variable": "family_taxo",
+      "label_fr": "Famille",
+      "label_en": "Family",
+      "label_es": "Familia"
+    },
+    {
+      "variable": "subfamily_taxo",
+      "label_fr": "Sous-famille",
+      "label_en": "Subfamily",
+      "label_es": "Subfamilia"
+    },
+    {
+      "variable": "tribe_taxo",
+      "label_fr": "Tribu",
+      "label_en": "Tribe",
+      "label_es": "Tribu"
+    },
+    {
+      "variable": "genus_taxo",
+      "label_fr": "Genre",
+      "label_en": "Genus",
+      "label_es": "Género"
+    },
+    {
+      "variable": "subgenus_taxo",
+      "label_fr": "Sous-genre",
+      "label_en": "Subgenus",
+      "label_es": "Subgénero"
+    },
+    {
+      "variable": "species_taxo",
+      "label_fr": "Espèce",
+      "label_en": "Species",
+      "label_es": "Especie"
+    },
+    {
+      "variable": "genus",
+      "label_fr": "Genre",
+      "label_en": "Genus",
+      "label_es": "Género"
+    },
+    {
+      "variable": "species",
+      "label_fr": "Espèce",
+      "label_en": "Species",
+      "label_es": "Especie"
+    },
+    {
+      "variable": "lat_aprox_y_n",
+      "label_fr": "Latitude approximative",
+      "label_en": "Approximate latitude",
+      "label_es": "Latitud aproximada"
+    },
+    {
+      "variable": "long_aprox_y_n",
+      "label_fr": "Longitude approximative",
+      "label_en": "Approximate longitude",
+      "label_es": "Longitud aproximada"
+    }
+  ],
+  "values": [
+    {
+      "variable": "genus",
+      "code": 9999,
+      "value_es": "No se puede identificar",
+      "value_fr": "Impossible à identifier",
+      "value_en": "Cannot be identified"
+    },
+    {
+      "variable": "genus",
+      "code": 999,
+      "value_es": "OTRO genero no en la lista",
+      "value_fr": "AUTRE genre non répertorié",
+      "value_en": "OTHER genus not on the list"
+    },
+    {
+      "variable": "genus",
+      "code": 1001,
+      "value_es": "Aedeomyia",
+      "value_fr": "Aedeomyia",
+      "value_en": "Aedeomyia"
+    },
+    {
+      "variable": "genus",
+      "code": 1002,
+      "value_es": "Aedes",
+      "value_fr": "Aedes",
+      "value_en": "Aedes"
+    },
+    {
+      "variable": "genus",
+      "code": 1003,
+      "value_es": "Anopheles",
+      "value_fr": "Anopheles",
+      "value_en": "Anopheles"
+    },
+    {
+      "variable": "genus",
+      "code": 1004,
+      "value_es": "Chagasia",
+      "value_fr": "Chagasia",
+      "value_en": "Chagasia"
+    },
+    {
+      "variable": "genus",
+      "code": 1005,
+      "value_es": "Coquillettidia",
+      "value_fr": "Coquillettidia",
+      "value_en": "Coquillettidia"
+    },
+    {
+      "variable": "genus",
+      "code": 1006,
+      "value_es": "Culex",
+      "value_fr": "Culex",
+      "value_en": "Culex"
+    },
+    {
+      "variable": "genus",
+      "code": 1007,
+      "value_es": "Haemagogus",
+      "value_fr": "Haemagogus",
+      "value_en": "Haemagogus"
+    },
+    {
+      "variable": "genus",
+      "code": 1008,
+      "value_es": "Isostomyia",
+      "value_fr": "Isostomyia",
+      "value_en": "Isostomyia"
+    },
+    {
+      "variable": "genus",
+      "code": 1009,
+      "value_es": "Johnbelkinia",
+      "value_fr": "Johnbelkinia",
+      "value_en": "Johnbelkinia"
+    },
+    {
+      "variable": "genus",
+      "code": 1010,
+      "value_es": "Limatus",
+      "value_fr": "Limatus",
+      "value_en": "Limatus"
+    },
+    {
+      "variable": "genus",
+      "code": 1011,
+      "value_es": "Lutzia",
+      "value_fr": "Lutzia",
+      "value_en": "Lutzia"
+    },
+    {
+      "variable": "genus",
+      "code": 1012,
+      "value_es": "Mansonia",
+      "value_fr": "Mansonia",
+      "value_en": "Mansonia"
+    },
+    {
+      "variable": "genus",
+      "code": 1013,
+      "value_es": "Onirion",
+      "value_fr": "Onirion",
+      "value_en": "Onirion"
+    },
+    {
+      "variable": "genus",
+      "code": 1014,
+      "value_es": "Orthopodomyia",
+      "value_fr": "Orthopodomyia",
+      "value_en": "Orthopodomyia"
+    },
+    {
+      "variable": "genus",
+      "code": 1015,
+      "value_es": "Psorophora",
+      "value_fr": "Psorophora",
+      "value_en": "Psorophora"
+    },
+    {
+      "variable": "genus",
+      "code": 1016,
+      "value_es": "Runchomyia",
+      "value_fr": "Runchomyia",
+      "value_en": "Runchomyia"
+    },
+    {
+      "variable": "genus",
+      "code": 1017,
+      "value_es": "Sabethes",
+      "value_fr": "Sabethes",
+      "value_en": "Sabethes"
+    },
+    {
+      "variable": "genus",
+      "code": 1018,
+      "value_es": "Shannoniana",
+      "value_fr": "Shannoniana",
+      "value_en": "Shannoniana"
+    },
+    {
+      "variable": "genus",
+      "code": 1019,
+      "value_es": "Shannoniana",
+      "value_fr": "Shannoniana",
+      "value_en": "Shannoniana"
+    },
+    {
+      "variable": "genus",
+      "code": 1020,
+      "value_es": "Toxorhynchites",
+      "value_fr": "Toxorhynchites",
+      "value_en": "Toxorhynchites"
+    },
+    {
+      "variable": "genus",
+      "code": 1021,
+      "value_es": "Trichoprosopon",
+      "value_fr": "Trichoprosopon",
+      "value_en": "Trichoprosopon"
+    },
+    {
+      "variable": "genus",
+      "code": 1022,
+      "value_es": "Uranotaenia",
+      "value_fr": "Uranotaenia",
+      "value_en": "Uranotaenia"
+    },
+    {
+      "variable": "genus",
+      "code": 1023,
+      "value_es": "Wyeomyia",
+      "value_fr": "Wyeomyia",
+      "value_en": "Wyeomyia"
+    },
+    {
+      "variable": "genus",
+      "code": 2001,
+      "value_es": "Eratyrus",
+      "value_fr": "Eratyrus",
+      "value_en": "Eratyrus"
+    },
+    {
+      "variable": "genus",
+      "code": 2002,
+      "value_es": "Microtriatoma",
+      "value_fr": "Microtriatoma",
+      "value_en": "Microtriatoma"
+    },
+    {
+      "variable": "genus",
+      "code": 2003,
+      "value_es": "Panstrongylus",
+      "value_fr": "Panstrongylus",
+      "value_en": "Panstrongylus"
+    },
+    {
+      "variable": "genus",
+      "code": 2004,
+      "value_es": "Psammolestes",
+      "value_fr": "Psammolestes",
+      "value_en": "Psammolestes"
+    },
+    {
+      "variable": "genus",
+      "code": 2005,
+      "value_es": "Rhodnius",
+      "value_fr": "Rhodnius",
+      "value_en": "Rhodnius"
+    },
+    {
+      "variable": "genus",
+      "code": 2006,
+      "value_es": "Triatoma",
+      "value_fr": "Triatoma",
+      "value_en": "Triatoma"
+    },
+    {
+      "variable": "subgenus",
+      "code": 999,
+      "value_es": "NO EN LA LISTA",
+      "value_fr": "PAS DANS LA LISTE",
+      "value_en": "NOT IN THE LIST"
+    },
+    {
+      "variable": "subgenus",
+      "code": 9999,
+      "value_es": "INCERTAIN",
+      "value_fr": "INCERTAIN",
+      "value_en": "UNCERTAIN"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1001,
+      "value_es": "Aedeomyia",
+      "value_fr": "Aedeomyia",
+      "value_en": "Aedeomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1002,
+      "value_es": "Ankylorhynchus",
+      "value_fr": "Ankylorhynchus",
+      "value_en": "Ankylorhynchus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1003,
+      "value_es": "Anoedioporpa",
+      "value_fr": "Anoedioporpa",
+      "value_en": "Anoedioporpa"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1004,
+      "value_es": "Anopheles",
+      "value_fr": "Anopheles",
+      "value_en": "Anopheles"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1005,
+      "value_es": "Carrollia",
+      "value_fr": "Carrollia",
+      "value_en": "Carrollia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1006,
+      "value_es": "Conopostegus",
+      "value_fr": "Conopostegus",
+      "value_en": "Conopostegus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1007,
+      "value_es": "Ctenogoeldia",
+      "value_fr": "Ctenogoeldia",
+      "value_en": "Ctenogoeldia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1008,
+      "value_es": "Culex",
+      "value_fr": "Culex",
+      "value_en": "Culex"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1009,
+      "value_es": "Davismyia",
+      "value_fr": "Davismyia",
+      "value_en": "Davismyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1010,
+      "value_es": "Dendromyia",
+      "value_fr": "Dendromyia",
+      "value_en": "Dendromyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1011,
+      "value_es": "Dodecamyia",
+      "value_fr": "Dodecamyia",
+      "value_en": "Dodecamyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1012,
+      "value_es": "Exallomyia",
+      "value_fr": "Exallomyia",
+      "value_en": "Exallomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1013,
+      "value_es": "Georgecraigius",
+      "value_fr": "Georgecraigius",
+      "value_en": "Georgecraigius"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1014,
+      "value_es": "Grabhamia",
+      "value_fr": "Grabhamia",
+      "value_en": "Grabhamia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1015,
+      "value_es": "Haemagogus",
+      "value_fr": "Haemagogus",
+      "value_en": "Haemagogus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1016,
+      "value_es": "Halaedes",
+      "value_fr": "Halaedes",
+      "value_en": "Halaedes"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1017,
+      "value_es": "Howardina",
+      "value_fr": "Howardina",
+      "value_en": "Howardina"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1018,
+      "value_es": "Hystatomyia",
+      "value_fr": "Hystatomyia",
+      "value_en": "Hystatomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1019,
+      "value_es": "Janthinosoma",
+      "value_fr": "Janthinosoma",
+      "value_en": "Janthinosoma"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1020,
+      "value_es": "Kerteszia",
+      "value_fr": "Kerteszia",
+      "value_en": "Kerteszia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1021,
+      "value_es": "Lophopodomyia",
+      "value_fr": "Lophopodomyia",
+      "value_en": "Lophopodomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1022,
+      "value_es": "Lutzia",
+      "value_fr": "Lutzia",
+      "value_en": "Lutzia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1023,
+      "value_es": "Lynchiella",
+      "value_fr": "Lynchiella",
+      "value_en": "Lynchiella"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1024,
+      "value_es": "Mansonia",
+      "value_fr": "Mansonia",
+      "value_en": "Mansonia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1025,
+      "value_es": "Melanoconion",
+      "value_fr": "Melanoconion",
+      "value_en": "Melanoconion"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1026,
+      "value_es": "Menolepis",
+      "value_fr": "Menolepis",
+      "value_en": "Menolepis"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1027,
+      "value_es": "Miamyia",
+      "value_fr": "Miamyia",
+      "value_en": "Miamyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1028,
+      "value_es": "Microculex",
+      "value_fr": "Microculex",
+      "value_en": "Microculex"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1029,
+      "value_es": "Nunezia",
+      "value_fr": "Nunezia",
+      "value_en": "Nunezia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1030,
+      "value_es": "Nyssorhynchus",
+      "value_fr": "Nyssorhynchus",
+      "value_en": "Nyssorhynchus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1031,
+      "value_es": "Ochlerotatus",
+      "value_fr": "Ochlerotatus",
+      "value_en": "Ochlerotatus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1032,
+      "value_es": "Peytonulus",
+      "value_fr": "Peytonulus",
+      "value_en": "Peytonulus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1033,
+      "value_es": "Phenacomyia",
+      "value_fr": "Phenacomyia",
+      "value_en": "Phenacomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1034,
+      "value_es": "Phoniomyia",
+      "value_fr": "Phoniomyia",
+      "value_en": "Phoniomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1035,
+      "value_es": "Prosopolepis",
+      "value_fr": "Prosopolepis",
+      "value_en": "Prosopolepis"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1036,
+      "value_es": "Protomacleaya",
+      "value_fr": "Protomacleaya",
+      "value_en": "Protomacleaya"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1037,
+      "value_es": "Psorophora",
+      "value_fr": "Psorophora",
+      "value_en": "Psorophora"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1038,
+      "value_es": "Rhynchotaenia",
+      "value_fr": "Rhynchotaenia",
+      "value_en": "Rhynchotaenia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1039,
+      "value_es": "Sabethes",
+      "value_fr": "Sabethes",
+      "value_en": "Sabethes"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1040,
+      "value_es": "Sabethinus",
+      "value_fr": "Sabethinus",
+      "value_en": "Sabethinus"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1041,
+      "value_es": "Sabethoides",
+      "value_fr": "Sabethoides",
+      "value_en": "Sabethoides"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1042,
+      "value_es": "Spilonympha",
+      "value_fr": "Spilonympha",
+      "value_en": "Spilonympha"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1043,
+      "value_es": "Stegomyia",
+      "value_fr": "Stegomyia",
+      "value_en": "Stegomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1044,
+      "value_es": "Stethomyia",
+      "value_fr": "Stethomyia",
+      "value_en": "Stethomyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1045,
+      "value_es": "Triamyia",
+      "value_fr": "Triamyia",
+      "value_en": "Triamyia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1046,
+      "value_es": "Uranotaenia",
+      "value_fr": "Uranotaenia",
+      "value_en": "Uranotaenia"
+    },
+    {
+      "variable": "subgenus",
+      "code": 1047,
+      "value_es": "Wyeomyia",
+      "value_fr": "Wyeomyia",
+      "value_en": "Wyeomyia"
+    },
+    {
+      "variable": "species",
+      "code": 9999,
+      "value_es": "sp",
+      "value_fr": "sp",
+      "value_en": "sp"
+    },
+    {
+      "variable": "species",
+      "code": 999,
+      "value_es": "OTRA especie no en la lista",
+      "value_fr": "AUTRE espece, pas dans la liste",
+      "value_en": "OTHER species, not in the list"
+    },
+    {
+      "variable": "species",
+      "code": 3001,
+      "value_es": "abonnenci",
+      "value_fr": "abonnenci",
+      "value_en": "abonnenci"
+    },
+    {
+      "variable": "species",
+      "code": 3002,
+      "value_es": "abunaensis",
+      "value_fr": "abunaensis",
+      "value_en": "abunaensis"
+    },
+    {
+      "variable": "species",
+      "code": 1001,
+      "value_es": "acharistus",
+      "value_fr": "acharistus",
+      "value_en": "acharistus"
+    },
+    {
+      "variable": "species",
+      "code": 3003,
+      "value_es": "aclydifera",
+      "value_fr": "aclydifera",
+      "value_en": "aclydifera"
+    },
+    {
+      "variable": "species",
+      "code": 1002,
+      "value_es": "aegypti",
+      "value_fr": "aegypti",
+      "value_en": "aegypti"
+    },
+    {
+      "variable": "species",
+      "code": 1003,
+      "value_es": "albicosta",
+      "value_fr": "albicosta",
+      "value_en": "albicosta"
+    },
+    {
+      "variable": "species",
+      "code": 1004,
+      "value_es": "albifasciatus",
+      "value_fr": "albifasciatus",
+      "value_en": "albifasciatus"
+    },
+    {
+      "variable": "species",
+      "code": 1005,
+      "value_es": "albigenu",
+      "value_fr": "albigenu",
+      "value_en": "albigenu"
+    },
+    {
+      "variable": "species",
+      "code": 1006,
+      "value_es": "albipes",
+      "value_fr": "albipes",
+      "value_en": "albipes"
+    },
+    {
+      "variable": "species",
+      "code": 1007,
+      "value_es": "albiprivus",
+      "value_fr": "albiprivus",
+      "value_en": "albiprivus"
+    },
+    {
+      "variable": "species",
+      "code": 1008,
+      "value_es": "albitarsis",
+      "value_fr": "albitarsis",
+      "value_en": "albitarsis"
+    },
+    {
+      "variable": "species",
+      "code": 1009,
+      "value_es": "albopictus",
+      "value_fr": "albopictus",
+      "value_en": "albopictus"
+    },
+    {
+      "variable": "species",
+      "code": 1010,
+      "value_es": "aliciae",
+      "value_fr": "aliciae",
+      "value_en": "aliciae"
+    },
+    {
+      "variable": "species",
+      "code": 1011,
+      "value_es": "amazonensis (Mansonia)",
+      "value_fr": "amazonensis (Mansonia)",
+      "value_en": "amazonensis (Mansonia)"
+    },
+    {
+      "variable": "species",
+      "code": 3004,
+      "value_es": "amazonensis (Psychodopydus)",
+      "value_fr": "amazonensis (Psychodopydus)",
+      "value_en": "amazonensis (Psychodopydus)"
+    },
+    {
+      "variable": "species",
+      "code": 1012,
+      "value_es": "amazonicus",
+      "value_fr": "amazonicus",
+      "value_en": "amazonicus"
+    },
+    {
+      "variable": "species",
+      "code": 3005,
+      "value_es": "andersoni",
+      "value_fr": "andersoni",
+      "value_en": "andersoni"
+    },
+    {
+      "variable": "species",
+      "code": 1013,
+      "value_es": "angustivittatus",
+      "value_fr": "angustivittatus",
+      "value_en": "angustivittatus"
+    },
+    {
+      "variable": "species",
+      "code": 3006,
+      "value_es": "antezanai",
+      "value_fr": "antezanai",
+      "value_en": "antezanai"
+    },
+    {
+      "variable": "species",
+      "code": 3007,
+      "value_es": "antunesi",
+      "value_fr": "antunesi",
+      "value_en": "antunesi"
+    },
+    {
+      "variable": "species",
+      "code": 1014,
+      "value_es": "aphobema",
+      "value_fr": "aphobema",
+      "value_en": "aphobema"
+    },
+    {
+      "variable": "species",
+      "code": 1015,
+      "value_es": "apicinus",
+      "value_fr": "apicinus",
+      "value_en": "apicinus"
+    },
+    {
+      "variable": "species",
+      "code": 1016,
+      "value_es": "aporonoma",
+      "value_fr": "aporonoma",
+      "value_en": "aporonoma"
+    },
+    {
+      "variable": "species",
+      "code": 3008,
+      "value_es": "aragaoi",
+      "value_fr": "aragaoi",
+      "value_en": "aragaoi"
+    },
+    {
+      "variable": "species",
+      "code": 1017,
+      "value_es": "archegus",
+      "value_fr": "archegus",
+      "value_en": "archegus"
+    },
+    {
+      "variable": "species",
+      "code": 1018,
+      "value_es": "argyritarsis",
+      "value_fr": "argyritarsis",
+      "value_en": "argyritarsis"
+    },
+    {
+      "variable": "species",
+      "code": 1019,
+      "value_es": "argyrothorax",
+      "value_fr": "argyrothorax",
+      "value_en": "argyrothorax"
+    },
+    {
+      "variable": "species",
+      "code": 1020,
+      "value_es": "arribalzagae",
+      "value_fr": "arribalzagae",
+      "value_en": "arribalzagae"
+    },
+    {
+      "variable": "species",
+      "code": 3009,
+      "value_es": "auraensis",
+      "value_fr": "auraensis",
+      "value_en": "auraensis"
+    },
+    {
+      "variable": "species",
+      "code": 4003,
+      "value_es": "aureus",
+      "value_fr": "aureus",
+      "value_en": "aureus"
+    },
+    {
+      "variable": "species",
+      "code": 1021,
+      "value_es": "aurivittata",
+      "value_fr": "aurivittata",
+      "value_en": "aurivittata"
+    },
+    {
+      "variable": "species",
+      "code": 3010,
+      "value_es": "avellari",
+      "value_fr": "avellari",
+      "value_en": "avellari"
+    },
+    {
+      "variable": "species",
+      "code": 3011,
+      "value_es": "ayrozai",
+      "value_fr": "ayrozai",
+      "value_en": "ayrozai"
+    },
+    {
+      "variable": "species",
+      "code": 3012,
+      "value_es": "bacula",
+      "value_fr": "bacula",
+      "value_en": "bacula"
+    },
+    {
+      "variable": "species",
+      "code": 1022,
+      "value_es": "bambusicola",
+      "value_fr": "bambusicola",
+      "value_en": "bambusicola"
+    },
+    {
+      "variable": "species",
+      "code": 1023,
+      "value_es": "bambusicolus",
+      "value_fr": "bambusicolus",
+      "value_en": "bambusicolus"
+    },
+    {
+      "variable": "species",
+      "code": 3013,
+      "value_es": "barrettoi",
+      "value_fr": "barrettoi",
+      "value_en": "barrettoi"
+    },
+    {
+      "variable": "species",
+      "code": 1024,
+      "value_es": "bastagarius",
+      "value_fr": "bastagarius",
+      "value_en": "bastagarius"
+    },
+    {
+      "variable": "species",
+      "code": 4004,
+      "value_es": "batesi",
+      "value_fr": "batesi",
+      "value_en": "batesi"
+    },
+    {
+      "variable": "species",
+      "code": 1025,
+      "value_es": "bejaranoi",
+      "value_fr": "bejaranoi",
+      "value_en": "bejaranoi"
+    },
+    {
+      "variable": "species",
+      "code": 1026,
+      "value_es": "belisarioi",
+      "value_fr": "belisarioi",
+      "value_en": "belisarioi"
+    },
+    {
+      "variable": "species",
+      "code": 1027,
+      "value_es": "benarrochi",
+      "value_fr": "benarrochi",
+      "value_en": "benarrochi"
+    },
+    {
+      "variable": "species",
+      "code": 3014,
+      "value_es": "beniensis",
+      "value_fr": "beniensis",
+      "value_en": "beniensis"
+    },
+    {
+      "variable": "species",
+      "code": 3015,
+      "value_es": "bernalei",
+      "value_fr": "bernalei",
+      "value_en": "bernalei"
+    },
+    {
+      "variable": "species",
+      "code": 1028,
+      "value_es": "bicornis",
+      "value_fr": "bicornis",
+      "value_en": "bicornis"
+    },
+    {
+      "variable": "species",
+      "code": 1029,
+      "value_es": "bidens",
+      "value_fr": "bidens",
+      "value_en": "bidens"
+    },
+    {
+      "variable": "species",
+      "code": 1030,
+      "value_es": "bigoti",
+      "value_fr": "bigoti",
+      "value_en": "bigoti"
+    },
+    {
+      "variable": "species",
+      "code": 3016,
+      "value_es": "boliviana (Pintomyia)",
+      "value_fr": "boliviana (Pintomyia)",
+      "value_en": "boliviana (Pintomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 2001,
+      "value_es": "boliviana (Triatoma)",
+      "value_fr": "boliviana (Triatoma)",
+      "value_en": "boliviana (Triatoma)"
+    },
+    {
+      "variable": "species",
+      "code": 1031,
+      "value_es": "boliviensis (Anopheles)",
+      "value_fr": "boliviensis (Anopheles)",
+      "value_en": "boliviensis (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 4005,
+      "value_es": "boliviensis (Culicoides)",
+      "value_fr": "boliviensis (Culicoides)",
+      "value_en": "boliviensis (Culicoides)"
+    },
+    {
+      "variable": "species",
+      "code": 4029,
+      "value_es": "boliviensis (Palpomyia)",
+      "value_fr": "boliviensis (Palpomyia)",
+      "value_en": "boliviensis (Palpomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1032,
+      "value_es": "bonneae",
+      "value_fr": "bonneae",
+      "value_en": "bonneae"
+    },
+    {
+      "variable": "species",
+      "code": 1033,
+      "value_es": "bonnei",
+      "value_fr": "bonnei",
+      "value_en": "bonnei"
+    },
+    {
+      "variable": "species",
+      "code": 3017,
+      "value_es": "bourrouli",
+      "value_fr": "bourrouli",
+      "value_en": "bourrouli"
+    },
+    {
+      "variable": "species",
+      "code": 4006,
+      "value_es": "brasilianum",
+      "value_fr": "brasilianum",
+      "value_en": "brasilianum"
+    },
+    {
+      "variable": "species",
+      "code": 1034,
+      "value_es": "braziliensis",
+      "value_fr": "braziliensis",
+      "value_en": "braziliensis"
+    },
+    {
+      "variable": "species",
+      "code": 1035,
+      "value_es": "brethesi",
+      "value_fr": "brethesi",
+      "value_en": "brethesi"
+    },
+    {
+      "variable": "species",
+      "code": 4007,
+      "value_es": "bricenoi",
+      "value_fr": "bricenoi",
+      "value_en": "bricenoi"
+    },
+    {
+      "variable": "species",
+      "code": 3018,
+      "value_es": "brisolai",
+      "value_fr": "brisolai",
+      "value_en": "brisolai"
+    },
+    {
+      "variable": "species",
+      "code": 1036,
+      "value_es": "brucei",
+      "value_fr": "brucei",
+      "value_en": "brucei"
+    },
+    {
+      "variable": "species",
+      "code": 3019,
+      "value_es": "brumpti",
+      "value_fr": "brumpti",
+      "value_en": "brumpti"
+    },
+    {
+      "variable": "species",
+      "code": 3020,
+      "value_es": "caceresi",
+      "value_fr": "caceresi",
+      "value_en": "caceresi"
+    },
+    {
+      "variable": "species",
+      "code": 3021,
+      "value_es": "calcarata",
+      "value_fr": "calcarata",
+      "value_en": "calcarata"
+    },
+    {
+      "variable": "species",
+      "code": 1037,
+      "value_es": "calosomata",
+      "value_fr": "calosomata",
+      "value_en": "calosomata"
+    },
+    {
+      "variable": "species",
+      "code": 3022,
+      "value_es": "campbelli",
+      "value_fr": "campbelli",
+      "value_en": "campbelli"
+    },
+    {
+      "variable": "species",
+      "code": 1038,
+      "value_es": "capricornii",
+      "value_fr": "capricornii",
+      "value_en": "capricornii"
+    },
+    {
+      "variable": "species",
+      "code": 4008,
+      "value_es": "carpenteri",
+      "value_fr": "carpenteri",
+      "value_en": "carpenteri"
+    },
+    {
+      "variable": "species",
+      "code": 3023,
+      "value_es": "carrerai",
+      "value_fr": "carrerai",
+      "value_en": "carrerai"
+    },
+    {
+      "variable": "species",
+      "code": 4009,
+      "value_es": "chacoensis",
+      "value_fr": "chacoensis",
+      "value_en": "chacoensis"
+    },
+    {
+      "variable": "species",
+      "code": 1039,
+      "value_es": "chidesteri",
+      "value_fr": "chidesteri",
+      "value_en": "chidesteri"
+    },
+    {
+      "variable": "species",
+      "code": 1040,
+      "value_es": "chloropterus",
+      "value_fr": "chloropterus",
+      "value_en": "chloropterus"
+    },
+    {
+      "variable": "species",
+      "code": 3024,
+      "value_es": "choti",
+      "value_fr": "choti",
+      "value_en": "choti"
+    },
+    {
+      "variable": "species",
+      "code": 1041,
+      "value_es": "chrysonotum",
+      "value_fr": "chrysonotum",
+      "value_en": "chrysonotum"
+    },
+    {
+      "variable": "species",
+      "code": 1042,
+      "value_es": "ciliata",
+      "value_fr": "ciliata",
+      "value_en": "ciliata"
+    },
+    {
+      "variable": "species",
+      "code": 1043,
+      "value_es": "cilipes",
+      "value_fr": "cilipes",
+      "value_en": "cilipes"
+    },
+    {
+      "variable": "species",
+      "code": 1044,
+      "value_es": "cingulata",
+      "value_fr": "cingulata",
+      "value_en": "cingulata"
+    },
+    {
+      "variable": "species",
+      "code": 1045,
+      "value_es": "circumcincta",
+      "value_fr": "circumcincta",
+      "value_en": "circumcincta"
+    },
+    {
+      "variable": "species",
+      "code": 1046,
+      "value_es": "circumflava",
+      "value_fr": "circumflava",
+      "value_en": "circumflava"
+    },
+    {
+      "variable": "species",
+      "code": 3025,
+      "value_es": "claustrei",
+      "value_fr": "claustrei",
+      "value_en": "claustrei"
+    },
+    {
+      "variable": "species",
+      "code": 3026,
+      "value_es": "complexus",
+      "value_fr": "complexus",
+      "value_en": "complexus"
+    },
+    {
+      "variable": "species",
+      "code": 1047,
+      "value_es": "compressum",
+      "value_fr": "compressum",
+      "value_en": "compressum"
+    },
+    {
+      "variable": "species",
+      "code": 1048,
+      "value_es": "confinnis",
+      "value_fr": "confinnis",
+      "value_en": "confinnis"
+    },
+    {
+      "variable": "species",
+      "code": 1049,
+      "value_es": "confusa",
+      "value_fr": "confusa",
+      "value_en": "confusa"
+    },
+    {
+      "variable": "species",
+      "code": 1050,
+      "value_es": "conservator",
+      "value_fr": "conservator",
+      "value_en": "conservator"
+    },
+    {
+      "variable": "species",
+      "code": 2002,
+      "value_es": "coreodes",
+      "value_fr": "coreodes",
+      "value_en": "coreodes"
+    },
+    {
+      "variable": "species",
+      "code": 1051,
+      "value_es": "corniger",
+      "value_fr": "corniger",
+      "value_en": "corniger"
+    },
+    {
+      "variable": "species",
+      "code": 4028,
+      "value_es": "coroicoensis",
+      "value_fr": "coroicoensis",
+      "value_en": "coroicoensis"
+    },
+    {
+      "variable": "species",
+      "code": 1052,
+      "value_es": "coronator",
+      "value_fr": "coronator",
+      "value_en": "coronator"
+    },
+    {
+      "variable": "species",
+      "code": 3027,
+      "value_es": "cortelezzii",
+      "value_fr": "cortelezzii",
+      "value_en": "cortelezzii"
+    },
+    {
+      "variable": "species",
+      "code": 1053,
+      "value_es": "costai",
+      "value_fr": "costai",
+      "value_en": "costai"
+    },
+    {
+      "variable": "species",
+      "code": 3028,
+      "value_es": "coutinhoi",
+      "value_fr": "coutinhoi",
+      "value_en": "coutinhoi"
+    },
+    {
+      "variable": "species",
+      "code": 4010,
+      "value_es": "crescentis",
+      "value_fr": "crescentis",
+      "value_en": "crescentis"
+    },
+    {
+      "variable": "species",
+      "code": 1054,
+      "value_es": "crinifer",
+      "value_fr": "crinifer",
+      "value_en": "crinifer"
+    },
+    {
+      "variable": "species",
+      "code": 1055,
+      "value_es": "cruzii",
+      "value_fr": "cruzii",
+      "value_en": "cruzii"
+    },
+    {
+      "variable": "species",
+      "code": 1056,
+      "value_es": "cyanescens",
+      "value_fr": "cyanescens",
+      "value_en": "cyanescens"
+    },
+    {
+      "variable": "species",
+      "code": 1057,
+      "value_es": "darlingi",
+      "value_fr": "darlingi",
+      "value_en": "darlingi"
+    },
+    {
+      "variable": "species",
+      "code": 3029,
+      "value_es": "dasypodogeton",
+      "value_fr": "dasypodogeton",
+      "value_en": "dasypodogeton"
+    },
+    {
+      "variable": "species",
+      "code": 3030,
+      "value_es": "davisi (Psychodopygus)",
+      "value_fr": "davisi (Psychodopygus)",
+      "value_en": "davisi (Psychodopygus)"
+    },
+    {
+      "variable": "species",
+      "code": 1058,
+      "value_es": "davisi (Uranotenia)",
+      "value_fr": "davisi (Uranotenia)",
+      "value_en": "davisi (Uranotenia)"
+    },
+    {
+      "variable": "species",
+      "code": 1059,
+      "value_es": "deaneorum",
+      "value_fr": "deaneorum",
+      "value_en": "deaneorum"
+    },
+    {
+      "variable": "species",
+      "code": 4011,
+      "value_es": "debilipalpis",
+      "value_fr": "debilipalpis",
+      "value_en": "debilipalpis"
+    },
+    {
+      "variable": "species",
+      "code": 1060,
+      "value_es": "declarator",
+      "value_fr": "declarator",
+      "value_en": "declarator"
+    },
+    {
+      "variable": "species",
+      "code": 3031,
+      "value_es": "dendrophyla",
+      "value_fr": "dendrophyla",
+      "value_en": "dendrophyla"
+    },
+    {
+      "variable": "species",
+      "code": 3032,
+      "value_es": "dereuri",
+      "value_fr": "dereuri",
+      "value_en": "dereuri"
+    },
+    {
+      "variable": "species",
+      "code": 4012,
+      "value_es": "diabolicus",
+      "value_fr": "diabolicus",
+      "value_en": "diabolicus"
+    },
+    {
+      "variable": "species",
+      "code": 2003,
+      "value_es": "diasi",
+      "value_fr": "diasi",
+      "value_en": "diasi"
+    },
+    {
+      "variable": "species",
+      "code": 1061,
+      "value_es": "digitatum",
+      "value_fr": "digitatum",
+      "value_en": "digitatum"
+    },
+    {
+      "variable": "species",
+      "code": 1062,
+      "value_es": "dimidiata",
+      "value_fr": "dimidiata",
+      "value_en": "dimidiata"
+    },
+    {
+      "variable": "species",
+      "code": 1063,
+      "value_es": "discrucians",
+      "value_fr": "discrucians",
+      "value_en": "discrucians"
+    },
+    {
+      "variable": "species",
+      "code": 1064,
+      "value_es": "ditaenionota",
+      "value_fr": "ditaenionota",
+      "value_en": "ditaenionota"
+    },
+    {
+      "variable": "species",
+      "code": 1065,
+      "value_es": "dolosus",
+      "value_fr": "dolosus",
+      "value_en": "dolosus"
+    },
+    {
+      "variable": "species",
+      "code": 3033,
+      "value_es": "dreisbachi",
+      "value_fr": "dreisbachi",
+      "value_en": "dreisbachi"
+    },
+    {
+      "variable": "species",
+      "code": 3034,
+      "value_es": "duncanae",
+      "value_fr": "duncanae",
+      "value_en": "duncanae"
+    },
+    {
+      "variable": "species",
+      "code": 1066,
+      "value_es": "durhamii",
+      "value_fr": "durhamii",
+      "value_en": "durhamii"
+    },
+    {
+      "variable": "species",
+      "code": 1067,
+      "value_es": "educator",
+      "value_fr": "educator",
+      "value_en": "educator"
+    },
+    {
+      "variable": "species",
+      "code": 4013,
+      "value_es": "efferus",
+      "value_fr": "efferus",
+      "value_en": "efferus"
+    },
+    {
+      "variable": "species",
+      "code": 1068,
+      "value_es": "eiseni",
+      "value_fr": "eiseni",
+      "value_en": "eiseni"
+    },
+    {
+      "variable": "species",
+      "code": 1069,
+      "value_es": "ensiformis",
+      "value_fr": "ensiformis",
+      "value_en": "ensiformis"
+    },
+    {
+      "variable": "species",
+      "code": 1070,
+      "value_es": "espini",
+      "value_fr": "espini",
+      "value_en": "espini"
+    },
+    {
+      "variable": "species",
+      "code": 1071,
+      "value_es": "euiris",
+      "value_fr": "euiris",
+      "value_en": "euiris"
+    },
+    {
+      "variable": "species",
+      "code": 3035,
+      "value_es": "evangelistai",
+      "value_fr": "evangelistai",
+      "value_en": "evangelistai"
+    },
+    {
+      "variable": "species",
+      "code": 1072,
+      "value_es": "evansae",
+      "value_fr": "evansae",
+      "value_en": "evansae"
+    },
+    {
+      "variable": "species",
+      "code": 1073,
+      "value_es": "fajardi",
+      "value_fr": "fajardi",
+      "value_en": "fajardi"
+    },
+    {
+      "variable": "species",
+      "code": 1074,
+      "value_es": "fasciolatus",
+      "value_fr": "fasciolatus",
+      "value_en": "fasciolatus"
+    },
+    {
+      "variable": "species",
+      "code": 1075,
+      "value_es": "fascipes",
+      "value_fr": "fascipes",
+      "value_en": "fascipes"
+    },
+    {
+      "variable": "species",
+      "code": 1076,
+      "value_es": "ferox",
+      "value_fr": "ferox",
+      "value_en": "ferox"
+    },
+    {
+      "variable": "species",
+      "code": 1077,
+      "value_es": "fiebrigi",
+      "value_fr": "fiebrigi",
+      "value_en": "fiebrigi"
+    },
+    {
+      "variable": "species",
+      "code": 3036,
+      "value_es": "fischeri",
+      "value_fr": "fischeri",
+      "value_en": "fischeri"
+    },
+    {
+      "variable": "species",
+      "code": 3037,
+      "value_es": "flabellata",
+      "value_fr": "flabellata",
+      "value_en": "flabellata"
+    },
+    {
+      "variable": "species",
+      "code": 1078,
+      "value_es": "flaveola",
+      "value_fr": "flaveola",
+      "value_en": "flaveola"
+    },
+    {
+      "variable": "species",
+      "code": 3038,
+      "value_es": "flaviscutellata",
+      "value_fr": "flaviscutellata",
+      "value_en": "flaviscutellata"
+    },
+    {
+      "variable": "species",
+      "code": 1079,
+      "value_es": "flui",
+      "value_fr": "flui",
+      "value_en": "flui"
+    },
+    {
+      "variable": "species",
+      "code": 1080,
+      "value_es": "fluminensis",
+      "value_fr": "fluminensis",
+      "value_en": "fluminensis"
+    },
+    {
+      "variable": "species",
+      "code": 1082,
+      "value_es": "fluviatilis ((Shannoniana)",
+      "value_fr": "fluviatilis ((Shannoniana)",
+      "value_en": "fluviatilis ((Shannoniana)"
+    },
+    {
+      "variable": "species",
+      "code": 1081,
+      "value_es": "fluviatilis (Aedes)",
+      "value_fr": "fluviatilis (Aedes)",
+      "value_en": "fluviatilis (Aedes)"
+    },
+    {
+      "variable": "species",
+      "code": 4001,
+      "value_es": "fluviatilis (Culicoides)",
+      "value_fr": "fluviatilis (Culicoides)",
+      "value_en": "fluviatilis (Culicoides)"
+    },
+    {
+      "variable": "species",
+      "code": 1083,
+      "value_es": "foliafer",
+      "value_fr": "foliafer",
+      "value_en": "foliafer"
+    },
+    {
+      "variable": "species",
+      "code": 1084,
+      "value_es": "fonsecai (Mansonia)",
+      "value_fr": "fonsecai (Mansonia)",
+      "value_en": "fonsecai (Mansonia)"
+    },
+    {
+      "variable": "species",
+      "code": 3039,
+      "value_es": "fonsecai (Micropygomyia)",
+      "value_fr": "fonsecai (Micropygomyia)",
+      "value_en": "fonsecai (Micropygomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1085,
+      "value_es": "forattinii",
+      "value_fr": "forattinii",
+      "value_en": "forattinii"
+    },
+    {
+      "variable": "species",
+      "code": 4014,
+      "value_es": "foxi",
+      "value_fr": "foxi",
+      "value_en": "foxi"
+    },
+    {
+      "variable": "species",
+      "code": 4015,
+      "value_es": "franklini",
+      "value_fr": "franklini",
+      "value_en": "franklini"
+    },
+    {
+      "variable": "species",
+      "code": 1086,
+      "value_es": "fulvithorax",
+      "value_fr": "fulvithorax",
+      "value_en": "fulvithorax"
+    },
+    {
+      "variable": "species",
+      "code": 1087,
+      "value_es": "fulvus",
+      "value_fr": "fulvus",
+      "value_en": "fulvus"
+    },
+    {
+      "variable": "species",
+      "code": 3040,
+      "value_es": "furcata",
+      "value_fr": "furcata",
+      "value_en": "furcata"
+    },
+    {
+      "variable": "species",
+      "code": 4016,
+      "value_es": "fusipalpis",
+      "value_fr": "fusipalpis",
+      "value_en": "fusipalpis"
+    },
+    {
+      "variable": "species",
+      "code": 3041,
+      "value_es": "galatiae",
+      "value_fr": "galatiae",
+      "value_en": "galatiae"
+    },
+    {
+      "variable": "species",
+      "code": 3042,
+      "value_es": "galindoi",
+      "value_fr": "galindoi",
+      "value_en": "galindoi"
+    },
+    {
+      "variable": "species",
+      "code": 3043,
+      "value_es": "gantieri",
+      "value_fr": "gantieri",
+      "value_en": "gantieri"
+    },
+    {
+      "variable": "species",
+      "code": 3044,
+      "value_es": "geniculatus  (Psychodopygus)",
+      "value_fr": "geniculatus  (Psychodopygus)",
+      "value_en": "geniculatus  (Psychodopygus)"
+    },
+    {
+      "variable": "species",
+      "code": 2004,
+      "value_es": "geniculatus (Panstrongylus)",
+      "value_fr": "geniculatus (Panstrongylus)",
+      "value_en": "geniculatus (Panstrongylus)"
+    },
+    {
+      "variable": "species",
+      "code": 1088,
+      "value_es": "geometrica",
+      "value_fr": "geometrica",
+      "value_en": "geometrica"
+    },
+    {
+      "variable": "species",
+      "code": 1089,
+      "value_es": "gilesi",
+      "value_fr": "gilesi",
+      "value_en": "gilesi"
+    },
+    {
+      "variable": "species",
+      "code": 1090,
+      "value_es": "glaucodaemon",
+      "value_fr": "glaucodaemon",
+      "value_en": "glaucodaemon"
+    },
+    {
+      "variable": "species",
+      "code": 1091,
+      "value_es": "glyptosalpinx",
+      "value_fr": "glyptosalpinx",
+      "value_en": "glyptosalpinx"
+    },
+    {
+      "variable": "species",
+      "code": 3045,
+      "value_es": "gomezi",
+      "value_fr": "gomezi",
+      "value_en": "gomezi"
+    },
+    {
+      "variable": "species",
+      "code": 1092,
+      "value_es": "guadeloupensis",
+      "value_fr": "guadeloupensis",
+      "value_en": "guadeloupensis"
+    },
+    {
+      "variable": "species",
+      "code": 2005,
+      "value_es": "guasayana",
+      "value_fr": "guasayana",
+      "value_en": "guasayana"
+    },
+    {
+      "variable": "species",
+      "code": 3046,
+      "value_es": "guderiani",
+      "value_fr": "guderiani",
+      "value_en": "guderiani"
+    },
+    {
+      "variable": "species",
+      "code": 3047,
+      "value_es": "guilvardae",
+      "value_fr": "guilvardae",
+      "value_en": "guilvardae"
+    },
+    {
+      "variable": "species",
+      "code": 2006,
+      "value_es": "guntheri",
+      "value_fr": "guntheri",
+      "value_en": "guntheri"
+    },
+    {
+      "variable": "species",
+      "code": 4017,
+      "value_es": "guttatus",
+      "value_fr": "guttatus",
+      "value_en": "guttatus"
+    },
+    {
+      "variable": "species",
+      "code": 1093,
+      "value_es": "haemorrhoidalis",
+      "value_fr": "haemorrhoidalis",
+      "value_en": "haemorrhoidalis"
+    },
+    {
+      "variable": "species",
+      "code": 1094,
+      "value_es": "hastatus",
+      "value_fr": "hastatus",
+      "value_en": "hastatus"
+    },
+    {
+      "variable": "species",
+      "code": 1095,
+      "value_es": "hemisagnosta",
+      "value_fr": "hemisagnosta",
+      "value_en": "hemisagnosta"
+    },
+    {
+      "variable": "species",
+      "code": 1096,
+      "value_es": "hermanoi",
+      "value_fr": "hermanoi",
+      "value_en": "hermanoi"
+    },
+    {
+      "variable": "species",
+      "code": 1097,
+      "value_es": "hexacis",
+      "value_fr": "hexacis",
+      "value_en": "hexacis"
+    },
+    {
+      "variable": "species",
+      "code": 3048,
+      "value_es": "hirsutus",
+      "value_fr": "hirsutus",
+      "value_en": "hirsutus"
+    },
+    {
+      "variable": "species",
+      "code": 1098,
+      "value_es": "homunculus",
+      "value_fr": "homunculus",
+      "value_en": "homunculus"
+    },
+    {
+      "variable": "species",
+      "code": 1099,
+      "value_es": "hortator",
+      "value_fr": "hortator",
+      "value_en": "hortator"
+    },
+    {
+      "variable": "species",
+      "code": 3049,
+      "value_es": "huacalquensis",
+      "value_fr": "huacalquensis",
+      "value_en": "huacalquensis"
+    },
+    {
+      "variable": "species",
+      "code": 1100,
+      "value_es": "humeralis",
+      "value_fr": "humeralis",
+      "value_en": "humeralis"
+    },
+    {
+      "variable": "species",
+      "code": 1101,
+      "value_es": "hystera",
+      "value_fr": "hystera",
+      "value_en": "hystera"
+    },
+    {
+      "variable": "species",
+      "code": 1102,
+      "value_es": "identicus",
+      "value_fr": "identicus",
+      "value_en": "identicus"
+    },
+    {
+      "variable": "species",
+      "code": 1103,
+      "value_es": "idottus",
+      "value_fr": "idottus",
+      "value_en": "idottus"
+    },
+    {
+      "variable": "species",
+      "code": 1104,
+      "value_es": "indubitans",
+      "value_fr": "indubitans",
+      "value_en": "indubitans"
+    },
+    {
+      "variable": "species",
+      "code": 2007,
+      "value_es": "infestans",
+      "value_fr": "infestans",
+      "value_en": "infestans"
+    },
+    {
+      "variable": "species",
+      "code": 3050,
+      "value_es": "inflata",
+      "value_fr": "inflata",
+      "value_en": "inflata"
+    },
+    {
+      "variable": "species",
+      "code": 3051,
+      "value_es": "infraspinosa",
+      "value_fr": "infraspinosa",
+      "value_en": "infraspinosa"
+    },
+    {
+      "variable": "species",
+      "code": 1105,
+      "value_es": "inhibitator",
+      "value_fr": "inhibitator",
+      "value_en": "inhibitator"
+    },
+    {
+      "variable": "species",
+      "code": 1106,
+      "value_es": "ininii",
+      "value_fr": "ininii",
+      "value_en": "ininii"
+    },
+    {
+      "variable": "species",
+      "code": 3052,
+      "value_es": "inornata",
+      "value_fr": "inornata",
+      "value_en": "inornata"
+    },
+    {
+      "variable": "species",
+      "code": 4018,
+      "value_es": "insignis",
+      "value_fr": "insignis",
+      "value_en": "insignis"
+    },
+    {
+      "variable": "species",
+      "code": 1107,
+      "value_es": "intermedius (Anopheles)",
+      "value_fr": "intermedius (Anopheles)",
+      "value_en": "intermedius (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 1108,
+      "value_es": "intermedius (Sabethes)",
+      "value_fr": "intermedius (Sabethes)",
+      "value_en": "intermedius (Sabethes)"
+    },
+    {
+      "variable": "species",
+      "code": 1109,
+      "value_es": "intrincatus",
+      "value_fr": "intrincatus",
+      "value_en": "intrincatus"
+    },
+    {
+      "variable": "species",
+      "code": 1110,
+      "value_es": "ioliota",
+      "value_fr": "ioliota",
+      "value_en": "ioliota"
+    },
+    {
+      "variable": "species",
+      "code": 1111,
+      "value_es": "iridescens",
+      "value_fr": "iridescens",
+      "value_en": "iridescens"
+    },
+    {
+      "variable": "species",
+      "code": 1112,
+      "value_es": "janthinomys",
+      "value_fr": "janthinomys",
+      "value_en": "janthinomys"
+    },
+    {
+      "variable": "species",
+      "code": 1113,
+      "value_es": "juxtamansonia",
+      "value_fr": "juxtamansonia",
+      "value_en": "juxtamansonia"
+    },
+    {
+      "variable": "species",
+      "code": 1114,
+      "value_es": "konderi",
+      "value_fr": "konderi",
+      "value_en": "konderi"
+    },
+    {
+      "variable": "species",
+      "code": 3053,
+      "value_es": "kuscheli",
+      "value_fr": "kuscheli",
+      "value_en": "kuscheli"
+    },
+    {
+      "variable": "species",
+      "code": 4019,
+      "value_es": "lahillei",
+      "value_fr": "lahillei",
+      "value_en": "lahillei"
+    },
+    {
+      "variable": "species",
+      "code": 3054,
+      "value_es": "lainsoni",
+      "value_fr": "lainsoni",
+      "value_en": "lainsoni"
+    },
+    {
+      "variable": "species",
+      "code": 1115,
+      "value_es": "laneanus",
+      "value_fr": "laneanus",
+      "value_en": "laneanus"
+    },
+    {
+      "variable": "species",
+      "code": 1116,
+      "value_es": "lanei",
+      "value_fr": "lanei",
+      "value_en": "lanei"
+    },
+    {
+      "variable": "species",
+      "code": 1117,
+      "value_es": "lateralis",
+      "value_fr": "lateralis",
+      "value_en": "lateralis"
+    },
+    {
+      "variable": "species",
+      "code": 1118,
+      "value_es": "leei",
+      "value_fr": "leei",
+      "value_en": "leei"
+    },
+    {
+      "variable": "species",
+      "code": 4020,
+      "value_es": "lenti (Culicoides)",
+      "value_fr": "lenti (Culicoides)",
+      "value_en": "lenti (Culicoides)"
+    },
+    {
+      "variable": "species",
+      "code": 3055,
+      "value_es": "lenti (Evandromyia)",
+      "value_fr": "lenti (Evandromyia)",
+      "value_en": "lenti (Evandromyia)"
+    },
+    {
+      "variable": "species",
+      "code": 4021,
+      "value_es": "leopoldoi",
+      "value_fr": "leopoldoi",
+      "value_en": "leopoldoi"
+    },
+    {
+      "variable": "species",
+      "code": 1119,
+      "value_es": "lepidotus",
+      "value_fr": "lepidotus",
+      "value_en": "lepidotus"
+    },
+    {
+      "variable": "species",
+      "code": 3056,
+      "value_es": "lerayi",
+      "value_fr": "lerayi",
+      "value_en": "lerayi"
+    },
+    {
+      "variable": "species",
+      "code": 1120,
+      "value_es": "leucocelaenus",
+      "value_fr": "leucocelaenus",
+      "value_en": "leucocelaenus"
+    },
+    {
+      "variable": "species",
+      "code": 1121,
+      "value_es": "leucoptera",
+      "value_fr": "leucoptera",
+      "value_en": "leucoptera"
+    },
+    {
+      "variable": "species",
+      "code": 1122,
+      "value_es": "leucostigma",
+      "value_fr": "leucostigma",
+      "value_en": "leucostigma"
+    },
+    {
+      "variable": "species",
+      "code": 1123,
+      "value_es": "limai",
+      "value_fr": "limai",
+      "value_en": "limai"
+    },
+    {
+      "variable": "species",
+      "code": 1124,
+      "value_es": "lineata",
+      "value_fr": "lineata",
+      "value_en": "lineata"
+    },
+    {
+      "variable": "species",
+      "code": 3057,
+      "value_es": "llanosmartinsi",
+      "value_fr": "llanosmartinsi",
+      "value_en": "llanosmartinsi"
+    },
+    {
+      "variable": "species",
+      "code": 3058,
+      "value_es": "longipalpis",
+      "value_fr": "longipalpis",
+      "value_en": "longipalpis"
+    },
+    {
+      "variable": "species",
+      "code": 1125,
+      "value_es": "longipes",
+      "value_fr": "longipes",
+      "value_en": "longipes"
+    },
+    {
+      "variable": "species",
+      "code": 1126,
+      "value_es": "lowii",
+      "value_fr": "lowii",
+      "value_en": "lowii"
+    },
+    {
+      "variable": "species",
+      "code": 3059,
+      "value_es": "lutziana",
+      "value_fr": "lutziana",
+      "value_en": "lutziana"
+    },
+    {
+      "variable": "species",
+      "code": 1127,
+      "value_es": "lutzii (Anopheles)",
+      "value_fr": "lutzii (Anopheles)",
+      "value_en": "lutzii (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 1128,
+      "value_es": "lutzii (Psorophora)",
+      "value_fr": "lutzii (Psorophora)",
+      "value_en": "lutzii (Psorophora)"
+    },
+    {
+      "variable": "species",
+      "code": 1129,
+      "value_es": "lynchi",
+      "value_fr": "lynchi",
+      "value_en": "lynchi"
+    },
+    {
+      "variable": "species",
+      "code": 1130,
+      "value_es": "maculipes",
+      "value_fr": "maculipes",
+      "value_en": "maculipes"
+    },
+    {
+      "variable": "species",
+      "code": 1131,
+      "value_es": "magna",
+      "value_fr": "magna",
+      "value_en": "magna"
+    },
+    {
+      "variable": "species",
+      "code": 1132,
+      "value_es": "maracayensis",
+      "value_fr": "maracayensis",
+      "value_en": "maracayensis"
+    },
+    {
+      "variable": "species",
+      "code": 1133,
+      "value_es": "marajoara",
+      "value_fr": "marajoara",
+      "value_en": "marajoara"
+    },
+    {
+      "variable": "species",
+      "code": 1134,
+      "value_es": "martinezi",
+      "value_fr": "martinezi",
+      "value_en": "martinezi"
+    },
+    {
+      "variable": "species",
+      "code": 1135,
+      "value_es": "martinezi",
+      "value_fr": "martinezi",
+      "value_en": "martinezi"
+    },
+    {
+      "variable": "species",
+      "code": 2008,
+      "value_es": "matogrosensis (Triatoma)",
+      "value_fr": "matogrosensis (Triatoma)",
+      "value_en": "matogrosensis (Triatoma)"
+    },
+    {
+      "variable": "species",
+      "code": 1136,
+      "value_es": "mattogrossensis (Anopheles)",
+      "value_fr": "mattogrossensis (Anopheles)",
+      "value_en": "mattogrossensis (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 1137,
+      "value_es": "maxi",
+      "value_fr": "maxi",
+      "value_en": "maxi"
+    },
+    {
+      "variable": "species",
+      "code": 2009,
+      "value_es": "megistus",
+      "value_fr": "megistus",
+      "value_en": "megistus"
+    },
+    {
+      "variable": "species",
+      "code": 1138,
+      "value_es": "melanocephala",
+      "value_fr": "melanocephala",
+      "value_en": "melanocephala"
+    },
+    {
+      "variable": "species",
+      "code": 1139,
+      "value_es": "melanota",
+      "value_fr": "melanota",
+      "value_en": "melanota"
+    },
+    {
+      "variable": "species",
+      "code": 1140,
+      "value_es": "meprai",
+      "value_fr": "meprai",
+      "value_en": "meprai"
+    },
+    {
+      "variable": "species",
+      "code": 2010,
+      "value_es": "micki",
+      "value_fr": "micki",
+      "value_en": "micki"
+    },
+    {
+      "variable": "species",
+      "code": 3060,
+      "value_es": "micropyga",
+      "value_fr": "micropyga",
+      "value_en": "micropyga"
+    },
+    {
+      "variable": "species",
+      "code": 3061,
+      "value_es": "migonei",
+      "value_fr": "migonei",
+      "value_en": "migonei"
+    },
+    {
+      "variable": "species",
+      "code": 1141,
+      "value_es": "milleri",
+      "value_fr": "milleri",
+      "value_en": "milleri"
+    },
+    {
+      "variable": "species",
+      "code": 3062,
+      "value_es": "mollinedoi",
+      "value_fr": "mollinedoi",
+      "value_en": "mollinedoi"
+    },
+    {
+      "variable": "species",
+      "code": 1142,
+      "value_es": "mollis",
+      "value_fr": "mollis",
+      "value_en": "mollis"
+    },
+    {
+      "variable": "species",
+      "code": 2011,
+      "value_es": "montenegrensis",
+      "value_fr": "montenegrensis",
+      "value_en": "montenegrensis"
+    },
+    {
+      "variable": "species",
+      "code": 2012,
+      "value_es": "mucronatus",
+      "value_fr": "mucronatus",
+      "value_en": "mucronatus"
+    },
+    {
+      "variable": "species",
+      "code": 1143,
+      "value_es": "muehlensi",
+      "value_fr": "muehlensi",
+      "value_en": "muehlensi"
+    },
+    {
+      "variable": "species",
+      "code": 1144,
+      "value_es": "mystes",
+      "value_fr": "mystes",
+      "value_en": "mystes"
+    },
+    {
+      "variable": "species",
+      "code": 1145,
+      "value_es": "nataliae",
+      "value_fr": "nataliae",
+      "value_en": "nataliae"
+    },
+    {
+      "variable": "species",
+      "code": 1146,
+      "value_es": "neivai (Anopheles)",
+      "value_fr": "neivai (Anopheles)",
+      "value_en": "neivai (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 3063,
+      "value_es": "neivai (Nyssomyia)",
+      "value_fr": "neivai (Nyssomyia)",
+      "value_en": "neivai (Nyssomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1147,
+      "value_es": "neomaculipalpus",
+      "value_fr": "neomaculipalpus",
+      "value_en": "neomaculipalpus"
+    },
+    {
+      "variable": "species",
+      "code": 3064,
+      "value_es": "nevesi",
+      "value_fr": "nevesi",
+      "value_en": "nevesi"
+    },
+    {
+      "variable": "species",
+      "code": 1148,
+      "value_es": "nigricans",
+      "value_fr": "nigricans",
+      "value_en": "nigricans"
+    },
+    {
+      "variable": "species",
+      "code": 1149,
+      "value_es": "nigripalpus",
+      "value_fr": "nigripalpus",
+      "value_en": "nigripalpus"
+    },
+    {
+      "variable": "species",
+      "code": 1150,
+      "value_es": "nimbus",
+      "value_fr": "nimbus",
+      "value_en": "nimbus"
+    },
+    {
+      "variable": "species",
+      "code": 1151,
+      "value_es": "nitens",
+      "value_fr": "nitens",
+      "value_en": "nitens"
+    },
+    {
+      "variable": "species",
+      "code": 3065,
+      "value_es": "nocticolus",
+      "value_fr": "nocticolus",
+      "value_en": "nocticolus"
+    },
+    {
+      "variable": "species",
+      "code": 2013,
+      "value_es": "noireaui",
+      "value_fr": "noireaui",
+      "value_en": "noireaui"
+    },
+    {
+      "variable": "species",
+      "code": 1152,
+      "value_es": "nubilus",
+      "value_fr": "nubilus",
+      "value_en": "nubilus"
+    },
+    {
+      "variable": "species",
+      "code": 1153,
+      "value_es": "nuneztovari (Anopheles)",
+      "value_fr": "nuneztovari (Anopheles)",
+      "value_en": "nuneztovari (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 3066,
+      "value_es": "nuneztovari (Pintomyia)",
+      "value_fr": "nuneztovari (Pintomyia)",
+      "value_en": "nuneztovari (Pintomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1154,
+      "value_es": "oblita",
+      "value_fr": "oblita",
+      "value_en": "oblita"
+    },
+    {
+      "variable": "species",
+      "code": 1155,
+      "value_es": "occulta",
+      "value_fr": "occulta",
+      "value_en": "occulta"
+    },
+    {
+      "variable": "species",
+      "code": 1156,
+      "value_es": "ocellatus",
+      "value_fr": "ocellatus",
+      "value_en": "ocellatus"
+    },
+    {
+      "variable": "species",
+      "code": 3067,
+      "value_es": "octavioi",
+      "value_fr": "octavioi",
+      "value_en": "octavioi"
+    },
+    {
+      "variable": "species",
+      "code": 1157,
+      "value_es": "oligopistus",
+      "value_fr": "oligopistus",
+      "value_en": "oligopistus"
+    },
+    {
+      "variable": "species",
+      "code": 3068,
+      "value_es": "osornoi",
+      "value_fr": "osornoi",
+      "value_en": "osornoi"
+    },
+    {
+      "variable": "species",
+      "code": 1158,
+      "value_es": "oswaldoi (Anopheles)",
+      "value_fr": "oswaldoi (Anopheles)",
+      "value_en": "oswaldoi (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 3069,
+      "value_es": "oswaldoi (Micropygomyia)",
+      "value_fr": "oswaldoi (Micropygomyia)",
+      "value_en": "oswaldoi (Micropygomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1159,
+      "value_es": "pallescens",
+      "value_fr": "pallescens",
+      "value_en": "pallescens"
+    },
+    {
+      "variable": "species",
+      "code": 1160,
+      "value_es": "pallidiventer",
+      "value_fr": "pallidiventer",
+      "value_en": "pallidiventer"
+    },
+    {
+      "variable": "species",
+      "code": 4022,
+      "value_es": "paraensis (Culicoides)",
+      "value_fr": "paraensis (Culicoides)",
+      "value_en": "paraensis (Culicoides)"
+    },
+    {
+      "variable": "species",
+      "code": 3070,
+      "value_es": "paraensis (Psychodopygus)",
+      "value_fr": "paraensis (Psychodopygus)",
+      "value_en": "paraensis (Psychodopygus)"
+    },
+    {
+      "variable": "species",
+      "code": 1161,
+      "value_es": "parvus",
+      "value_fr": "parvus",
+      "value_en": "parvus"
+    },
+    {
+      "variable": "species",
+      "code": 1162,
+      "value_es": "patersoni",
+      "value_fr": "patersoni",
+      "value_en": "patersoni"
+    },
+    {
+      "variable": "species",
+      "code": 4023,
+      "value_es": "paucienfuscatus",
+      "value_fr": "paucienfuscatus",
+      "value_en": "paucienfuscatus"
+    },
+    {
+      "variable": "species",
+      "code": 1163,
+      "value_es": "paulli",
+      "value_fr": "paulli",
+      "value_en": "paulli"
+    },
+    {
+      "variable": "species",
+      "code": 1164,
+      "value_es": "pedroi",
+      "value_fr": "pedroi",
+      "value_en": "pedroi"
+    },
+    {
+      "variable": "species",
+      "code": 1165,
+      "value_es": "penai (Culex)",
+      "value_fr": "penai (Culex)",
+      "value_en": "penai (Culex)"
+    },
+    {
+      "variable": "species",
+      "code": 1166,
+      "value_es": "pennai",
+      "value_fr": "pennai",
+      "value_en": "pennai"
+    },
+    {
+      "variable": "species",
+      "code": 3071,
+      "value_es": "pentacantha",
+      "value_fr": "pentacantha",
+      "value_en": "pentacantha"
+    },
+    {
+      "variable": "species",
+      "code": 3072,
+      "value_es": "peresi",
+      "value_fr": "peresi",
+      "value_en": "peresi"
+    },
+    {
+      "variable": "species",
+      "code": 1167,
+      "value_es": "personatum",
+      "value_fr": "personatum",
+      "value_en": "personatum"
+    },
+    {
+      "variable": "species",
+      "code": 3073,
+      "value_es": "peruensis",
+      "value_fr": "peruensis",
+      "value_en": "peruensis"
+    },
+    {
+      "variable": "species",
+      "code": 1168,
+      "value_es": "peryassui",
+      "value_fr": "peryassui",
+      "value_en": "peryassui"
+    },
+    {
+      "variable": "species",
+      "code": 1169,
+      "value_es": "petrocchiae",
+      "value_fr": "petrocchiae",
+      "value_en": "petrocchiae"
+    },
+    {
+      "variable": "species",
+      "code": 1170,
+      "value_es": "pholidotus",
+      "value_fr": "pholidotus",
+      "value_en": "pholidotus"
+    },
+    {
+      "variable": "species",
+      "code": 3074,
+      "value_es": "pia",
+      "value_fr": "pia",
+      "value_en": "pia"
+    },
+    {
+      "variable": "species",
+      "code": 2014,
+      "value_es": "pictipes",
+      "value_fr": "pictipes",
+      "value_en": "pictipes"
+    },
+    {
+      "variable": "species",
+      "code": 1171,
+      "value_es": "pilosus",
+      "value_fr": "pilosus",
+      "value_en": "pilosus"
+    },
+    {
+      "variable": "species",
+      "code": 3075,
+      "value_es": "pintoi",
+      "value_fr": "pintoi",
+      "value_en": "pintoi"
+    },
+    {
+      "variable": "species",
+      "code": 1172,
+      "value_es": "pipiens",
+      "value_fr": "pipiens",
+      "value_en": "pipiens"
+    },
+    {
+      "variable": "species",
+      "code": 2015,
+      "value_es": "platensis",
+      "value_fr": "platensis",
+      "value_en": "platensis"
+    },
+    {
+      "variable": "species",
+      "code": 4024,
+      "value_es": "plaumanni",
+      "value_fr": "plaumanni",
+      "value_en": "plaumanni"
+    },
+    {
+      "variable": "species",
+      "code": 1173,
+      "value_es": "pleuristriatus",
+      "value_fr": "pleuristriatus",
+      "value_en": "pleuristriatus"
+    },
+    {
+      "variable": "species",
+      "code": 3076,
+      "value_es": "pradobarrientosi",
+      "value_fr": "pradobarrientosi",
+      "value_en": "pradobarrientosi"
+    },
+    {
+      "variable": "species",
+      "code": 3077,
+      "value_es": "preclara",
+      "value_fr": "preclara",
+      "value_en": "preclara"
+    },
+    {
+      "variable": "species",
+      "code": 1174,
+      "value_es": "pseudodominicii",
+      "value_fr": "pseudodominicii",
+      "value_en": "pseudodominicii"
+    },
+    {
+      "variable": "species",
+      "code": 2016,
+      "value_es": "pseudomaculata",
+      "value_fr": "pseudomaculata",
+      "value_en": "pseudomaculata"
+    },
+    {
+      "variable": "species",
+      "code": 1175,
+      "value_es": "pseudopunctipennis",
+      "value_fr": "pseudopunctipennis",
+      "value_en": "pseudopunctipennis"
+    },
+    {
+      "variable": "species",
+      "code": 1176,
+      "value_es": "pseudotitillans",
+      "value_fr": "pseudotitillans",
+      "value_en": "pseudotitillans"
+    },
+    {
+      "variable": "species",
+      "code": 1177,
+      "value_es": "pulcherrima",
+      "value_fr": "pulcherrima",
+      "value_en": "pulcherrima"
+    },
+    {
+      "variable": "species",
+      "code": 3078,
+      "value_es": "punctigeniculata",
+      "value_fr": "punctigeniculata",
+      "value_en": "punctigeniculata"
+    },
+    {
+      "variable": "species",
+      "code": 1178,
+      "value_es": "punctimacula",
+      "value_fr": "punctimacula",
+      "value_en": "punctimacula"
+    },
+    {
+      "variable": "species",
+      "code": 1179,
+      "value_es": "purpureus",
+      "value_fr": "purpureus",
+      "value_en": "purpureus"
+    },
+    {
+      "variable": "species",
+      "code": 1180,
+      "value_es": "quadrivittata",
+      "value_fr": "quadrivittata",
+      "value_en": "quadrivittata"
+    },
+    {
+      "variable": "species",
+      "code": 1181,
+      "value_es": "quinquefasciatus",
+      "value_fr": "quinquefasciatus",
+      "value_en": "quinquefasciatus"
+    },
+    {
+      "variable": "species",
+      "code": 3079,
+      "value_es": "quinquefer",
+      "value_fr": "quinquefer",
+      "value_en": "quinquefer"
+    },
+    {
+      "variable": "species",
+      "code": 3080,
+      "value_es": "ramirezi",
+      "value_fr": "ramirezi",
+      "value_en": "ramirezi"
+    },
+    {
+      "variable": "species",
+      "code": 1182,
+      "value_es": "rangeli (Anopheles)",
+      "value_fr": "rangeli (Anopheles)",
+      "value_en": "rangeli (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 4025,
+      "value_es": "rangeli (Culicoides)",
+      "value_fr": "rangeli (Culicoides)",
+      "value_en": "rangeli (Culicoides)"
+    },
+    {
+      "variable": "species",
+      "code": 1183,
+      "value_es": "raymondi",
+      "value_fr": "raymondi",
+      "value_en": "raymondi"
+    },
+    {
+      "variable": "species",
+      "code": 3081,
+      "value_es": "richardwardi",
+      "value_fr": "richardwardi",
+      "value_en": "richardwardi"
+    },
+    {
+      "variable": "species",
+      "code": 3082,
+      "value_es": "rispaili",
+      "value_fr": "rispaili",
+      "value_en": "rispaili"
+    },
+    {
+      "variable": "species",
+      "code": 2017,
+      "value_es": "robustus",
+      "value_fr": "robustus",
+      "value_en": "robustus"
+    },
+    {
+      "variable": "species",
+      "code": 1184,
+      "value_es": "ronderosi",
+      "value_fr": "ronderosi",
+      "value_en": "ronderosi"
+    },
+    {
+      "variable": "species",
+      "code": 1185,
+      "value_es": "rondoni",
+      "value_fr": "rondoni",
+      "value_en": "rondoni"
+    },
+    {
+      "variable": "species",
+      "code": 3083,
+      "value_es": "rondoniensis",
+      "value_fr": "rondoniensis",
+      "value_en": "rondoniensis"
+    },
+    {
+      "variable": "species",
+      "code": 3084,
+      "value_es": "rotundipennis",
+      "value_fr": "rotundipennis",
+      "value_en": "rotundipennis"
+    },
+    {
+      "variable": "species",
+      "code": 2018,
+      "value_es": "rufotuberculatus",
+      "value_fr": "rufotuberculatus",
+      "value_en": "rufotuberculatus"
+    },
+    {
+      "variable": "species",
+      "code": 3085,
+      "value_es": "ruparupa",
+      "value_fr": "ruparupa",
+      "value_en": "ruparupa"
+    },
+    {
+      "variable": "species",
+      "code": 1186,
+      "value_es": "saeva",
+      "value_fr": "saeva",
+      "value_en": "saeva"
+    },
+    {
+      "variable": "species",
+      "code": 3086,
+      "value_es": "sallesi",
+      "value_fr": "sallesi",
+      "value_en": "sallesi"
+    },
+    {
+      "variable": "species",
+      "code": 3087,
+      "value_es": "saulensis",
+      "value_fr": "saulensis",
+      "value_en": "saulensis"
+    },
+    {
+      "variable": "species",
+      "code": 3088,
+      "value_es": "scaffi",
+      "value_fr": "scaffi",
+      "value_en": "scaffi"
+    },
+    {
+      "variable": "species",
+      "code": 1187,
+      "value_es": "scapularis",
+      "value_fr": "scapularis",
+      "value_en": "scapularis"
+    },
+    {
+      "variable": "species",
+      "code": 1188,
+      "value_es": "schedocyclia",
+      "value_fr": "schedocyclia",
+      "value_en": "schedocyclia"
+    },
+    {
+      "variable": "species",
+      "code": 1189,
+      "value_es": "schnusei",
+      "value_fr": "schnusei",
+      "value_en": "schnusei"
+    },
+    {
+      "variable": "species",
+      "code": 1190,
+      "value_es": "septemstriatus",
+      "value_fr": "septemstriatus",
+      "value_en": "septemstriatus"
+    },
+    {
+      "variable": "species",
+      "code": 3089,
+      "value_es": "serrana",
+      "value_fr": "serrana",
+      "value_en": "serrana"
+    },
+    {
+      "variable": "species",
+      "code": 1191,
+      "value_es": "serratimarge",
+      "value_fr": "serratimarge",
+      "value_en": "serratimarge"
+    },
+    {
+      "variable": "species",
+      "code": 1192,
+      "value_es": "serratus",
+      "value_fr": "serratus",
+      "value_en": "serratus"
+    },
+    {
+      "variable": "species",
+      "code": 3090,
+      "value_es": "servulolimai",
+      "value_fr": "servulolimai",
+      "value_en": "servulolimai"
+    },
+    {
+      "variable": "species",
+      "code": 1193,
+      "value_es": "sexlineata",
+      "value_fr": "sexlineata",
+      "value_en": "sexlineata"
+    },
+    {
+      "variable": "species",
+      "code": 1194,
+      "value_es": "shannoni (Anopheles)",
+      "value_fr": "shannoni (Anopheles)",
+      "value_en": "shannoni (Anopheles)"
+    },
+    {
+      "variable": "species",
+      "code": 1195,
+      "value_es": "shannoni (Coquillettidia)",
+      "value_fr": "shannoni (Coquillettidia)",
+      "value_en": "shannoni (Coquillettidia)"
+    },
+    {
+      "variable": "species",
+      "code": 3091,
+      "value_es": "shannoni (Psathyromyia)",
+      "value_fr": "shannoni (Psathyromyia)",
+      "value_en": "shannoni (Psathyromyia)"
+    },
+    {
+      "variable": "species",
+      "code": 3092,
+      "value_es": "shawi",
+      "value_fr": "shawi",
+      "value_en": "shawi"
+    },
+    {
+      "variable": "species",
+      "code": 3093,
+      "value_es": "sherlocki",
+      "value_fr": "sherlocki",
+      "value_en": "sherlocki"
+    },
+    {
+      "variable": "species",
+      "code": 1196,
+      "value_es": "soperi",
+      "value_fr": "soperi",
+      "value_en": "soperi"
+    },
+    {
+      "variable": "species",
+      "code": 3094,
+      "value_es": "sordellii",
+      "value_fr": "sordellii",
+      "value_en": "sordellii"
+    },
+    {
+      "variable": "species",
+      "code": 2019,
+      "value_es": "sordida",
+      "value_fr": "sordida",
+      "value_en": "sordida"
+    },
+    {
+      "variable": "species",
+      "code": 3095,
+      "value_es": "spathotrichia",
+      "value_fr": "spathotrichia",
+      "value_en": "spathotrichia"
+    },
+    {
+      "variable": "species",
+      "code": 1197,
+      "value_es": "spegazzinii",
+      "value_fr": "spegazzinii",
+      "value_en": "spegazzinii"
+    },
+    {
+      "variable": "species",
+      "code": 1198,
+      "value_es": "spissipes",
+      "value_fr": "spissipes",
+      "value_en": "spissipes"
+    },
+    {
+      "variable": "species",
+      "code": 1199,
+      "value_es": "squamifemur",
+      "value_fr": "squamifemur",
+      "value_en": "squamifemur"
+    },
+    {
+      "variable": "species",
+      "code": 1200,
+      "value_es": "squamipennis",
+      "value_fr": "squamipennis",
+      "value_en": "squamipennis"
+    },
+    {
+      "variable": "species",
+      "code": 2020,
+      "value_es": "stali",
+      "value_fr": "stali",
+      "value_en": "stali"
+    },
+    {
+      "variable": "species",
+      "code": 1201,
+      "value_es": "stigmaticus",
+      "value_fr": "stigmaticus",
+      "value_en": "stigmaticus"
+    },
+    {
+      "variable": "species",
+      "code": 1202,
+      "value_es": "strodei",
+      "value_fr": "strodei",
+      "value_en": "strodei"
+    },
+    {
+      "variable": "species",
+      "code": 3096,
+      "value_es": "suapiensis",
+      "value_fr": "suapiensis",
+      "value_en": "suapiensis"
+    },
+    {
+      "variable": "species",
+      "code": 1203,
+      "value_es": "surinamensis",
+      "value_fr": "surinamensis",
+      "value_en": "surinamensis"
+    },
+    {
+      "variable": "species",
+      "code": 1204,
+      "value_es": "taeniopus",
+      "value_fr": "taeniopus",
+      "value_en": "taeniopus"
+    },
+    {
+      "variable": "species",
+      "code": 3097,
+      "value_es": "tarapacaensis",
+      "value_fr": "tarapacaensis",
+      "value_en": "tarapacaensis"
+    },
+    {
+      "variable": "species",
+      "code": 1205,
+      "value_es": "tarsata",
+      "value_fr": "tarsata",
+      "value_en": "tarsata"
+    },
+    {
+      "variable": "species",
+      "code": 1206,
+      "value_es": "tatoi",
+      "value_fr": "tatoi",
+      "value_en": "tatoi"
+    },
+    {
+      "variable": "species",
+      "code": 3098,
+      "value_es": "termitophila",
+      "value_fr": "termitophila",
+      "value_en": "termitophila"
+    },
+    {
+      "variable": "species",
+      "code": 1207,
+      "value_es": "terrens",
+      "value_fr": "terrens",
+      "value_en": "terrens"
+    },
+    {
+      "variable": "species",
+      "code": 1208,
+      "value_es": "theobaldi (Culex)",
+      "value_fr": "theobaldi (Culex)",
+      "value_en": "theobaldi (Culex)"
+    },
+    {
+      "variable": "species",
+      "code": 1209,
+      "value_es": "theobaldi (Toxorhynchites)",
+      "value_fr": "theobaldi (Toxorhynchites)",
+      "value_en": "theobaldi (Toxorhynchites)"
+    },
+    {
+      "variable": "species",
+      "code": 1210,
+      "value_es": "tibiamaculatus",
+      "value_fr": "tibiamaculatus",
+      "value_en": "tibiamaculatus"
+    },
+    {
+      "variable": "species",
+      "code": 3099,
+      "value_es": "tihuiliensis",
+      "value_fr": "tihuiliensis",
+      "value_en": "tihuiliensis"
+    },
+    {
+      "variable": "species",
+      "code": 1211,
+      "value_es": "titillans",
+      "value_fr": "titillans",
+      "value_en": "titillans"
+    },
+    {
+      "variable": "species",
+      "code": 3100,
+      "value_es": "tocaniensis",
+      "value_fr": "tocaniensis",
+      "value_en": "tocaniensis"
+    },
+    {
+      "variable": "species",
+      "code": 3101,
+      "value_es": "toroensis",
+      "value_fr": "toroensis",
+      "value_en": "toroensis"
+    },
+    {
+      "variable": "species",
+      "code": 3102,
+      "value_es": "torresi",
+      "value_fr": "torresi",
+      "value_en": "torresi"
+    },
+    {
+      "variable": "species",
+      "code": 3103,
+      "value_es": "tortura",
+      "value_fr": "tortura",
+      "value_en": "tortura"
+    },
+    {
+      "variable": "species",
+      "code": 4002,
+      "value_es": "transferrans",
+      "value_fr": "transferrans",
+      "value_en": "transferrans"
+    },
+    {
+      "variable": "species",
+      "code": 1212,
+      "value_es": "triannulatus",
+      "value_fr": "triannulatus",
+      "value_en": "triannulatus"
+    },
+    {
+      "variable": "species",
+      "code": 3104,
+      "value_es": "trinidadensis  (Micropygomyia)",
+      "value_fr": "trinidadensis  (Micropygomyia)",
+      "value_en": "trinidadensis  (Micropygomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 2021,
+      "value_es": "trinidadensis (Microtriatoma)",
+      "value_fr": "trinidadensis (Microtriatoma)",
+      "value_en": "trinidadensis (Microtriatoma)"
+    },
+    {
+      "variable": "species",
+      "code": 1213,
+      "value_es": "trinkae",
+      "value_fr": "trinkae",
+      "value_en": "trinkae"
+    },
+    {
+      "variable": "species",
+      "code": 3105,
+      "value_es": "tuberculata",
+      "value_fr": "tuberculata",
+      "value_en": "tuberculata"
+    },
+    {
+      "variable": "species",
+      "code": 1214,
+      "value_es": "typhlosomata",
+      "value_fr": "typhlosomata",
+      "value_en": "typhlosomata"
+    },
+    {
+      "variable": "species",
+      "code": 3106,
+      "value_es": "ubiquitalis",
+      "value_fr": "ubiquitalis",
+      "value_en": "ubiquitalis"
+    },
+    {
+      "variable": "species",
+      "code": 3107,
+      "value_es": "umbratilis",
+      "value_fr": "umbratilis",
+      "value_en": "umbratilis"
+    },
+    {
+      "variable": "species",
+      "code": 1215,
+      "value_es": "undosus",
+      "value_fr": "undosus",
+      "value_en": "undosus"
+    },
+    {
+      "variable": "species",
+      "code": 3108,
+      "value_es": "undulata  (Psathyromyia)",
+      "value_fr": "undulata  (Psathyromyia)",
+      "value_en": "undulata  (Psathyromyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1216,
+      "value_es": "undulata (Wyeomyia)",
+      "value_fr": "undulata (Wyeomyia)",
+      "value_en": "undulata (Wyeomyia)"
+    },
+    {
+      "variable": "species",
+      "code": 1217,
+      "value_es": "urichii",
+      "value_fr": "urichii",
+      "value_en": "urichii"
+    },
+    {
+      "variable": "species",
+      "code": 1218,
+      "value_es": "vanemdeni",
+      "value_fr": "vanemdeni",
+      "value_en": "vanemdeni"
+    },
+    {
+      "variable": "species",
+      "code": 1219,
+      "value_es": "varinervis",
+      "value_fr": "varinervis",
+      "value_en": "varinervis"
+    },
+    {
+      "variable": "species",
+      "code": 1220,
+      "value_es": "varipes",
+      "value_fr": "varipes",
+      "value_en": "varipes"
+    },
+    {
+      "variable": "species",
+      "code": 3109,
+      "value_es": "vattierae",
+      "value_fr": "vattierae",
+      "value_en": "vattierae"
+    },
+    {
+      "variable": "species",
+      "code": 3110,
+      "value_es": "velascoi",
+      "value_fr": "velascoi",
+      "value_en": "velascoi"
+    },
+    {
+      "variable": "species",
+      "code": 1221,
+      "value_es": "venezuelensis (Coquillettidia)",
+      "value_fr": "venezuelensis (Coquillettidia)",
+      "value_en": "venezuelensis (Coquillettidia)"
+    },
+    {
+      "variable": "species",
+      "code": 4026,
+      "value_es": "venezuelensis (Culicoides)",
+      "value_fr": "venezuelensis (Culicoides)",
+      "value_en": "venezuelensis (Culicoides)"
+    },
+    {
+      "variable": "species",
+      "code": 4027,
+      "value_es": "vernoni",
+      "value_fr": "vernoni",
+      "value_en": "vernoni"
+    },
+    {
+      "variable": "species",
+      "code": 3111,
+      "value_es": "volcanensis",
+      "value_fr": "volcanensis",
+      "value_en": "volcanensis"
+    },
+    {
+      "variable": "species",
+      "code": 3112,
+      "value_es": "wagleyi",
+      "value_fr": "wagleyi",
+      "value_en": "wagleyi"
+    },
+    {
+      "variable": "species",
+      "code": 3113,
+      "value_es": "walkeri",
+      "value_fr": "walkeri",
+      "value_en": "walkeri"
+    },
+    {
+      "variable": "species",
+      "code": 3114,
+      "value_es": "whitmani",
+      "value_fr": "whitmani",
+      "value_en": "whitmani"
+    },
+    {
+      "variable": "species",
+      "code": 1222,
+      "value_es": "ypsipola",
+      "value_fr": "ypsipola",
+      "value_en": "ypsipola"
+    },
+    {
+      "variable": "species",
+      "code": 3115,
+      "value_es": "yucumensis",
+      "value_fr": "yucumensis",
+      "value_en": "yucumensis"
+    },
+    {
+      "variable": "species",
+      "code": 3116,
+      "value_es": "yuilli",
+      "value_fr": "yuilli",
+      "value_en": "yuilli"
+    },
+    {
+      "variable": "species",
+      "code": 3117,
+      "value_es": "yungasi",
+      "value_fr": "yungasi",
+      "value_en": "yungasi"
+    },
+    {
+      "variable": "sample_origen",
+      "code": 1,
+      "value_es": "Su colecta en el terreno",
+      "value_fr": "Collecte sur le terrain",
+      "value_en": "Field collection"
+    },
+    {
+      "variable": "sample_origen",
+      "code": 2,
+      "value_es": "Muestra recibida",
+      "value_fr": "Échantillon reçu",
+      "value_en": "Sample received"
+    },
+    {
+      "variable": "sample_origen",
+      "code": 3,
+      "value_es": "Muestra historica",
+      "value_fr": "Échantillon historique",
+      "value_en": "Historical sample"
+    },
+    {
+      "variable": "sample_type",
+      "code": 1,
+      "value_es": "Insectos en agua",
+      "value_fr": "Insectes dans l'eau",
+      "value_en": "Insects in water"
+    },
+    {
+      "variable": "sample_type",
+      "code": 2,
+      "value_es": "Insectos NO en agua",
+      "value_fr": "Insectes hors de l'eau",
+      "value_en": "Insects NOT in water"
+    },
+    {
+      "variable": "sample_positive_y_n",
+      "code": 1,
+      "value_es": "Si",
+      "value_fr": "Oui",
+      "value_en": "Yes"
+    },
+    {
+      "variable": "sample_positive_y_n",
+      "code": 0,
+      "value_es": "No",
+      "value_fr": "Non",
+      "value_en": "No"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 26,
+      "value_es": "RECIPIENTE  ARTIFICIAL",
+      "value_fr": "RÉCIPIENT ARTIFICIEL",
+      "value_en": "ARTIFICIAL CONTAINER"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 1,
+      "value_es": "Alcantarilla",
+      "value_fr": "Canalisation",
+      "value_en": "Sewer"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 2,
+      "value_es": "Axila de planta epifita",
+      "value_fr": "Aisselle d'une plante épiphyte",
+      "value_en": "Axil of an epiphytic plant"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 3,
+      "value_es": "Axila de planta terrestre",
+      "value_fr": "Aisselle d'une plante terrestre",
+      "value_en": "Axil of a terrestrial plant"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 4,
+      "value_es": "Bambu",
+      "value_fr": "Bambou",
+      "value_en": "Bamboo"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 5,
+      "value_es": "Bosque inundado",
+      "value_fr": "Forêt inondée",
+      "value_en": "Flooded forest"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 6,
+      "value_es": "Charco grande",
+      "value_fr": "Grande flaque",
+      "value_en": "Large puddle"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 7,
+      "value_es": "Charco pequeno",
+      "value_fr": "Petite flaque",
+      "value_en": "Small puddle"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 8,
+      "value_es": "Depresion cenagosa",
+      "value_fr": "Dépression boueuse",
+      "value_en": "Muddy depression"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 9,
+      "value_es": "En el rio / arroyo",
+      "value_fr": "Dans la rivière / le ruisseau",
+      "value_en": "In the river/stream"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 10,
+      "value_es": "Flor (bractea espata etc.)",
+      "value_fr": "Fleur (bractée, spathe, etc.)",
+      "value_en": "Flower (bract, spathe, etc.)"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 11,
+      "value_es": "Fruto caido",
+      "value_fr": "Fruit tombé",
+      "value_en": "Fallen fruit"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 12,
+      "value_es": "Fruto no caido",
+      "value_fr": "Fruit non tombé",
+      "value_en": "Unfallen fruit"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 13,
+      "value_es": "Hueco en arbol",
+      "value_fr": "Creux dans un arbre",
+      "value_en": "Hollow in a tree"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 14,
+      "value_es": "Hueco en la roca",
+      "value_fr": "Creux dans un rocher",
+      "value_en": "Hollow in a rock"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 15,
+      "value_es": "Huellas de animales",
+      "value_fr": "Empreintes d'animaux",
+      "value_en": "Animal tracks"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 16,
+      "value_es": "Infiltracion de agua / manantial",
+      "value_fr": "Infiltration d'eau / source",
+      "value_en": "Water seepage/spring"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 17,
+      "value_es": "Interior de pantano",
+      "value_fr": "Intérieur d'un marais",
+      "value_en": "Inside a swamp"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 18,
+      "value_es": "Laguna, lago, borde de laguna o de lago",
+      "value_fr": "Lagune, lac, bord d'une lagune ou d'un lac",
+      "value_en": "Lagoon, lake, lagoon or lake shore"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 19,
+      "value_es": "Madriguera de cangrejo",
+      "value_fr": "Terreau de crabe",
+      "value_en": "Crab burrow"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 20,
+      "value_es": "Margen de pantano",
+      "value_fr": "Bord d'un marais",
+      "value_en": "Swamp bank"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 21,
+      "value_es": "Margen de rio o de arroyo",
+      "value_fr": "Bord d'une rivière ou d'un ruisseau",
+      "value_en": "River or stream bank"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 22,
+      "value_es": "Parte de planta / arbol caido",
+      "value_fr": "Partie d'une plante / d'un arbre tombé",
+      "value_en": "Part of a fallen plant or tree"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 23,
+      "value_es": "Pasto inundado",
+      "value_fr": "Herbe inondée",
+      "value_en": "Flooded grassland"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 24,
+      "value_es": "Planta acuatica (agarado a)",
+      "value_fr": "Plante aquatique (accrochée à)",
+      "value_en": "Aquatic plant (attached to)"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 25,
+      "value_es": "Pozo",
+      "value_fr": "Puits",
+      "value_en": "Well"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 27,
+      "value_es": "Zanja / drenaje",
+      "value_fr": "Fossé / drainage",
+      "value_en": "Ditch / drainage"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 0,
+      "value_es": "SIN DATO",
+      "value_fr": "SANS DONNÉE",
+      "value_en": "NO DATA"
+    },
+    {
+      "variable": "acuatic_location",
+      "code": 999,
+      "value_es": "OTRO",
+      "value_fr": "AUTRE",
+      "value_en": "OTHER"
+    },
+    {
+      "variable": "artificial_container",
+      "code": 1,
+      "value_es": "A1-Depositos  de gran volumen elevados tanques conectados a la red cisternas ...",
+      "value_fr": "A1-Réservoirs  de grand volume surélevés, réservoirs raccordés au réseau, citernes...",
+      "value_en": "A1-Large-volume elevated storage tanks connected to the network, cisterns..."
+    },
+    {
+      "variable": "artificial_container",
+      "code": 2,
+      "value_es": "A2-Depositos de gran volumen al nivel del suelo (turiles norias  tanques pozos tina ...)",
+      "value_fr": "A2-Réservoirs de grand volume au niveau du sol (puits, roues à eau,  réservoirs, puits, cuves...)",
+      "value_en": "A2-Large-volume storage tanks at ground level (water wheels, wells, tanks, tubs...)"
+    },
+    {
+      "variable": "artificial_container",
+      "code": 3,
+      "value_es": "B - Dep. Moviles (baldes jarros vasos galones bidones platos bandejas  frascos...)",
+      "value_fr": "B - Réservoirs mobiles (seaux, cruches, verres, bidons, assiettes, plateaux,  bocaux...)",
+      "value_en": "B - Mobile storage (buckets, jugs, glasses, gallons, drums, plates, trays, jars...)"
+    },
+    {
+      "variable": "artificial_container",
+      "code": 4,
+      "value_es": "C-Depositos fijos (canaletas sanitarios en desuso bebederos de animales pozos ciegos macetas techos ...)",
+      "value_fr": "C-Réservoirs fixes (gouttières sanitaires hors d'usage, abreuvoirs pour animaux, puits aveugles, pots de fleurs, toits...)",
+      "value_en": "C-Fixed containers (gutters, disused toilets, animal troughs, dry wells, flowerpots, roofs...)"
+    },
+    {
+      "variable": "artificial_container",
+      "code": 5,
+      "value_es": "D1- Dep. para eliminacion: Neumaticos y otros materiales rodantes",
+      "value_fr": "D1- Réservoirs destinés à l'élimination : Pneus et autres matériaux roulants",
+      "value_en": "D1-Containers for disposal: Tires and other rolling stock"
+    },
+    {
+      "variable": "artificial_container",
+      "code": 6,
+      "value_es": "D2-Dep. para eliminacion: Basura (botellas latas recipientes de plastico escombros chatarra ...",
+      "value_fr": "D2-Réservoirs destinés à l'élimination : Déchets (bouteilles, canettes, récipients en plastique, gravats, ferraille...)",
+      "value_en": "D2-Containers for disposal: Trash (bottles, cans, plastic containers, debris, scrap metal...)"
+    },
+    {
+      "variable": "artificial_container",
+      "code": 999,
+      "value_es": "OTRO",
+      "value_fr": "AUTRES",
+      "value_en": "OTHER"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 1,
+      "value_es": "Cebo humano",
+      "value_fr": "Appât humain",
+      "value_en": "Human bait"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 2,
+      "value_es": "Cebo animal",
+      "value_fr": "Appât animal",
+      "value_en": "Animal bait"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 3,
+      "value_es": "Trampa de luz",
+      "value_fr": "Piège lumineux",
+      "value_en": "Light trap"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 4,
+      "value_es": "Trampa succion (BG)",
+      "value_fr": "Piège à aspiration (BG)",
+      "value_en": "Suction trap (BG)"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 5,
+      "value_es": "Trampa de emergencia",
+      "value_fr": "Piège d'urgence",
+      "value_en": "Emergency trap"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 6,
+      "value_es": "Trampa adhesiva",
+      "value_fr": "Piège adhésif",
+      "value_en": "Sticky trap"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 14,
+      "value_es": "Trampa de intercepcion (Malaise etc..)",
+      "value_fr": "Piège d'interception (Malaise, etc.)",
+      "value_en": "Interception trap (Malaise, etc.)"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 7,
+      "value_es": "Red entomologica",
+      "value_fr": "Filet entomologique",
+      "value_en": "Entomological net"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 8,
+      "value_es": "Por insecticida / fauna residual",
+      "value_fr": "Par insecticide / faune résiduelle",
+      "value_en": "By insecticide / residual fauna"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 9,
+      "value_es": "Busqueda activa",
+      "value_fr": "Recherche active",
+      "value_en": "Active search"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 10,
+      "value_es": "Diseccion  o colecta de planta",
+      "value_fr": "Dissection  ou collecte de plantes",
+      "value_en": "Dissection or plant collection"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 11,
+      "value_es": "Draging/flaging (garrapatas)",
+      "value_fr": "Draging/flaging (tiques)",
+      "value_en": "Dragging/flagging (ticks)"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 12,
+      "value_es": "Insecto en reposo",
+      "value_fr": "Insecte au repos",
+      "value_en": "Resting insect"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 13,
+      "value_es": "Muestra de barro (Ceratopogonidae)",
+      "value_fr": "Échantillon de boue (Ceratopogonidae)",
+      "value_en": "Mud sample (Ceratopogonidae)"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 15,
+      "value_es": "Trampa de caida (pitfall)",
+      "value_fr": "Piège à chute (pitfall)",
+      "value_en": "Pitfall trap"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 16,
+      "value_es": "Embudo de Berlese",
+      "value_fr": "Entonnoir de Berlese",
+      "value_en": "Berlese funnel"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 17,
+      "value_es": "Bandejas de golpeo",
+      "value_fr": "Plateaux de frappe",
+      "value_en": "Beating trays"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 0,
+      "value_es": "SIN DATO",
+      "value_fr": "AUCUNE DONNÉE",
+      "value_en": "NO DATA"
+    },
+    {
+      "variable": "sampling_method_ter",
+      "code": 999,
+      "value_es": "OTRO",
+      "value_fr": "AUTRE",
+      "value_en": "OTHER"
+    },
+    {
+      "variable": "identificationverificationstatus",
+      "code": 1,
+      "value_es": "verificado",
+      "value_fr": "vérifié",
+      "value_en": "verified"
+    },
+    {
+      "variable": "identificationverificationstatus",
+      "code": 0,
+      "value_es": "no verificado",
+      "value_fr": "non vérifié",
+      "value_en": "not verified"
+    },
+    {
+      "variable": "identificationverificationstatus",
+      "value_es": "sin evaluar",
+      "value_fr": "non évalué",
+      "value_en": "not evaluated"
+    }
+  ]
+}
