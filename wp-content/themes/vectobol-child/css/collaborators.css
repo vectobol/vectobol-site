@@ -1,0 +1,496 @@
+/* ==========================================================
+   VECTOBOL
+   Collaborators widget
+========================================================== */
+
+
+/* ==========================================================
+   TABLE WRAPPER
+========================================================== */
+
+.vb-table-wrapper{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+/* ==========================================================
+   CONTROL PANEL
+========================================================== */
+
+.vb-collaborators-controls{
+
+    margin-bottom:20px;
+
+    padding:14px;
+
+    background:#fafafa;
+
+    border:1px solid #e5e5e5;
+
+    border-radius:6px;
+
+}
+
+
+/* ==========================================================
+   COUNTER
+========================================================== */
+
+.vb-collaborators-count{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:24px;
+
+    margin-bottom:14px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#2f6f6f;
+
+}
+
+
+/* ==========================================================
+   FILTER BAR
+========================================================== */
+
+.vb-collaborators-filterbar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+#vb-collaborators-search{
+
+    flex:none;
+
+    width:360px;
+
+    max-width:100%;
+
+}
+
+
+/* ==========================================================
+   ROLE FILTER
+========================================================== */
+
+#vb-collaborators-role-filter{
+
+    flex:none;
+
+    width:200px;
+
+}
+
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+#vb-collaborators-search,
+#vb-collaborators-role-filter{
+
+    height:38px;
+
+    padding:6px 10px;
+
+    border:1px solid #cccccc;
+
+    border-radius:4px;
+
+    background:#ffffff;
+
+    font-size:13px;
+
+}
+
+
+/* ==========================================================
+   RESET BUTTON
+========================================================== */
+
+#vb-collaborators-reset{
+
+    margin-left:auto;
+
+    height:38px;
+
+    padding:0 14px;
+
+    border:none;
+
+    border-radius:4px;
+
+    background:#888888;
+
+    color:#ffffff;
+
+    font-size:13px;
+
+    font-weight:500;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+}
+
+
+#vb-collaborators-reset:hover{
+
+    background:#666666;
+
+}
+
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+#vb-collaborators{
+
+    width:100%;
+
+    min-width:700px;
+
+    border-collapse:collapse;
+
+    margin:18px 0;
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================================
+   TABLE HEADER
+========================================================== */
+
+#vb-collaborators thead th{
+
+    padding:10px 12px;
+
+    text-align:left;
+
+    font-weight:600;
+
+    background:#2f6f6f;
+
+    color:#ffffff;
+
+    border-bottom:2px solid #245555;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:5;
+
+}
+
+
+/* ==========================================================
+   TABLE BODY
+========================================================== */
+
+#vb-collaborators tbody td{
+
+    padding:9px 12px;
+
+    border-bottom:1px solid #e5e5e5;
+
+    vertical-align:top;
+
+    line-height:1.45;
+
+}
+
+
+/* ==========================================================
+   ZEBRA
+========================================================== */
+
+#vb-collaborators tbody tr:nth-child(even){
+
+    background:#f5f8f8;
+
+}
+
+
+#vb-collaborators tbody tr:hover{
+
+    background:#e8f1f1;
+
+}
+
+
+/* ==========================================================
+   COLUMN WIDTHS
+========================================================== */
+
+#vb-collaborators th:nth-child(1),
+#vb-collaborators td:nth-child(1){
+
+    width:24%;
+
+    font-weight:600;
+
+}
+
+
+#vb-collaborators th:nth-child(2),
+#vb-collaborators td:nth-child(2){
+
+    width:24%;
+
+}
+
+
+#vb-collaborators th:nth-child(3),
+#vb-collaborators td:nth-child(3){
+
+    width:12%;
+
+    text-align:center;
+
+}
+
+
+#vb-collaborators th:nth-child(4),
+#vb-collaborators td:nth-child(4){
+
+    width:40%;
+
+}
+
+
+#vb-collaborators td:last-child{
+
+    color:#555555;
+
+    line-height:1.5;
+
+}
+
+/* ==========================================================
+   PAGINATION
+========================================================== */
+
+
+.vb-pagination-bar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+    margin:16px 0;
+
+    gap:15px;
+
+}
+
+
+
+/* ---------- boutons ---------- */
+
+
+.vb-pagination{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:4px;
+
+}
+
+
+
+.vb-pagination button{
+
+    min-width:28px;
+
+    height:28px;
+
+    padding:0 8px;
+
+    border:1px solid #cccccc;
+
+    border-radius:4px;
+
+    background:#ffffff;
+
+    color:#444444;
+
+    font-size:13px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    transition:0.15s;
+
+}
+
+
+
+.vb-pagination button:hover{
+
+    background:#eef5f5;
+
+}
+
+
+
+.vb-pagination button.active{
+
+    background:#2f6f6f;
+
+    border-color:#2f6f6f;
+
+    color:#ffffff;
+
+}
+
+
+
+/* ---------- nombre de lignes ---------- */
+
+
+.vb-page-size{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:13px;
+
+    white-space:nowrap;
+
+}
+
+
+
+.vb-page-size label{
+
+    margin:0;
+
+    font-weight:500;
+
+    color:#555555;
+
+}
+
+
+
+.vb-page-size select{
+
+    height:28px;
+
+    min-width:65px;
+
+    padding:2px 6px;
+
+    border:1px solid #cccccc;
+
+    border-radius:4px;
+
+    background:#ffffff;
+
+    font-size:13px;
+
+}
+
+
+
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width:700px){
+
+    .vb-collaborators-count{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:6px;
+
+    }
+
+    .vb-collaborators-filterbar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+    }
+
+    #vb-collaborators-search,
+    #vb-collaborators-role-filter{
+
+        width:100%;
+
+    }
+
+    #vb-collaborators-reset{
+
+        width:100%;
+
+        margin-left:0;
+
+    }
+
+    .vb-pagination-bar{
+
+        flex-direction:column;
+
+        align-items:center;
+
+    }
+
+
+    .vb-pagination{
+
+        justify-content:center;
+
+    }
+
+
+    .vb-page-size{
+
+        justify-content:center;
+
+    }
+
+}

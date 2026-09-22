@@ -1,0 +1,75 @@
+/*
+Theme Name: OceanWP Child Vectobol
+Template: oceanwp
+Description: Thème enfant pour VECTOBOL
+Author: Frederic Lardeux
+Version: 1.0
+*/
+
+/* ==========================================================
+   VECTOBOL
+   Feuille principale du thème enfant
+
+   Les styles spécifiques des widgets sont désormais placés
+   dans /css/
+
+   - collaborators.css
+   - taxonomy.css
+   - maps.css
+   - sidebar.css
+   ...
+========================================================== */
+
+
+/* ==========================================================
+   HEADER FIXE
+========================================================== */
+
+#site-header {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    z-index: 9990;
+
+    background: #ffffff;
+
+}
+
+
+/* ==========================================================
+   ESPACE SOUS LE HEADER
+========================================================== */
+
+body {
+
+    padding-top: 50px;
+
+}
+
+
+/* ==========================================================
+   BARRE D'ADMINISTRATION WORDPRESS
+========================================================== */
+
+body.admin-bar #site-header {
+
+    top: 32px;
+
+}
+
+
+@media screen and (max-width:782px){
+
+    body.admin-bar #site-header{
+
+        top:46px;
+
+    }
+
+}

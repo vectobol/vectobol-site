@@ -1,0 +1,121 @@
+
+/* =========================================================
+   SPECIES LIST — STATUS
+========================================================= */
+
+
+.species-status {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+
+.status-ready {
+    background: #2e9d50;
+}
+
+
+.status-progress {
+    background: #e5a900;
+}
+
+
+.status-draft {
+    background: #c94a4a;
+}
+
+.status-none {
+    background: #999;
+}
+
+/* =========================================================
+   FILTRE STATUT + RECHERCHE
+========================================================= */
+
+.right-tools {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+
+/* =========================================================
+   FILTRE STATUT
+========================================================= */
+
+.status-filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.status-filter-label {
+    white-space: nowrap;
+}
+
+#statusFilter {
+    width: 150px;
+    min-width: 150px;
+    box-sizing: border-box;
+}
+
+.status-filter-dot {
+    width: 10px;
+    height: 10px;
+    margin-left: 0;
+    flex: 0 0 10px;
+}
+
+
+/* =========================================================
+   RECHERCHE GLOBALE
+========================================================= */
+
+.global-search {
+    width: 240px;
+    flex: 0 0 240px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+
+/* Loupe */
+
+.global-search .search-icon {
+    flex: 0 0 auto;
+    margin-right: 6px;
+}
+
+
+/* Champ de recherche */
+
+.global-search #globalSearch {
+    flex: 1 1 auto;
+    width: auto;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================================
+   TABLEAU — DÉFILEMENT HORIZONTAL
+========================================================= */
+
+.taxo-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+#taxoTable {
+    min-width: 900px;
+}
