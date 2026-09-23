@@ -227,7 +227,8 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
     $modules = [
         'vectobol-list',
         'vectobol-species',
-        'vectobol-collaborators'
+        'vectobol-collaborators',
+        'vectobol-occurrences'
     ];
 
     if (in_array($handle, $modules)) {
