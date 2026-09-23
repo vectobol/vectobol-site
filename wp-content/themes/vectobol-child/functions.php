@@ -111,7 +111,116 @@ add_action('wp_enqueue_scripts', function () {
 
 
 /* =========================================================
-   4. MODULE SUPPORT (ES MODULES)
+   4. OCCURRENCES PIPELINE
+========================================================= */
+
+function vb_is_occurrences_page() {
+
+    $slug = get_post_field(
+        'post_name',
+        get_queried_object_id()
+    );
+
+    if (!$slug) return false;
+
+    return (bool) preg_match(
+        '/(^|-)occurrences?(-|$)|(^|-)ocurrencias?(-|$)/i',
+        $slug
+    );
+}
+
+
+add_action('wp_enqueue_scripts', function () {
+
+    if (!vb_is_occurrences_page()) return;
+
+    /* =========================
+       CSS — OCCURRENCES
+    ========================= */
+
+    $css_path =
+        get_stylesheet_directory() .
+        '/css/occurrences.css';
+
+    if (file_exists($css_path)) {
+
+        wp_enqueue_style(
+            'vectobol-occurrences',
+            get_stylesheet_directory_uri() .
+            '/css/occurrences.css',
+            ['vectobol-child-style'],
+            filemtime($css_path)
+        );
+
+    }
+
+
+    /* =========================
+       LEAFLET
+    ========================= */
+
+    wp_enqueue_style(
+        'leaflet',
+        'https://unpkg.com/leaflet/dist/leaflet.css',
+        [],
+        null
+    );
+
+    wp_enqueue_style(
+        'leaflet-markercluster',
+        'https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css',
+        ['leaflet'],
+        null
+    );
+
+    wp_enqueue_style(
+        'leaflet-markercluster-default',
+        'https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css',
+        ['leaflet-markercluster'],
+        null
+    );
+
+
+    wp_enqueue_script(
+        'leaflet',
+        'https://unpkg.com/leaflet/dist/leaflet.js',
+        [],
+        null,
+        true
+    );
+
+    wp_enqueue_script(
+        'leaflet-markercluster',
+        'https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js',
+        ['leaflet'],
+        null,
+        true
+    );
+
+
+    /* =========================
+       JS — OCCURRENCES
+    ========================= */
+
+    $js_path =
+        get_stylesheet_directory() .
+        '/js/occurrences/index.js';
+
+    wp_enqueue_script(
+        'vectobol-occurrences',
+        get_stylesheet_directory_uri() .
+        '/js/occurrences/index.js',
+        ['leaflet-markercluster'],
+        file_exists($js_path) ? filemtime($js_path) : null,
+        true
+    );
+
+});
+
+
+
+/* =========================================================
+   5. MODULE SUPPORT (ES MODULES)
 ========================================================= */
 add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
@@ -131,7 +240,7 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
 
 /* =========================================================
-   5. REST API (UNCHANGED)
+   6. REST API (UNCHANGED)
 ========================================================= */
 add_action('rest_api_init', function () {
 
