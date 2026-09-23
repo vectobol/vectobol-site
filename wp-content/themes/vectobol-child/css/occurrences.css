@@ -1,0 +1,227 @@
+#vectobol-widget {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#vectobol-widget #map {
+  width: 100%;
+  height: 78vh;
+  min-height: 500px;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+
+#vectobol-widget #filter-panel {
+  background: #f6f7f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 12px;
+}
+
+#vectobol-widget .filter-group {
+  background: #fff;
+  border: 1px solid #d8dee5;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#vectobol-widget .group-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#vectobol-widget .filter-row {
+  display: grid;
+  grid-template-columns: 2.2fr 1.2fr 2.4fr 70px 90px 34px;
+  gap: 6px;
+  margin-bottom: 6px;
+  align-items: center;
+}
+
+#vectobol-widget .add-condition {
+  background: #f1c40f;
+  font-weight: 700;
+  color: #000;
+  border-radius: 6px;
+}
+
+#vectobol-widget .del {
+  background: #d9534f;
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+#vectobol-widget .group-connector {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0;
+}
+
+#vectobol-widget .group-connector select {
+  font-size: 11px;
+  padding: 3px 6px;
+  border-radius: 6px;
+}
+
+#vectobol-widget .del-group {
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+#vectobol-widget .controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+#vectobol-widget .left-controls {
+  display: flex;
+  gap: 6px;
+}
+
+#vectobol-widget .right-controls {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#vectobol-widget #add-group {
+  background: #2c7be5;
+  color: #fff;
+}
+
+#vectobol-widget #reset {
+  background: #d9534f;
+  color: #fff;
+}
+
+#vectobol-widget #toggle {
+  background: #444;
+  color: #fff;
+}
+
+#vectobol-widget #count {
+  background: #2c7be5;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+#vectobol-widget #expression {
+  margin-top: 8px;
+  padding: 8px;
+  background: #eef5ff;
+  border-left: 3px solid #2c7be5;
+  font-size: 11px;
+}
+
+#vectobol-widget #filter-toggle-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+#vectobol-widget .toggle-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#vectobol-widget #filter-toggle-bar button {
+  padding: 4px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#vectobol-widget .searchable-select {
+  position: relative;
+}
+
+#vectobol-widget .searchable-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#vectobol-widget .searchable-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  display: none;
+}
+
+#vectobol-widget .searchable-item {
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+#vectobol-widget .searchable-item:hover {
+  background: #eef5ff;
+}
+
+@keyframes vb-occurrences-blink-error {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+#vectobol-widget .expression-error {
+  color: red;
+  font-weight: bold;
+  animation: vb-occurrences-blink-error 1s infinite;
+}
+
+#vectobol-widget .vb-occurrences-error {
+  padding: 12px;
+  margin-bottom: 10px;
+  background: #ffeded;
+  border: 1px solid #ff4949;
+  border-radius: 8px;
+}
+
+@media (max-width: 782px) {
+  #vectobol-widget .filter-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #vectobol-widget .filter-row > .val-box,
+  #vectobol-widget .filter-row > .intra,
+  #vectobol-widget .filter-row > .add-condition,
+  #vectobol-widget .filter-row > .del {
+    width: 100%;
+  }
+
+  #vectobol-widget #map {
+    height: 70vh;
+    min-height: 420px;
+  }
+}
