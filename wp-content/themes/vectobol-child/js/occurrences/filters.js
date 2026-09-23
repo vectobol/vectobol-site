@@ -114,7 +114,12 @@ export function buildAST() {
       });
     });
 
-    const groupLogic = groupElement.querySelector(".group-logic")?.value || "AND";
+    // The group connector is intentionally placed just before the group in the DOM.
+    // Read it from the previous sibling so the group-level AND/OR is preserved.
+    const previousElement = groupElement.previousElementSibling;
+    const groupLogic = previousElement?.classList.contains("group-connector")
+      ? previousElement.querySelector(".group-logic")?.value || "AND"
+      : "AND";
 
     ast.push({
       logic: groupLogic,
