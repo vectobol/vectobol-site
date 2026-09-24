@@ -106,10 +106,16 @@ export function buildAST() {
         value = input.value;
       }
 
+      // A row with no variable is only the empty UI placeholder.
+      // It must not become a real filter condition.
+      if (!field) return;
+
       rows.push({
         f: field,
         o: operator,
         v: value,
+        // The connector belongs to THIS row and therefore connects
+        // the previous condition to the current one.
         intra: index === 0 ? "AND" : intra
       });
     });
@@ -120,6 +126,11 @@ export function buildAST() {
     const groupLogic = previousElement?.classList.contains("group-connector")
       ? previousElement.querySelector(".group-logic")?.value || "AND"
       : "AND";
+
+    // Empty groups are not filters.
+    // This is essential for the initial/reset state, where the UI
+    // contains one blank row.
+    if (!rows.length) return;
 
     ast.push({
       logic: groupLogic,
@@ -174,9 +185,11 @@ export function evaluateGroup(group, record) {
   );
 
   for (let index = 1; index < group.rows.length; index++) {
-    const previous = group.rows[index - 1];
     const current = group.rows[index];
-    const operator = (previous.intra || "AND").toUpperCase();
+
+    // The connector displayed on the current row is the connector
+    // between the previous row and this row.
+    const operator = (current.intra || "AND").toUpperCase();
 
     const currentResult = evalCondition(
       getValue(record, current.f),
