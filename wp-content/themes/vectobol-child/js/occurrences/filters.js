@@ -114,9 +114,10 @@ export function buildAST() {
         f: field,
         o: operator,
         v: value,
-        // The connector belongs to THIS row and therefore connects
-        // the previous condition to the current one.
-        intra: index === 0 ? "AND" : intra
+        // The connector displayed on this row connects this condition
+        // to the next condition. The first row therefore must preserve
+        // its OR/AND selection: it is meaningful when a second row exists.
+        intra
       });
     });
 
