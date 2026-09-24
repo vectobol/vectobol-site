@@ -482,11 +482,11 @@ export function initUI(apply) {
     resetButton.onclick = () => {
       panel.innerHTML = "";
       createGroup(panel, apply);
-      state.current = [...state.samples];
-      render(false);
-      updateCount();
-      updateExpression([]);
-      updateFilterError();
+      state.filterError = null;
+
+      // The blank row is only a UI placeholder. buildAST() ignores it,
+      // so applying the empty AST restores all collection points.
+      apply();
     };
   }
 
