@@ -173,29 +173,28 @@ export function evalCondition(x, operator, value) {
   }
 }
 
-export function evaluateGroup(group, record) {
+export function evaluateGroup(group, records) {
   if (!group.rows.length) return false;
 
-  const getValue = (data, field) => data[normField(field)];
+  const sampleRecords = Array.isArray(records) ? records : [records];
 
-  let result = evalCondition(
-    getValue(record, group.rows[0].f),
-    group.rows[0].o,
-    group.rows[0].v
-  );
+  const conditionMatches = row =>
+    sampleRecords.some(record =>
+      evalCondition(
+        record[normField(row.f)],
+        row.o,
+        row.v
+      )
+    );
+
+  // The connector displayed on a row connects that row to the
+  // following row. This matches the visual order of the filter UI.
+  let result = conditionMatches(group.rows[0]);
 
   for (let index = 1; index < group.rows.length; index++) {
-    const current = group.rows[index];
-
-    // The connector displayed on the current row is the connector
-    // between the previous row and this row.
-    const operator = (current.intra || "AND").toUpperCase();
-
-    const currentResult = evalCondition(
-      getValue(record, current.f),
-      current.o,
-      current.v
-    );
+    const previous = group.rows[index - 1];
+    const operator = (previous.intra || "AND").toUpperCase();
+    const currentResult = conditionMatches(group.rows[index]);
 
     if (operator === "AND") {
       result = result && currentResult;
@@ -211,11 +210,29 @@ export function evaluateGroup(group, record) {
 export function evaluateAST(ast, data) {
   if (!ast.length) return data;
 
-  return data.filter(record => {
+  // Filters operate on collection points, not individual occurrence rows.
+  // A point may contain several occurrence records (for example one Aedes
+  // and one Culex). Each condition therefore matches a point when at least
+  // one of its occurrence records satisfies that condition.
+  const sampleMap = new Map();
+
+  data.forEach(record => {
+    const key = String(record.record_id);
+
+    if (!sampleMap.has(key)) {
+      sampleMap.set(key, []);
+    }
+
+    sampleMap.get(key).push(record);
+  });
+
+  const matchingKeys = new Set();
+
+  sampleMap.forEach((records, key) => {
     let finalResult = null;
 
     for (let index = 0; index < ast.length; index++) {
-      const groupResult = evaluateGroup(ast[index], record);
+      const groupResult = evaluateGroup(ast[index], records);
 
       if (index === 0) {
         finalResult = groupResult;
@@ -232,8 +249,16 @@ export function evaluateAST(ast, data) {
       }
     }
 
-    return Boolean(finalResult);
+    if (finalResult) {
+      matchingKeys.add(key);
+    }
   });
+
+  // Return occurrence records belonging to matching collection points.
+  // apply() converts these records back to unique sample IDs.
+  return data.filter(record =>
+    matchingKeys.has(String(record.record_id))
+  );
 }
 
 export function validateAST(ast) {
