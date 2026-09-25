@@ -123,9 +123,14 @@ function vb_is_occurrences_page() {
 
     if (!$slug) return false;
 
-    return (bool) preg_match(
-        '/(^|-)occurrences?(-|$)|(^|-)ocurrencias?(-|$)/i',
-        $slug
+    return in_array(
+        $slug,
+        [
+            'carte-interactive',
+            'mapa-interactiva',
+            'map-vectobol'
+        ],
+        true
     );
 }
 
