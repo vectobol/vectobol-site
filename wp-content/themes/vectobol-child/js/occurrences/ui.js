@@ -211,7 +211,16 @@ function createRow(container, apply, hydrate = false) {
   del.className = "del";
   del.textContent = "X";
   del.onclick = () => {
+    const group = row.closest(".filter-group");
+
     row.remove();
+
+    // A group with no conditions is no longer a real filter group.
+    // Remove it together with its inter-group connector.
+    if (group && !group.querySelector(".filter-row")) {
+      removeGroupAndConnector(group);
+    }
+
     apply();
   };
 
@@ -238,6 +247,18 @@ function addGroupConnector(container, isFirst, apply) {
 
   connector.appendChild(select);
   container.appendChild(connector);
+}
+
+function removeGroupAndConnector(group) {
+  if (!group) return;
+
+  const connector = group.previousElementSibling;
+  if (connector?.classList.contains("group-connector")) {
+    connector.remove();
+  }
+
+  group.remove();
+  renumberGroups();
 }
 
 function renumberGroups() {
@@ -268,8 +289,7 @@ function createGroup(container, apply) {
   del.textContent = "X";
   del.title = ui("groupDelete");
   del.onclick = () => {
-    group.remove();
-    renumberGroups();
+    removeGroupAndConnector(group);
     apply();
   };
 
@@ -314,8 +334,7 @@ function rebuildFiltersFromAST(ast, apply) {
     del.textContent = "X";
     del.title = ui("groupDelete");
     del.onclick = () => {
-      group.remove();
-      renumberGroups();
+      removeGroupAndConnector(group);
       apply();
     };
 
