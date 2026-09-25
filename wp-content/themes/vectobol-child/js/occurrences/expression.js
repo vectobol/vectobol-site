@@ -55,7 +55,10 @@ export function updateExpression(ast) {
       return `( ${rowsText} )`;
     }
 
-    const link = ast[groupIndex - 1]?.logic || "AND";
+    // The connector belongs to this group in the AST:
+    // buildAST() stores the selector immediately before this group
+    // as group.logic. Therefore group 2 uses group 2's logic.
+    const link = group.logic || "AND";
     return `${link} ( ${rowsText} )`;
   }).join(" ");
 
