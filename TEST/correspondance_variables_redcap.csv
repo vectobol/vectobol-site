@@ -1,0 +1,33 @@
+variable,label_fr,label_en,label_es
+record_id,Redcap ID,Redcap ID,Redcap ID
+sample_id,Code échantillon,Sample code,Código de muestra
+sample_origen,Origine,Origin,Origen
+mision_code,Code de mission,Mission code,Código de misión
+sample_type,Type de collecte,Collection type,Tipo de colecta
+initial_date,Date de collecte,Collection date,Fecha de colecta
+sample_positive_y_n,Échantillon positif,Positive sample,Muestra positiva
+sample_latitude,Latitude,Latitude,Latitud
+sample_longitude,Longitude,Longitude,Longitud
+sample_altitude,Altitude,Altitude,Altitud
+sample_admin1,Département,Department,Departamento
+sample_admin2,Province,Province,Provincia
+sample_admin3,Commune,Municipality,Municipio
+sampling_method_ter,Méthode de capture,Sampling method,Método de captura
+acuatic_location,Type de gîte aquatique,Aquatic habitat type,Tipo de criadero acuático
+artificial_container,Récipient artificiel,Artificial container,Recipiente artificial
+identifiedby,Identifié par,Identified by,Identificado por
+identificationverificationstatus,Identification vérifiée,Identification verified,Identificación verificada
+year,Année,Year,Año
+month,Mois,Month,Mes
+day,Jour,Day,Día
+order_taxo,Ordre,Order,Orden
+family_taxo,Famille,Family,Familia
+subfamily_taxo,Sous-famille,Subfamily,Subfamilia
+tribe_taxo,Tribu,Tribe,Tribu
+genus_taxo,Genre,Genus,Género
+subgenus_taxo,Sous-genre,Subgenus,Subgénero
+species_taxo,Espèce,Species,Especie
+genus,Genre,Genus,Género
+species,Espèce,Species,Especie
+lat_aprox_y_n,Latitude approximative,Approximate latitude,Latitud aproximada
+long_aprox_y_n,Longitude approximative,Approximate longitude,Longitud aproximada

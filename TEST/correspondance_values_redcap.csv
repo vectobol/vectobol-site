@@ -1,0 +1,537 @@
+variable,code,value_es,value_fr,value_en
+genus,9999, No se puede identificar, Impossible à identifier, Cannot be identified
+genus,999, OTRO genero no en la lista, AUTRE genre non répertorié,OTHER genus not on the list
+genus,1001, Aedeomyia, Aedeomyia, Aedeomyia
+genus,1002, Aedes, Aedes, Aedes
+genus,1003, Anopheles, Anopheles, Anopheles
+genus,1004, Chagasia, Chagasia, Chagasia
+genus,1005, Coquillettidia, Coquillettidia, Coquillettidia
+genus,1006, Culex, Culex, Culex
+genus,1007, Haemagogus, Haemagogus, Haemagogus
+genus,1008, Isostomyia, Isostomyia, Isostomyia
+genus,1009, Johnbelkinia, Johnbelkinia, Johnbelkinia
+genus,1010, Limatus, Limatus, Limatus
+genus,1011, Lutzia, Lutzia, Lutzia
+genus,1012, Mansonia, Mansonia, Mansonia
+genus,1013, Onirion, Onirion, Onirion
+genus,1014, Orthopodomyia, Orthopodomyia, Orthopodomyia
+genus,1015, Psorophora, Psorophora, Psorophora
+genus,1016, Runchomyia, Runchomyia, Runchomyia
+genus,1017, Sabethes, Sabethes, Sabethes
+genus,1018, Shannoniana, Shannoniana, Shannoniana
+genus,1019, Shannoniana, Shannoniana, Shannoniana
+genus,1020, Toxorhynchites, Toxorhynchites, Toxorhynchites
+genus,1021, Trichoprosopon, Trichoprosopon, Trichoprosopon
+genus,1022, Uranotaenia, Uranotaenia, Uranotaenia
+genus,1023, Wyeomyia, Wyeomyia, Wyeomyia
+genus,2001, Eratyrus, Eratyrus, Eratyrus
+genus,2002, Microtriatoma, Microtriatoma, Microtriatoma
+genus,2003, Panstrongylus, Panstrongylus, Panstrongylus
+genus,2004, Psammolestes, Psammolestes, Psammolestes
+genus,2005, Rhodnius, Rhodnius, Rhodnius
+genus,2006, Triatoma, Triatoma, Triatoma
+subgenus,999, NO EN LA LISTA, PAS DANS LA LISTE, NOT IN THE LIST
+subgenus,9999, INCERTAIN, INCERTAIN, UNCERTAIN
+subgenus,1001, Aedeomyia, Aedeomyia, Aedeomyia
+subgenus,1002, Ankylorhynchus, Ankylorhynchus, Ankylorhynchus
+subgenus,1003, Anoedioporpa, Anoedioporpa, Anoedioporpa
+subgenus,1004, Anopheles, Anopheles, Anopheles
+subgenus,1005, Carrollia, Carrollia, Carrollia
+subgenus,1006, Conopostegus, Conopostegus, Conopostegus
+subgenus,1007, Ctenogoeldia, Ctenogoeldia, Ctenogoeldia
+subgenus,1008, Culex, Culex, Culex
+subgenus,1009, Davismyia, Davismyia, Davismyia
+subgenus,1010, Dendromyia, Dendromyia, Dendromyia
+subgenus,1011, Dodecamyia, Dodecamyia, Dodecamyia
+subgenus,1012, Exallomyia, Exallomyia, Exallomyia
+subgenus,1013, Georgecraigius, Georgecraigius, Georgecraigius
+subgenus,1014, Grabhamia, Grabhamia, Grabhamia
+subgenus,1015, Haemagogus, Haemagogus, Haemagogus
+subgenus,1016, Halaedes, Halaedes, Halaedes
+subgenus,1017, Howardina, Howardina, Howardina
+subgenus,1018, Hystatomyia, Hystatomyia, Hystatomyia
+subgenus,1019, Janthinosoma, Janthinosoma, Janthinosoma
+subgenus,1020, Kerteszia, Kerteszia, Kerteszia
+subgenus,1021, Lophopodomyia, Lophopodomyia, Lophopodomyia
+subgenus,1022, Lutzia, Lutzia, Lutzia
+subgenus,1023, Lynchiella, Lynchiella, Lynchiella
+subgenus,1024, Mansonia, Mansonia, Mansonia
+subgenus,1025, Melanoconion, Melanoconion, Melanoconion
+subgenus,1026, Menolepis, Menolepis, Menolepis
+subgenus,1027, Miamyia, Miamyia, Miamyia
+subgenus,1028, Microculex, Microculex, Microculex
+subgenus,1029, Nunezia, Nunezia, Nunezia
+subgenus,1030, Nyssorhynchus, Nyssorhynchus, Nyssorhynchus
+subgenus,1031, Ochlerotatus, Ochlerotatus, Ochlerotatus
+subgenus,1032, Peytonulus, Peytonulus, Peytonulus
+subgenus,1033, Phenacomyia, Phenacomyia, Phenacomyia
+subgenus,1034, Phoniomyia, Phoniomyia, Phoniomyia
+subgenus,1035, Prosopolepis, Prosopolepis, Prosopolepis
+subgenus,1036, Protomacleaya, Protomacleaya, Protomacleaya
+subgenus,1037, Psorophora, Psorophora, Psorophora
+subgenus,1038, Rhynchotaenia, Rhynchotaenia, Rhynchotaenia
+subgenus,1039, Sabethes, Sabethes, Sabethes
+subgenus,1040, Sabethinus, Sabethinus, Sabethinus
+subgenus,1041, Sabethoides, Sabethoides, Sabethoides
+subgenus,1042, Spilonympha, Spilonympha, Spilonympha
+subgenus,1043, Stegomyia, Stegomyia, Stegomyia
+subgenus,1044, Stethomyia, Stethomyia, Stethomyia
+subgenus,1045, Triamyia, Triamyia, Triamyia
+subgenus,1046, Uranotaenia, Uranotaenia, Uranotaenia
+subgenus,1047, Wyeomyia, Wyeomyia, Wyeomyia
+species,9999, sp, sp, sp
+species,999, OTRA especie no en la lista," AUTRE espece, pas dans la liste"," OTHER species, not in the list"
+species,3001, abonnenci, abonnenci, abonnenci
+species,3002, abunaensis, abunaensis, abunaensis
+species,1001, acharistus, acharistus, acharistus
+species,3003, aclydifera, aclydifera, aclydifera
+species,1002, aegypti, aegypti, aegypti
+species,1003, albicosta, albicosta, albicosta
+species,1004, albifasciatus, albifasciatus, albifasciatus
+species,1005, albigenu, albigenu, albigenu
+species,1006, albipes, albipes, albipes
+species,1007, albiprivus, albiprivus, albiprivus
+species,1008, albitarsis, albitarsis, albitarsis
+species,1009, albopictus, albopictus, albopictus
+species,1010, aliciae, aliciae, aliciae
+species,1011, amazonensis (Mansonia), amazonensis (Mansonia), amazonensis (Mansonia)
+species,3004, amazonensis (Psychodopydus), amazonensis (Psychodopydus), amazonensis (Psychodopydus)
+species,1012, amazonicus, amazonicus, amazonicus
+species,3005, andersoni, andersoni, andersoni
+species,1013, angustivittatus, angustivittatus, angustivittatus
+species,3006, antezanai, antezanai, antezanai
+species,3007, antunesi, antunesi, antunesi
+species,1014, aphobema, aphobema, aphobema
+species,1015, apicinus, apicinus, apicinus
+species,1016, aporonoma, aporonoma, aporonoma
+species,3008, aragaoi, aragaoi, aragaoi
+species,1017, archegus, archegus, archegus
+species,1018, argyritarsis, argyritarsis, argyritarsis
+species,1019, argyrothorax, argyrothorax, argyrothorax
+species,1020, arribalzagae, arribalzagae, arribalzagae
+species,3009, auraensis, auraensis, auraensis
+species,4003, aureus, aureus, aureus
+species,1021, aurivittata, aurivittata, aurivittata
+species,3010, avellari, avellari, avellari
+species,3011, ayrozai, ayrozai, ayrozai
+species,3012, bacula, bacula, bacula
+species,1022, bambusicola, bambusicola, bambusicola
+species,1023, bambusicolus, bambusicolus, bambusicolus
+species,3013, barrettoi, barrettoi, barrettoi
+species,1024, bastagarius, bastagarius, bastagarius
+species,4004, batesi, batesi, batesi
+species,1025, bejaranoi, bejaranoi, bejaranoi
+species,1026, belisarioi, belisarioi, belisarioi
+species,1027, benarrochi, benarrochi, benarrochi
+species,3014, beniensis, beniensis, beniensis
+species,3015, bernalei, bernalei, bernalei
+species,1028, bicornis, bicornis, bicornis
+species,1029, bidens, bidens, bidens
+species,1030, bigoti, bigoti, bigoti
+species,3016, boliviana (Pintomyia), boliviana (Pintomyia), boliviana (Pintomyia)
+species,2001, boliviana (Triatoma), boliviana (Triatoma), boliviana (Triatoma)
+species,1031, boliviensis (Anopheles), boliviensis (Anopheles), boliviensis (Anopheles)
+species,4005, boliviensis (Culicoides), boliviensis (Culicoides), boliviensis (Culicoides)
+species,4029, boliviensis (Palpomyia), boliviensis (Palpomyia), boliviensis (Palpomyia)
+species,1032, bonneae, bonneae, bonneae
+species,1033, bonnei, bonnei, bonnei
+species,3017, bourrouli, bourrouli, bourrouli
+species,4006, brasilianum, brasilianum, brasilianum
+species,1034, braziliensis, braziliensis, braziliensis
+species,1035, brethesi, brethesi, brethesi
+species,4007, bricenoi, bricenoi, bricenoi
+species,3018, brisolai, brisolai, brisolai
+species,1036, brucei, brucei, brucei
+species,3019, brumpti, brumpti, brumpti
+species,3020, caceresi, caceresi, caceresi
+species,3021, calcarata, calcarata, calcarata
+species,1037, calosomata, calosomata, calosomata
+species,3022, campbelli, campbelli, campbelli
+species,1038, capricornii, capricornii, capricornii
+species,4008, carpenteri, carpenteri, carpenteri
+species,3023, carrerai, carrerai, carrerai
+species,4009, chacoensis, chacoensis, chacoensis
+species,1039, chidesteri, chidesteri, chidesteri
+species,1040, chloropterus, chloropterus, chloropterus
+species,3024, choti, choti, choti
+species,1041, chrysonotum, chrysonotum, chrysonotum
+species,1042, ciliata, ciliata, ciliata
+species,1043, cilipes, cilipes, cilipes
+species,1044, cingulata, cingulata, cingulata
+species,1045, circumcincta, circumcincta, circumcincta
+species,1046, circumflava, circumflava, circumflava
+species,3025, claustrei, claustrei, claustrei
+species,3026, complexus, complexus, complexus
+species,1047, compressum, compressum, compressum
+species,1048, confinnis, confinnis, confinnis
+species,1049, confusa, confusa, confusa
+species,1050, conservator, conservator, conservator
+species,2002, coreodes, coreodes, coreodes
+species,1051, corniger, corniger, corniger
+species,4028, coroicoensis, coroicoensis, coroicoensis
+species,1052, coronator, coronator, coronator
+species,3027, cortelezzii, cortelezzii, cortelezzii
+species,1053, costai, costai, costai
+species,3028, coutinhoi, coutinhoi, coutinhoi
+species,4010, crescentis, crescentis, crescentis
+species,1054, crinifer, crinifer, crinifer
+species,1055, cruzii, cruzii, cruzii
+species,1056, cyanescens, cyanescens, cyanescens
+species,1057, darlingi, darlingi, darlingi
+species,3029, dasypodogeton, dasypodogeton, dasypodogeton
+species,3030, davisi (Psychodopygus), davisi (Psychodopygus), davisi (Psychodopygus)
+species,1058, davisi (Uranotenia), davisi (Uranotenia), davisi (Uranotenia)
+species,1059, deaneorum, deaneorum, deaneorum
+species,4011, debilipalpis, debilipalpis, debilipalpis
+species,1060, declarator, declarator, declarator
+species,3031, dendrophyla, dendrophyla, dendrophyla
+species,3032, dereuri, dereuri, dereuri
+species,4012, diabolicus, diabolicus, diabolicus
+species,2003, diasi, diasi, diasi
+species,1061, digitatum, digitatum, digitatum
+species,1062, dimidiata, dimidiata, dimidiata
+species,1063, discrucians, discrucians, discrucians
+species,1064, ditaenionota, ditaenionota, ditaenionota
+species,1065, dolosus, dolosus, dolosus
+species,3033, dreisbachi, dreisbachi, dreisbachi
+species,3034, duncanae, duncanae, duncanae
+species,1066, durhamii, durhamii, durhamii
+species,1067, educator, educator, educator
+species,4013, efferus, efferus, efferus
+species,1068, eiseni, eiseni, eiseni
+species,1069, ensiformis, ensiformis, ensiformis
+species,1070, espini, espini, espini
+species,1071, euiris, euiris, euiris
+species,3035, evangelistai, evangelistai, evangelistai
+species,1072, evansae, evansae, evansae
+species,1073, fajardi, fajardi, fajardi
+species,1074, fasciolatus, fasciolatus, fasciolatus
+species,1075, fascipes, fascipes, fascipes
+species,1076, ferox, ferox, ferox
+species,1077, fiebrigi, fiebrigi, fiebrigi
+species,3036, fischeri, fischeri, fischeri
+species,3037, flabellata, flabellata, flabellata
+species,1078, flaveola, flaveola, flaveola
+species,3038, flaviscutellata, flaviscutellata, flaviscutellata
+species,1079, flui, flui, flui
+species,1080, fluminensis, fluminensis, fluminensis
+species,1082, fluviatilis ((Shannoniana), fluviatilis ((Shannoniana), fluviatilis ((Shannoniana)
+species,1081, fluviatilis (Aedes), fluviatilis (Aedes), fluviatilis (Aedes)
+species,4001, fluviatilis (Culicoides), fluviatilis (Culicoides), fluviatilis (Culicoides)
+species,1083, foliafer, foliafer, foliafer
+species,1084, fonsecai (Mansonia), fonsecai (Mansonia), fonsecai (Mansonia)
+species,3039, fonsecai (Micropygomyia), fonsecai (Micropygomyia), fonsecai (Micropygomyia)
+species,1085, forattinii, forattinii, forattinii
+species,4014, foxi, foxi, foxi
+species,4015, franklini, franklini, franklini
+species,1086, fulvithorax, fulvithorax, fulvithorax
+species,1087, fulvus, fulvus, fulvus
+species,3040, furcata, furcata, furcata
+species,4016, fusipalpis, fusipalpis, fusipalpis
+species,3041, galatiae, galatiae, galatiae
+species,3042, galindoi, galindoi, galindoi
+species,3043, gantieri, gantieri, gantieri
+species,3044, geniculatus  (Psychodopygus), geniculatus  (Psychodopygus), geniculatus  (Psychodopygus)
+species,2004, geniculatus (Panstrongylus), geniculatus (Panstrongylus), geniculatus (Panstrongylus)
+species,1088, geometrica, geometrica, geometrica
+species,1089, gilesi, gilesi, gilesi
+species,1090, glaucodaemon, glaucodaemon, glaucodaemon
+species,1091, glyptosalpinx, glyptosalpinx, glyptosalpinx
+species,3045, gomezi, gomezi, gomezi
+species,1092, guadeloupensis, guadeloupensis, guadeloupensis
+species,2005, guasayana, guasayana, guasayana
+species,3046, guderiani, guderiani, guderiani
+species,3047, guilvardae, guilvardae, guilvardae
+species,2006, guntheri, guntheri, guntheri
+species,4017, guttatus, guttatus, guttatus
+species,1093, haemorrhoidalis, haemorrhoidalis, haemorrhoidalis
+species,1094, hastatus, hastatus, hastatus
+species,1095, hemisagnosta, hemisagnosta, hemisagnosta
+species,1096, hermanoi, hermanoi, hermanoi
+species,1097, hexacis, hexacis, hexacis
+species,3048, hirsutus, hirsutus, hirsutus
+species,1098, homunculus, homunculus, homunculus
+species,1099, hortator, hortator, hortator
+species,3049, huacalquensis, huacalquensis, huacalquensis
+species,1100, humeralis, humeralis, humeralis
+species,1101, hystera, hystera, hystera
+species,1102, identicus, identicus, identicus
+species,1103, idottus, idottus, idottus
+species,1104, indubitans, indubitans, indubitans
+species,2007, infestans, infestans, infestans
+species,3050, inflata, inflata, inflata
+species,3051, infraspinosa, infraspinosa, infraspinosa
+species,1105, inhibitator, inhibitator, inhibitator
+species,1106, ininii, ininii, ininii
+species,3052, inornata, inornata, inornata
+species,4018, insignis, insignis, insignis
+species,1107, intermedius (Anopheles), intermedius (Anopheles), intermedius (Anopheles)
+species,1108, intermedius (Sabethes), intermedius (Sabethes), intermedius (Sabethes)
+species,1109, intrincatus, intrincatus, intrincatus
+species,1110, ioliota, ioliota, ioliota
+species,1111, iridescens, iridescens, iridescens
+species,1112, janthinomys, janthinomys, janthinomys
+species,1113, juxtamansonia, juxtamansonia, juxtamansonia
+species,1114, konderi, konderi, konderi
+species,3053, kuscheli, kuscheli, kuscheli
+species,4019, lahillei, lahillei, lahillei
+species,3054, lainsoni, lainsoni, lainsoni
+species,1115, laneanus, laneanus, laneanus
+species,1116, lanei, lanei, lanei
+species,1117, lateralis, lateralis, lateralis
+species,1118, leei, leei, leei
+species,4020, lenti (Culicoides), lenti (Culicoides), lenti (Culicoides)
+species,3055, lenti (Evandromyia), lenti (Evandromyia), lenti (Evandromyia)
+species,4021, leopoldoi, leopoldoi, leopoldoi
+species,1119, lepidotus, lepidotus, lepidotus
+species,3056, lerayi, lerayi, lerayi
+species,1120, leucocelaenus, leucocelaenus, leucocelaenus
+species,1121, leucoptera, leucoptera, leucoptera
+species,1122, leucostigma, leucostigma, leucostigma
+species,1123, limai, limai, limai
+species,1124, lineata, lineata, lineata
+species,3057, llanosmartinsi, llanosmartinsi, llanosmartinsi
+species,3058, longipalpis, longipalpis, longipalpis
+species,1125, longipes, longipes, longipes
+species,1126, lowii, lowii, lowii
+species,3059, lutziana, lutziana, lutziana
+species,1127, lutzii (Anopheles), lutzii (Anopheles), lutzii (Anopheles)
+species,1128, lutzii (Psorophora), lutzii (Psorophora), lutzii (Psorophora)
+species,1129, lynchi, lynchi, lynchi
+species,1130, maculipes, maculipes, maculipes
+species,1131, magna, magna, magna
+species,1132, maracayensis, maracayensis, maracayensis
+species,1133, marajoara, marajoara, marajoara
+species,1134, martinezi, martinezi, martinezi
+species,1135, martinezi, martinezi, martinezi
+species,2008, matogrosensis (Triatoma), matogrosensis (Triatoma), matogrosensis (Triatoma)
+species,1136, mattogrossensis (Anopheles), mattogrossensis (Anopheles), mattogrossensis (Anopheles)
+species,1137, maxi, maxi, maxi
+species,2009, megistus, megistus, megistus
+species,1138, melanocephala, melanocephala, melanocephala
+species,1139, melanota, melanota, melanota
+species,1140, meprai, meprai, meprai
+species,2010, micki, micki, micki
+species,3060, micropyga, micropyga, micropyga
+species,3061, migonei, migonei, migonei
+species,1141, milleri, milleri, milleri
+species,3062, mollinedoi, mollinedoi, mollinedoi
+species,1142, mollis, mollis, mollis
+species,2011, montenegrensis, montenegrensis, montenegrensis
+species,2012, mucronatus, mucronatus, mucronatus
+species,1143, muehlensi, muehlensi, muehlensi
+species,1144, mystes, mystes, mystes
+species,1145, nataliae, nataliae, nataliae
+species,1146, neivai (Anopheles), neivai (Anopheles), neivai (Anopheles)
+species,3063, neivai (Nyssomyia), neivai (Nyssomyia), neivai (Nyssomyia)
+species,1147, neomaculipalpus, neomaculipalpus, neomaculipalpus
+species,3064, nevesi, nevesi, nevesi
+species,1148, nigricans, nigricans, nigricans
+species,1149, nigripalpus, nigripalpus, nigripalpus
+species,1150, nimbus, nimbus, nimbus
+species,1151, nitens, nitens, nitens
+species,3065, nocticolus, nocticolus, nocticolus
+species,2013, noireaui, noireaui, noireaui
+species,1152, nubilus, nubilus, nubilus
+species,1153, nuneztovari (Anopheles), nuneztovari (Anopheles), nuneztovari (Anopheles)
+species,3066, nuneztovari (Pintomyia), nuneztovari (Pintomyia), nuneztovari (Pintomyia)
+species,1154, oblita, oblita, oblita
+species,1155, occulta, occulta, occulta
+species,1156, ocellatus, ocellatus, ocellatus
+species,3067, octavioi, octavioi, octavioi
+species,1157, oligopistus, oligopistus, oligopistus
+species,3068, osornoi, osornoi, osornoi
+species,1158, oswaldoi (Anopheles), oswaldoi (Anopheles), oswaldoi (Anopheles)
+species,3069, oswaldoi (Micropygomyia), oswaldoi (Micropygomyia), oswaldoi (Micropygomyia)
+species,1159, pallescens, pallescens, pallescens
+species,1160, pallidiventer, pallidiventer, pallidiventer
+species,4022, paraensis (Culicoides), paraensis (Culicoides), paraensis (Culicoides)
+species,3070, paraensis (Psychodopygus), paraensis (Psychodopygus), paraensis (Psychodopygus)
+species,1161, parvus, parvus, parvus
+species,1162, patersoni, patersoni, patersoni
+species,4023, paucienfuscatus, paucienfuscatus, paucienfuscatus
+species,1163, paulli, paulli, paulli
+species,1164, pedroi, pedroi, pedroi
+species,1165, penai (Culex), penai (Culex), penai (Culex)
+species,1166, pennai, pennai, pennai
+species,3071, pentacantha, pentacantha, pentacantha
+species,3072, peresi, peresi, peresi
+species,1167, personatum, personatum, personatum
+species,3073, peruensis, peruensis, peruensis
+species,1168, peryassui, peryassui, peryassui
+species,1169, petrocchiae, petrocchiae, petrocchiae
+species,1170, pholidotus, pholidotus, pholidotus
+species,3074, pia, pia, pia
+species,2014, pictipes, pictipes, pictipes
+species,1171, pilosus, pilosus, pilosus
+species,3075, pintoi, pintoi, pintoi
+species,1172, pipiens, pipiens, pipiens
+species,2015, platensis, platensis, platensis
+species,4024, plaumanni, plaumanni, plaumanni
+species,1173, pleuristriatus, pleuristriatus, pleuristriatus
+species,3076, pradobarrientosi, pradobarrientosi, pradobarrientosi
+species,3077, preclara, preclara, preclara
+species,1174, pseudodominicii, pseudodominicii, pseudodominicii
+species,2016, pseudomaculata, pseudomaculata, pseudomaculata
+species,1175, pseudopunctipennis, pseudopunctipennis, pseudopunctipennis
+species,1176, pseudotitillans, pseudotitillans, pseudotitillans
+species,1177, pulcherrima, pulcherrima, pulcherrima
+species,3078, punctigeniculata, punctigeniculata, punctigeniculata
+species,1178, punctimacula, punctimacula, punctimacula
+species,1179, purpureus, purpureus, purpureus
+species,1180, quadrivittata, quadrivittata, quadrivittata
+species,1181, quinquefasciatus, quinquefasciatus, quinquefasciatus
+species,3079, quinquefer, quinquefer, quinquefer
+species,3080, ramirezi, ramirezi, ramirezi
+species,1182, rangeli (Anopheles), rangeli (Anopheles), rangeli (Anopheles)
+species,4025, rangeli (Culicoides), rangeli (Culicoides), rangeli (Culicoides)
+species,1183, raymondi, raymondi, raymondi
+species,3081, richardwardi, richardwardi, richardwardi
+species,3082, rispaili, rispaili, rispaili
+species,2017, robustus, robustus, robustus
+species,1184, ronderosi, ronderosi, ronderosi
+species,1185, rondoni, rondoni, rondoni
+species,3083, rondoniensis, rondoniensis, rondoniensis
+species,3084, rotundipennis, rotundipennis, rotundipennis
+species,2018, rufotuberculatus, rufotuberculatus, rufotuberculatus
+species,3085, ruparupa, ruparupa, ruparupa
+species,1186, saeva, saeva, saeva
+species,3086, sallesi, sallesi, sallesi
+species,3087, saulensis, saulensis, saulensis
+species,3088, scaffi, scaffi, scaffi
+species,1187, scapularis, scapularis, scapularis
+species,1188, schedocyclia, schedocyclia, schedocyclia
+species,1189, schnusei, schnusei, schnusei
+species,1190, septemstriatus, septemstriatus, septemstriatus
+species,3089, serrana, serrana, serrana
+species,1191, serratimarge, serratimarge, serratimarge
+species,1192, serratus, serratus, serratus
+species,3090, servulolimai, servulolimai, servulolimai
+species,1193, sexlineata, sexlineata, sexlineata
+species,1194, shannoni (Anopheles), shannoni (Anopheles), shannoni (Anopheles)
+species,1195, shannoni (Coquillettidia), shannoni (Coquillettidia), shannoni (Coquillettidia)
+species,3091, shannoni (Psathyromyia), shannoni (Psathyromyia), shannoni (Psathyromyia)
+species,3092, shawi, shawi, shawi
+species,3093, sherlocki, sherlocki, sherlocki
+species,1196, soperi, soperi, soperi
+species,3094, sordellii, sordellii, sordellii
+species,2019, sordida, sordida, sordida
+species,3095, spathotrichia, spathotrichia, spathotrichia
+species,1197, spegazzinii, spegazzinii, spegazzinii
+species,1198, spissipes, spissipes, spissipes
+species,1199, squamifemur, squamifemur, squamifemur
+species,1200, squamipennis, squamipennis, squamipennis
+species,2020, stali, stali, stali
+species,1201, stigmaticus, stigmaticus, stigmaticus
+species,1202, strodei, strodei, strodei
+species,3096, suapiensis, suapiensis, suapiensis
+species,1203, surinamensis, surinamensis, surinamensis
+species,1204, taeniopus, taeniopus, taeniopus
+species,3097, tarapacaensis, tarapacaensis, tarapacaensis
+species,1205, tarsata, tarsata, tarsata
+species,1206, tatoi, tatoi, tatoi
+species,3098, termitophila, termitophila, termitophila
+species,1207, terrens, terrens, terrens
+species,1208, theobaldi (Culex), theobaldi (Culex), theobaldi (Culex)
+species,1209, theobaldi (Toxorhynchites), theobaldi (Toxorhynchites), theobaldi (Toxorhynchites)
+species,1210, tibiamaculatus, tibiamaculatus, tibiamaculatus
+species,3099, tihuiliensis, tihuiliensis, tihuiliensis
+species,1211, titillans, titillans, titillans
+species,3100, tocaniensis, tocaniensis, tocaniensis
+species,3101, toroensis, toroensis, toroensis
+species,3102, torresi, torresi, torresi
+species,3103, tortura, tortura, tortura
+species,4002, transferrans, transferrans, transferrans
+species,1212, triannulatus, triannulatus, triannulatus
+species,3104, trinidadensis  (Micropygomyia), trinidadensis  (Micropygomyia), trinidadensis  (Micropygomyia)
+species,2021, trinidadensis (Microtriatoma), trinidadensis (Microtriatoma), trinidadensis (Microtriatoma)
+species,1213, trinkae, trinkae, trinkae
+species,3105, tuberculata, tuberculata, tuberculata
+species,1214, typhlosomata, typhlosomata, typhlosomata
+species,3106, ubiquitalis, ubiquitalis, ubiquitalis
+species,3107, umbratilis, umbratilis, umbratilis
+species,1215, undosus, undosus, undosus
+species,3108, undulata  (Psathyromyia), undulata  (Psathyromyia), undulata  (Psathyromyia)
+species,1216, undulata (Wyeomyia), undulata (Wyeomyia), undulata (Wyeomyia)
+species,1217, urichii, urichii, urichii
+species,1218, vanemdeni, vanemdeni, vanemdeni
+species,1219, varinervis, varinervis, varinervis
+species,1220, varipes, varipes, varipes
+species,3109, vattierae, vattierae, vattierae
+species,3110, velascoi, velascoi, velascoi
+species,1221, venezuelensis (Coquillettidia), venezuelensis (Coquillettidia), venezuelensis (Coquillettidia)
+species,4026, venezuelensis (Culicoides), venezuelensis (Culicoides), venezuelensis (Culicoides)
+species,4027, vernoni, vernoni, vernoni
+species,3111, volcanensis, volcanensis, volcanensis
+species,3112, wagleyi, wagleyi, wagleyi
+species,3113, walkeri, walkeri, walkeri
+species,3114, whitmani, whitmani, whitmani
+species,1222, ypsipola, ypsipola, ypsipola
+species,3115, yucumensis, yucumensis, yucumensis
+species,3116, yuilli, yuilli, yuilli
+species,3117, yungasi, yungasi, yungasi
+sample_origen,1, Su colecta en el terreno,Collecte sur le terrain,Field collection
+sample_origen,2, Muestra recibida,Échantillon reçu,Sample received
+sample_origen,3, Muestra historica,Échantillon historique,Historical sample
+sample_type,1, Insectos en agua,Insectes dans l'eau,Insects in water
+sample_type,2, Insectos NO en agua,Insectes hors de l'eau,Insects NOT in water
+sample_positive_y_n,1,Si,Oui,Yes
+sample_positive_y_n,0,No ,Non ,No 
+acuatic_location,26, RECIPIENTE  ARTIFICIAL, RÉCIPIENT ARTIFICIEL, ARTIFICIAL CONTAINER
+acuatic_location,1, Alcantarilla,Canalisation, Sewer
+acuatic_location,2, Axila de planta epifita,Aisselle d'une plante épiphyte, Axil of an epiphytic plant
+acuatic_location,3, Axila de planta terrestre,Aisselle d'une plante terrestre, Axil of a terrestrial plant
+acuatic_location,4, Bambu,Bambou, Bamboo
+acuatic_location,5, Bosque inundado,Forêt inondée, Flooded forest
+acuatic_location,6, Charco grande,Grande flaque, Large puddle
+acuatic_location,7, Charco pequeno, Petite flaque, Small puddle
+acuatic_location,8, Depresion cenagosa, Dépression boueuse,Muddy depression
+acuatic_location,9, En el rio / arroyo, Dans la rivière / le ruisseau,In the river/stream
+acuatic_location,10, Flor (bractea espata etc.)," Fleur (bractée, spathe, etc.)","Flower (bract, spathe, etc.)"
+acuatic_location,11, Fruto caido, Fruit tombé,Fallen fruit
+acuatic_location,12, Fruto no caido, Fruit non tombé,Unfallen fruit
+acuatic_location,13, Hueco en arbol, Creux dans un arbre,Hollow in a tree
+acuatic_location,14, Hueco en la roca, Creux dans un rocher,Hollow in a rock
+acuatic_location,15, Huellas de animales, Empreintes d'animaux,Animal tracks
+acuatic_location,16, Infiltracion de agua / manantial, Infiltration d'eau / source,Water seepage/spring
+acuatic_location,17, Interior de pantano, Intérieur d'un marais, Inside a swamp
+acuatic_location,18," Laguna, lago, borde de laguna o de lago"," Lagune, lac, bord d'une lagune ou d'un lac","Lagoon, lake, lagoon or lake shore"
+acuatic_location,19, Madriguera de cangrejo, Terreau de crabe,Crab burrow
+acuatic_location,20, Margen de pantano, Bord d'un marais,Swamp bank
+acuatic_location,21, Margen de rio o de arroyo, Bord d'une rivière ou d'un ruisseau,River or stream bank
+acuatic_location,22, Parte de planta / arbol caido, Partie d'une plante / d'un arbre tombé,Part of a fallen plant or tree
+acuatic_location,23, Pasto inundado, Herbe inondée,Flooded grassland
+acuatic_location,24, Planta acuatica (agarado a), Plante aquatique (accrochée à),Aquatic plant (attached to)
+acuatic_location,25, Pozo, Puits,Well
+acuatic_location,27, Zanja / drenaje, Fossé / drainage,Ditch / drainage
+acuatic_location,0, SIN DATO, SANS DONNÉE,NO DATA
+acuatic_location,999, OTRO, AUTRE, OTHER
+artificial_container,1, A1-Depositos  de gran volumen elevados tanques conectados a la red cisternas ...," A1-Réservoirs  de grand volume surélevés, réservoirs raccordés au réseau, citernes..."," A1-Large-volume elevated storage tanks connected to the network, cisterns..."
+artificial_container,2, A2-Depositos de gran volumen al nivel del suelo (turiles norias  tanques pozos tina ...)," A2-Réservoirs de grand volume au niveau du sol (puits, roues à eau,  réservoirs, puits, cuves...)"," A2-Large-volume storage tanks at ground level (water wheels, wells, tanks, tubs...)"
+artificial_container,3, B - Dep. Moviles (baldes jarros vasos galones bidones platos bandejas  frascos...)," B - Réservoirs mobiles (seaux, cruches, verres, bidons, assiettes, plateaux,  bocaux...)"," B - Mobile storage (buckets, jugs, glasses, gallons, drums, plates, trays, jars...)"
+artificial_container,4, C-Depositos fijos (canaletas sanitarios en desuso bebederos de animales pozos ciegos macetas techos ...)," C-Réservoirs fixes (gouttières sanitaires hors d'usage, abreuvoirs pour animaux, puits aveugles, pots de fleurs, toits...)"," C-Fixed containers (gutters, disused toilets, animal troughs, dry wells, flowerpots, roofs...)"
+artificial_container,5, D1- Dep. para eliminacion: Neumaticos y otros materiales rodantes, D1- Réservoirs destinés à l'élimination : Pneus et autres matériaux roulants, D1-Containers for disposal: Tires and other rolling stock
+artificial_container,6, D2-Dep. para eliminacion: Basura (botellas latas recipientes de plastico escombros chatarra ...," D2-Réservoirs destinés à l'élimination : Déchets (bouteilles, canettes, récipients en plastique, gravats, ferraille...)"," D2-Containers for disposal: Trash (bottles, cans, plastic containers, debris, scrap metal...)"
+artificial_container,999, OTRO, AUTRES, OTHER
+sampling_method_ter,1, Cebo humano, Appât humain, Human bait
+sampling_method_ter,2, Cebo animal, Appât animal, Animal bait
+sampling_method_ter,3, Trampa de luz, Piège lumineux, Light trap
+sampling_method_ter,4, Trampa succion (BG), Piège à aspiration (BG), Suction trap (BG)
+sampling_method_ter,5, Trampa de emergencia, Piège d'urgence, Emergency trap
+sampling_method_ter,6, Trampa adhesiva, Piège adhésif, Sticky trap
+sampling_method_ter,14, Trampa de intercepcion (Malaise etc..)," Piège d'interception (Malaise, etc.)"," Interception trap (Malaise, etc.)"
+sampling_method_ter,7, Red entomologica, Filet entomologique, Entomological net
+sampling_method_ter,8, Por insecticida / fauna residual, Par insecticide / faune résiduelle, By insecticide / residual fauna
+sampling_method_ter,9, Busqueda activa, Recherche active, Active search
+sampling_method_ter,10, Diseccion  o colecta de planta, Dissection  ou collecte de plantes, Dissection or plant collection
+sampling_method_ter,11, Draging/flaging (garrapatas),Draging/flaging (tiques), Dragging/flagging (ticks)
+sampling_method_ter,12, Insecto en reposo, Insecte au repos,Resting insect
+sampling_method_ter,13, Muestra de barro (Ceratopogonidae), Échantillon de boue (Ceratopogonidae),Mud sample (Ceratopogonidae)
+sampling_method_ter,15, Trampa de caida (pitfall), Piège à chute (pitfall),Pitfall trap
+sampling_method_ter,16, Embudo de Berlese, Entonnoir de Berlese,Berlese funnel
+sampling_method_ter,17, Bandejas de golpeo, Plateaux de frappe,Beating trays
+sampling_method_ter,0, SIN DATO, AUCUNE DONNÉE,NO DATA
+sampling_method_ter,999, OTRO, AUTRE,OTHER
+identificationverificationstatus,1,verificado,vérifié,verified
+identificationverificationstatus,0,no verificado,non vérifié,not verified
+identificationverificationstatus,,sin evaluar,non évalué,not evaluated
