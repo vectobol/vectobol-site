@@ -38,7 +38,7 @@
 
 #vectobol-widget .filter-row {
   display: grid;
-  grid-template-columns: 2.2fr 1.2fr 2.4fr 70px 90px 34px;
+  grid-template-columns: 2.2fr 1.2fr 2.4fr 78px 90px 34px;
   gap: 6px;
   margin-bottom: 6px;
   align-items: center;
