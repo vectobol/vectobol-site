@@ -1,5 +1,7 @@
 export const state = {
   data: [],
+  sites: [],
+  occurrences: [],
   current: [],
   samples: [],
   index: {},
