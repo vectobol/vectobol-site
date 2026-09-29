@@ -66,6 +66,7 @@ export function buildSamples() {
       species_set: new Set(),
       has_occurrences: false,
       has_identified_species: false,
+      occurrence_count: occurrences.length,
       raw: [site]
     };
 
@@ -79,9 +80,20 @@ export function buildSamples() {
     occurrences.forEach(record => {
       const speciesName = formatSpeciesName(record);
 
+      const speciesKey = record?.species_key
+        ? String(record.species_key).trim().toLowerCase()
+        : "";
+
+      const identifiedSpecies =
+        Boolean(speciesKey) &&
+        !speciesKey.endsWith("_sp");
+
+      if (identifiedSpecies) {
+        sample.has_identified_species = true;
+      }
+
       if (speciesName) {
         sample.species_set.add(speciesName);
-        sample.has_identified_species = true;
       }
 
       sample.raw.push(record);
@@ -94,4 +106,18 @@ export function buildSamples() {
     ...sample,
     species: [...sample.species_set]
   }));
+
+  console.log("[OCCURRENCES] SITE STATUS", {
+    total: state.samples.length,
+    noOccurrence: state.samples.filter(sample =>
+      sample.occurrence_count === 0
+    ).length,
+    occurrenceNoSpecies: state.samples.filter(sample =>
+      sample.occurrence_count > 0 &&
+      !sample.has_identified_species
+    ).length,
+    identifiedSpecies: state.samples.filter(sample =>
+      sample.has_identified_species
+    ).length
+  });
 }
