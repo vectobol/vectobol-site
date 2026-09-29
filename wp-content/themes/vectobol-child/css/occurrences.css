@@ -76,6 +76,11 @@
   border-radius: 6px;
 }
 
+#vectobol-widget .filter-row .intra {
+  width: 78px;
+  min-width: 78px;
+}
+
 #vectobol-widget .del-group {
   background: #d9534f;
   color: #fff;
