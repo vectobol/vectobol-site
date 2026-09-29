@@ -1,62 +1,93 @@
 import { state } from "./state.js";
-import { normField } from "./dictionary.js";
 
 export const getSampleKey = record => String(record.record_id);
 
+function formatSpeciesName(record) {
+  const genus = record?.genus
+    ? String(record.genus).trim()
+    : "";
+
+  const species = record?.species
+    ? String(record.species).trim()
+    : "";
+
+  if (!genus || !species) {
+    if (record?.species_key) {
+      const parts = String(record.species_key)
+        .replace(/_/g, " ")
+        .split(" ")
+        .filter(Boolean);
+
+      if (!parts.length) return null;
+
+      return parts
+        .map((part, index) => (
+          index === 0
+            ? part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
+            : part.toLowerCase()
+        ))
+        .join(" ");
+    }
+
+    return null;
+  }
+
+  return (
+    genus.charAt(0).toUpperCase() +
+    genus.slice(1).toLowerCase() +
+    " " +
+    species.toLowerCase()
+  );
+}
+
 export function buildSamples() {
   const sampleMap = new Map();
+  const occurrencesByRecord = new Map();
 
-  state.data.forEach(record => {
+  state.occurrences.forEach(record => {
     const key = getSampleKey(record);
 
-    if (!sampleMap.has(key)) {
-      sampleMap.set(key, {
-        record_id: key,
-        sample_id: key,
-        latitude: record.latitude,
-        longitude: record.longitude,
-        species_set: new Set(),
-        raw: []
-      });
+    if (!occurrencesByRecord.has(key)) {
+      occurrencesByRecord.set(key, []);
     }
 
-    const sample = sampleMap.get(key);
-    let speciesName = null;
+    occurrencesByRecord.get(key).push(record);
+  });
 
-    if (record.genus && record.species) {
-      const genusRaw = record[normField("genus")] ?? record.genus;
-      const speciesRaw = record[normField("species")] ?? record.species;
+  state.sites.forEach(site => {
+    const key = getSampleKey(site);
 
-      const genus = genusRaw
-        ? String(genusRaw).charAt(0).toUpperCase() + String(genusRaw).slice(1).toLowerCase()
-        : null;
+    const sample = {
+      record_id: key,
+      sample_id: site.sample_id ?? "",
+      latitude: site.latitude,
+      longitude: site.longitude,
+      altitude: site.altitude,
+      species_set: new Set(),
+      has_occurrences: false,
+      has_identified_species: false,
+      raw: [site]
+    };
 
-      const species = speciesRaw
-        ? String(speciesRaw).toLowerCase()
-        : null;
+    const occurrences =
+      occurrencesByRecord.get(key) || [];
 
-      if (genus && species) {
-        speciesName = `${genus} ${species}`;
+    if (occurrences.length) {
+      sample.has_occurrences = true;
+    }
+
+    occurrences.forEach(record => {
+      const speciesName = formatSpeciesName(record);
+
+      if (speciesName) {
+        sample.species_set.add(speciesName);
+        sample.has_identified_species = true;
       }
-    }
-    else if (record.species_key) {
-      const parts = record.species_key.replace(/_/g, " ").split(" ");
 
-      speciesName = parts.map((part, index) => (
-        index === 0
-          ? part.charAt(0).toUpperCase() + part.slice(1).toLowerCase()
-          : part.toLowerCase()
-      )).join(" ");
-    }
-    else if (record.species) {
-      speciesName = record.species;
-    }
+      sample.raw.push(record);
+    });
 
-    if (speciesName) {
-      sample.species_set.add(speciesName);
-    }
-
-    sample.raw.push(record);
+    sampleMap.set(key, sample);
   });
 
   state.samples = [...sampleMap.values()].map(sample => ({
