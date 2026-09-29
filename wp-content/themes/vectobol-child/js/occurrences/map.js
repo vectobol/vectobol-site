@@ -18,20 +18,74 @@ function setStatus(text) {
   if (element) element.textContent = text;
 }
 
+function getSiteStatus(sample) {
+  if (!sample || sample.occurrence_count === 0) {
+    return "no-occurrence";
+  }
+
+  if (sample.has_identified_species) {
+    return "identified-species";
+  }
+
+  return "occurrence-no-species";
+}
+
+function getSiteStatusLabel(status) {
+  const labels = {
+    fr: {
+      "no-occurrence": "Site de collecte sans occurrence",
+      "occurrence-no-species": "Site avec occurrence(s), sans espèce identifiée",
+      "identified-species": "Site avec au moins une espèce identifiée"
+    },
+    en: {
+      "no-occurrence": "Collection site without occurrence",
+      "occurrence-no-species": "Site with occurrence(s), no identified species",
+      "identified-species": "Site with at least one identified species"
+    },
+    es: {
+      "no-occurrence": "Sitio de colecta sin ocurrencia",
+      "occurrence-no-species": "Sitio con ocurrencia(s), sin especie identificada",
+      "identified-species": "Sitio con al menos una especie identificada"
+    }
+  };
+
+  return labels[state.lang]?.[status] ||
+    labels.en[status] ||
+    status;
+}
+
 function createPoint(latitude, longitude, sample) {
   const sampleCode = sample.sample_id ?? "";
   const speciesList = sample.species || [];
+  const status = getSiteStatus(sample);
+  const statusLabel = getSiteStatusLabel(status);
 
-  const marker = L.circleMarker([latitude, longitude], {
-    radius: 4,
-    color: "#2c7be5",
-    fillColor: "#2c7be5",
-    fillOpacity: 0.9
-  });
+  const markerOptions = {
+    radius:
+      status === "identified-species" ? 5 :
+      status === "occurrence-no-species" ? 4.5 :
+      4,
+    color:
+      status === "identified-species" ? "#2c7be5" :
+      status === "occurrence-no-species" ? "#f39c12" :
+      "#777",
+    fillColor:
+      status === "identified-species" ? "#2c7be5" :
+      status === "occurrence-no-species" ? "#f39c12" :
+      "#aaa",
+    fillOpacity:
+      status === "no-occurrence" ? 0.45 : 0.9
+  };
+
+  const marker = L.circleMarker(
+    [latitude, longitude],
+    markerOptions
+  );
 
   const html = `
     <div style="font-size:12px; line-height:1.4">
-      <b>Field code:</b> ${sampleCode}<br><br>
+      <b>Field code:</b> ${sampleCode}<br>
+      <b>Status:</b> ${statusLabel}<br><br>
       <b>Species (${speciesList.length}):</b><br>
       ${speciesList.length
         ? speciesList.map(species => `<i>${species}</i>`).join("<br>")
@@ -47,6 +101,43 @@ function createPoint(latitude, longitude, sample) {
   });
 
   return marker;
+}
+
+function createLegend() {
+  const existing = document.querySelector(".vb-map-legend");
+  if (existing) existing.remove();
+
+  const legend = L.control({ position: "bottomright" });
+
+  legend.onAdd = () => {
+    const container = L.DomUtil.create("div", "vb-map-legend");
+
+    const title =
+      state.lang === "fr" ? "État des sites" :
+      state.lang === "es" ? "Estado de los sitios" :
+      "Site status";
+
+    container.innerHTML =
+      '<div class="vb-map-legend-title">' + title + '</div>' +
+      '<div class="vb-map-legend-row">' +
+        '<span class="vb-map-legend-dot vb-site-no-occurrence"></span>' +
+        '<span>' + getSiteStatusLabel("no-occurrence") + '</span>' +
+      '</div>' +
+      '<div class="vb-map-legend-row">' +
+        '<span class="vb-map-legend-dot vb-site-occurrence-no-species"></span>' +
+        '<span>' + getSiteStatusLabel("occurrence-no-species") + '</span>' +
+      '</div>' +
+      '<div class="vb-map-legend-row">' +
+        '<span class="vb-map-legend-dot vb-site-identified-species"></span>' +
+        '<span>' + getSiteStatusLabel("identified-species") + '</span>' +
+      '</div>';
+
+    L.DomEvent.disableClickPropagation(container);
+
+    return container;
+  };
+
+  legend.addTo(map);
 }
 
 export function initMap() {
@@ -96,6 +187,8 @@ export function initMap() {
   map.addLayer(clusterLayer);
 
   map.fitBounds(boliviaBounds, { padding: [20, 20] });
+
+  createLegend();
 
   setTimeout(() => map?.invalidateSize(), 200);
 }
