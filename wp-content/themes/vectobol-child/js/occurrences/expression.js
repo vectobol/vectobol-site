@@ -10,7 +10,16 @@ export function updateCount() {
     es: "Puntos filtrados"
   }[state.lang] || "Filtered points";
 
-  const count = Array.isArray(state.current) ? state.current.length : 0;
+  const count = Array.isArray(state.current)
+    ? state.current.filter(sample => {
+        const latitude = Number(sample?.latitude);
+        const longitude = Number(sample?.longitude);
+
+        return Number.isFinite(latitude) &&
+          Number.isFinite(longitude);
+      }).length
+    : 0;
+
   element.textContent = `${label} : ${count}`;
 }
 
