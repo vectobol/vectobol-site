@@ -190,6 +190,27 @@ export function initMap() {
 
   createLegend();
 
+  /*
+   * Move the existing cluster/point toggle into the Leaflet map
+   * controls, at the top right of the map. The same #toggle button
+   * is reused so its language handling and click behavior remain
+   * unchanged.
+   */
+  const toggleButton = document.getElementById("toggle");
+  if (toggleButton) {
+    const toggleControl = L.control({ position: "topright" });
+
+    toggleControl.onAdd = () => {
+      const container = L.DomUtil.create("div", "leaflet-control vb-map-toggle-control");
+      container.appendChild(toggleButton);
+      L.DomEvent.disableClickPropagation(container);
+      L.DomEvent.disableScrollPropagation(container);
+      return container;
+    };
+
+    toggleControl.addTo(map);
+  }
+
   setTimeout(() => map?.invalidateSize(), 200);
 }
 
