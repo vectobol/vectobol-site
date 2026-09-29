@@ -54,10 +54,28 @@ export function initMap() {
     throw new Error("Leaflet is not loaded");
   }
 
-  const element = document.getElementById("map");
+  let element = document.getElementById("map");
   if (!element) return;
 
   if (map) return;
+
+  /*
+   * Compatibility during the migration:
+   * an older inline map script may already have initialized #map
+   * before this module starts. Leaflet stores an internal marker
+   * on the container (_leaflet_id), but the existing Map instance
+   * is owned by the old script and is not safely recoverable here.
+   *
+   * Replace the already-initialized container with a clean clone,
+   * preserving its HTML attributes but removing the old Leaflet DOM
+   * and listeners. The new module then becomes the sole map owner.
+   */
+  if (element._leaflet_id) {
+    const replacement = element.cloneNode(false);
+
+    element.parentNode.replaceChild(replacement, element);
+    element = replacement;
+  }
 
   map = L.map(element);
 
