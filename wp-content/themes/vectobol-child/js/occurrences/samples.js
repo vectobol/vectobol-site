@@ -66,12 +66,14 @@ export function buildSamples() {
       species_set: new Set(),
       has_occurrences: false,
       has_identified_species: false,
-      occurrence_count: occurrences.length,
+      occurrence_count: 0,
       raw: [site]
     };
 
     const occurrences =
       occurrencesByRecord.get(key) || [];
+
+    sample.occurrence_count = occurrences.length;
 
     if (occurrences.length) {
       sample.has_occurrences = true;
