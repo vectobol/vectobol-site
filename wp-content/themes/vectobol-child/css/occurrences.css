@@ -225,3 +225,48 @@
     min-height: 420px;
   }
 }
+
+
+#vectobol-widget .vb-map-legend {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+}
+
+#vectobol-widget .vb-map-legend-title {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+#vectobol-widget .vb-map-legend-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+#vectobol-widget .vb-map-legend-dot {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid #666;
+}
+
+#vectobol-widget .vb-map-legend .vb-site-no-occurrence {
+  background: #aaa;
+}
+
+#vectobol-widget .vb-map-legend .vb-site-occurrence-no-species {
+  background: #f39c12;
+}
+
+#vectobol-widget .vb-map-legend .vb-site-identified-species {
+  background: #2c7be5;
+}
