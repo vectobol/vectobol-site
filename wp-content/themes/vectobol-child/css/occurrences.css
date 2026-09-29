@@ -270,3 +270,16 @@
 #vectobol-widget .vb-map-legend .vb-site-identified-species {
   background: #2c7be5;
 }
+
+/* Map control: make the cluster/point toggle clearly visible. */
+#vectobol-widget .vb-map-toggle-control #toggle {
+  min-width: 110px;
+  min-height: 36px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
