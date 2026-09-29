@@ -78,8 +78,10 @@ async function boot() {
   console.log("[OCCURRENCES] INIT START");
 
   try {
-    const { data, dictionary } = await loadData();
+    const { sites, occurrences, data, dictionary } = await loadData();
 
+    state.sites = sites;
+    state.occurrences = occurrences;
     state.data = data;
     state.dictionary = dictionary;
     state.lang = getLang();
