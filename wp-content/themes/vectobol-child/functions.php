@@ -98,6 +98,18 @@ add_action('wp_enqueue_scripts', function () {
 
     if (!vb_is_species_template()) return;
 
+    $species_css_path =
+        get_stylesheet_directory() . '/css/species-sheet.css';
+
+    if (file_exists($species_css_path)) {
+        wp_enqueue_style(
+            'vectobol-species-sheet',
+            get_stylesheet_directory_uri() . '/css/species-sheet.css',
+            ['vectobol-child-style'],
+            filemtime($species_css_path)
+        );
+    }
+
     /* Leaflet : requis uniquement par la fiche espèce. */
     wp_enqueue_style(
         'leaflet',
