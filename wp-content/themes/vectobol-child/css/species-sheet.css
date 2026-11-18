@@ -1,0 +1,183 @@
+/* =========================================================
+   VECTOBOL — SPECIES SHEET
+   Styles indépendante d'Elementor.
+========================================================= */
+
+.vb-species-gallery {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vb-species-gallery-item {
+  flex: 0 0 min(240px, 72vw);
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.vb-species-gallery-trigger {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+}
+
+.vb-species-gallery-trigger img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  background: #f4f4f4;
+}
+
+.vb-species-gallery-item figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-top: 0.45rem;
+  font-size: 0.9rem;
+}
+
+.vb-media-author {
+  color: #666;
+  font-size: 0.82rem;
+}
+
+.vb-historical-map {
+  margin: 0;
+  text-align: center;
+}
+
+.vb-historical-map img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.vb-media-lightbox[hidden] {
+  display: none;
+}
+
+.vb-media-lightbox {
+  position: fixed;
+  z-index: 100000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.92);
+}
+
+.vb-media-lightbox-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(1100px, 100%);
+  max-height: 100%;
+  color: #fff;
+}
+
+.vb-media-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+  cursor: zoom-in;
+}
+
+.vb-media-lightbox-image.is-zoomed {
+  transform: scale(1.5);
+  cursor: zoom-out;
+}
+
+.vb-media-lightbox-caption {
+  width: min(760px, 100%);
+  text-align: center;
+  overflow-y: auto;
+  max-height: 20vh;
+}
+
+.vb-media-lightbox-title,
+.vb-media-lightbox-author,
+.vb-media-lightbox-comments {
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.vb-media-lightbox-author {
+  color: #ddd;
+}
+
+.vb-media-lightbox-comments {
+  white-space: pre-wrap;
+  color: #eee;
+}
+
+.vb-media-lightbox button {
+  position: absolute;
+  z-index: 2;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.6);
+  border-radius: 4px;
+  color: #fff;
+  background: rgba(0,0,0,0.55);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.vb-media-lightbox button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.vb-media-lightbox-close {
+  top: 0;
+  right: 0;
+}
+
+.vb-media-lightbox-previous {
+  left: 0;
+  top: 42%;
+}
+
+.vb-media-lightbox-next {
+  right: 0;
+  top: 42%;
+}
+
+.vb-media-lightbox-zoom {
+  right: 0;
+  bottom: 25%;
+}
+
+body.vb-lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .vb-media-lightbox {
+    padding: 0.5rem;
+  }
+
+  .vb-media-lightbox-image {
+    max-height: 65vh;
+  }
+
+  .vb-media-lightbox-previous {
+    left: 0;
+  }
+
+  .vb-media-lightbox-next {
+    right: 0;
+  }
+}
