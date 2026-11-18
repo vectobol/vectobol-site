@@ -1,14 +1,13 @@
-const lang =
-  document.documentElement.lang
-    ? document.documentElement.lang.toLowerCase().split("-")[0]
-    : "fr";
+function getLang() {
+  return (document.documentElement.lang || "fr")
+    .toLowerCase()
+    .split("-")[0];
+}
 
 export function watchLanguageChange(callback) {
-
   let currentLang = getLang();
 
   const observer = new MutationObserver(() => {
-
     const newLang = getLang();
 
     if (newLang !== currentLang) {
