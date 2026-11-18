@@ -1,13 +1,19 @@
-import { qs } from "../shared/utils.js";
+export function renderHeader(state = window.VECTOBOL?.data) {
+  const element =
+    document.getElementById("species_header") ||
+    document.querySelector("[data-species-title]");
 
-export function renderHeader(state) {
+  if (!element || !state?.taxonomy) {
+    return;
+  }
 
-  const h = qs("species_header");
+  const genus = state.taxonomy.genus || "";
+  const species = state.taxonomy.species || "";
 
-  if (!h || !state.taxonomy) return;
+  element.replaceChildren();
 
-  const genus = state.taxonomy?.taxonomy?.genus || "";
-  const species = state.taxonomy?.taxonomy?.species || "";
+  const scientificName = document.createElement("i");
+  scientificName.textContent = `${genus} ${species}`.trim();
 
-  h.innerHTML = `<i>${genus} ${species}</i>`;
+  element.appendChild(scientificName);
 }
