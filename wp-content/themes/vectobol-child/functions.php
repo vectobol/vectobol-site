@@ -98,12 +98,28 @@ add_action('wp_enqueue_scripts', function () {
 
     if (!vb_is_species_template()) return;
 
+    /* Leaflet : requis uniquement par la fiche espèce. */
+    wp_enqueue_style(
+        'leaflet',
+        'https://unpkg.com/leaflet/dist/leaflet.css',
+        [],
+        null
+    );
+
+    wp_enqueue_script(
+        'leaflet',
+        'https://unpkg.com/leaflet/dist/leaflet.js',
+        [],
+        null,
+        true
+    );
+
     $js_path = get_stylesheet_directory() . '/js/species/index.js';
 
     wp_enqueue_script(
         'vectobol-species',
         get_stylesheet_directory_uri() . '/js/species/index.js',
-        [],
+        ['leaflet'],
         file_exists($js_path) ? filemtime($js_path) : null,
         true
     );
@@ -432,312 +448,7 @@ add_action('rest_api_init', function () {
         SPECIES DATA FROM SQL
         ========================================================= */
 
-        register_rest_route('vectobol/v1', '/species/(?P<species>[a-z0-9_-]+)', [
-            'methods' => 'GET',
-            'permission_callback' => '__return_true',
-
-            'callback' => function ($request) {
-
-                global $wpdb;
-
-                $species_key = sanitize_key($request['species']);
-
-                if (empty($species_key)) {
-                    return new WP_Error(
-                        'invalid_species',
-                        'Invalid species key',
-                        ['status' => 400]
-                    );
-                }
-
-
-                /* =================================================
-                TABLES
-                ================================================= */
-
-                $taxa_table = $wpdb->prefix . 'vb_taxa';
-                $content_table = $wpdb->prefix . 'vb_species_content';
-
-
-                /* =================================================
-                TAXON + SPECIES CONTENT
-                ================================================= */
-
-                $sql = $wpdb->prepare(
-
-                    "
-                    SELECT
-
-                        /* TAXONOMY */
-
-                        t.id AS taxon_id,
-                        t.taxon_key,
-                        t.slug,
-
-                        t.phylum,
-                        t.class,
-                        t.order_name,
-                        t.family,
-                        t.subfamily,
-                        t.tribe,
-
-                        t.genus,
-                        t.subgenus,
-                        t.species,
-
-                        /* AUTHORITY */
-
-                        t.author,
-                        t.year,
-                        t.author_parentheses,
-
-                        /* SPECIES CONTENT */
-
-                        s.sheet_author,
-
-                        s.status_fr,
-                        s.status_en,
-                        s.status_es,
-
-                        s.systematics_fr,
-                        s.systematics_en,
-                        s.systematics_es,
-
-                        s.bioecology_fr,
-                        s.bioecology_en,
-                        s.bioecology_es,
-
-                        s.pathogens_fr,
-                        s.pathogens_en,
-                        s.pathogens_es,
-
-                        s.distribution_fr,
-                        s.distribution_en,
-                        s.distribution_es,
-
-                        s.bolivia_fr,
-                        s.bolivia_en,
-                        s.bolivia_es,
-
-                        s.bibliography,
-
-                        s.systematics_updated_at,
-                        s.bioecology_updated_at,
-                        s.pathogens_updated_at,
-                        s.distribution_updated_at,
-                        s.bolivia_updated_at,
-                        s.bibliography_updated_at
-
-                    FROM $taxa_table AS t
-
-                    LEFT JOIN $content_table AS s
-                        ON s.taxon_id = t.id
-
-                    WHERE t.taxon_key = %s
-
-                    LIMIT 1
-                    ",
-
-                    $species_key
-
-                );
-
-
-                $row = $wpdb->get_row(
-                    $sql,
-                    ARRAY_A
-                );
-
-
-                /* =================================================
-                SPECIES NOT FOUND
-                ================================================= */
-
-                if (!$row) {
-
-                    return new WP_Error(
-                        'not_found',
-                        'Species not found',
-                        ['status' => 404]
-                    );
-
-                }
-
-
-                /* =================================================
-                RETURN STRUCTURE
-                ================================================= */
-
-                return [
-
-                    'key' => $row['taxon_key'],
-
-                    'slug' => $row['slug'],
-
-
-                    /* =============================================
-                    TAXONOMY
-                    ============================================= */
-
-                    'taxonomy' => [
-
-                        'phylum' =>
-                            $row['phylum'],
-
-                        'class' =>
-                            $row['class'],
-
-                        'order' =>
-                            $row['order_name'],
-
-                        'family' =>
-                            $row['family'],
-
-                        'subfamily' =>
-                            $row['subfamily'],
-
-                        'tribe' =>
-                            $row['tribe'],
-
-                        'genus' =>
-                            $row['genus'],
-
-                        'subgenus' =>
-                            $row['subgenus'],
-
-                        'species' =>
-                            $row['species']
-
-                    ],
-
-
-                    /* =============================================
-                    AUTHORITY
-                    ============================================= */
-
-                    'authority' => [
-
-                        'author' =>
-                            $row['author'],
-
-                        'year' =>
-                            $row['year'],
-
-                        'parentheses' =>
-                            (bool) $row['author_parentheses']
-
-                    ],
-
-
-                    /* =============================================
-                    SPECIES CONTENT
-                    ============================================= */
-
-                    'systematics_fr' =>
-                        $row['systematics_fr'] ?? '',
-
-                    'systematics_en' =>
-                        $row['systematics_en'] ?? '',
-
-                    'systematics_es' =>
-                        $row['systematics_es'] ?? '',
-
-
-                    'bioecology_fr' =>
-                        $row['bioecology_fr'] ?? '',
-
-                    'bioecology_en' =>
-                        $row['bioecology_en'] ?? '',
-
-                    'bioecology_es' =>
-                        $row['bioecology_es'] ?? '',
-
-
-                    'pathogens_fr' =>
-                        $row['pathogens_fr'] ?? '',
-
-                    'pathogens_en' =>
-                        $row['pathogens_en'] ?? '',
-
-                    'pathogens_es' =>
-                        $row['pathogens_es'] ?? '',
-
-
-                    'distribution_fr' =>
-                        $row['distribution_fr'] ?? '',
-
-                    'distribution_en' =>
-                        $row['distribution_en'] ?? '',
-
-                    'distribution_es' =>
-                        $row['distribution_es'] ?? '',
-
-
-                    'bolivia_fr' =>
-                        $row['bolivia_fr'] ?? '',
-
-                    'bolivia_en' =>
-                        $row['bolivia_en'] ?? '',
-
-                    'bolivia_es' =>
-                        $row['bolivia_es'] ?? '',
-
-
-                    'bibliography' =>
-                        $row['bibliography'] ?? '',
-
-
-                    /* =============================================
-                    META
-                    ============================================= */
-
-                    'sheet_author' =>
-                        $row['sheet_author'] ?? '',
-
-                    'status_fr' =>
-                        $row['status_fr'] ?? 'draft',
-
-                    'status_en' =>
-                        $row['status_en'] ?? 'draft',
-
-                    'status_es' =>
-                        $row['status_es'] ?? 'draft',
-
-
-                    'updated_at' => [
-
-                        'systematics' =>
-                            $row['systematics_updated_at'],
-
-                        'bioecology' =>
-                            $row['bioecology_updated_at'],
-
-                        'pathogens' =>
-                            $row['pathogens_updated_at'],
-
-                        'distribution' =>
-                            $row['distribution_updated_at'],
-
-                        'bolivia' =>
-                            $row['bolivia_updated_at'],
-
-                        'bibliography' =>
-                            $row['bibliography_updated_at']
-
-                    ]
-
-                ];
-
-            }
-
-        ]);
-
-
-
-
-
-
-
+        /* Public species-sheet endpoint moved to the VECTOBOL plugin. */
 
      register_rest_route('vectobol/v1', '/collaborators', [
         'methods' => 'GET',
