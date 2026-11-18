@@ -1,17 +1,23 @@
-const t = window.VECTOBOL_I18N?.t;
-
 export function renderTexts() {
+  const translate = window.VECTOBOL_I18N?.t;
+
+  if (typeof translate !== "function") {
+    return;
+  }
 
   const nodes = document.querySelectorAll("[data-label]");
 
-  nodes.forEach(el => {
+  nodes.forEach((element) => {
+    const key = element.dataset.label;
 
-    const key = el.dataset.label;
-    if (!key) return;
+    if (!key) {
+      return;
+    }
 
-    const value = t(key);
-    if (!value) return;
+    const value = translate(key);
 
-    el.textContent = value;
+    if (value && value !== key) {
+      element.textContent = value;
+    }
   });
 }
