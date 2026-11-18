@@ -1,35 +1,40 @@
 export function renderEcology() {
+  const ecology = window.VECTOBOL?.data?.ecology;
 
-  const eco = window.VECTOBOL?.data?.ecology;
-  if (!eco) return;
+  if (!ecology) {
+    return;
+  }
 
-  const lang = (document.documentElement.lang || "fr").slice(0, 2);
+  const sections = ecology.sections || {};
 
-  const map = {
-    systematics: "systematics",
-    bioecology: "bioecology",
-    pathogens: "pathogens",
-    distribution: "distribution",
-    bolivia: "bolivia"
-  };
+  const sectionKeys = [
+    "systematics",
+    "bioecology",
+    "pathogens",
+    "distribution",
+    "bolivia"
+  ];
 
-  Object.entries(map).forEach(([key, base]) => {
+  sectionKeys.forEach((key) => {
+    const element = document.querySelector(`[data-i18n="${key}"]`);
 
-    const el = document.querySelector(`[data-i18n="${key}"]`);
-    if (!el) return;
+    if (!element) {
+      return;
+    }
 
-    const value =
-      eco[`${base}_${lang}`] ||
-      eco[`${base}_fr`] ||
-      "";
-
-    el.innerHTML = value;
+    /*
+     * L'API ne transmet que la langue demandée et les sections
+     * publiables. Aucun repli vers une autre langue n'est permis
+     * pour les contenus scientifiques.
+     */
+    element.innerHTML = sections[key] || "";
   });
 
-  // bibliographie (non multilingue)
-  const biblio = document.querySelector(`[data-i18n="bibliography"]`);
+  const bibliography = document.querySelector(
+    '[data-i18n="bibliography"]'
+  );
 
-  if (biblio) {
-    biblio.innerHTML = eco.bibliography || "";
+  if (bibliography) {
+    bibliography.innerHTML = ecology.bibliography || "";
   }
 }
