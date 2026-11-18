@@ -9,13 +9,20 @@ export function speciesLink(row) {
   if (!row) return null;
   if (row.has_ecology !== true) return null;
 
-  const slug = getSpeciesSlug(row);
-  if (!slug) return null;
-
   const lang =
     (document.documentElement.lang || "fr")
       .toLowerCase()
       .split("-")[0];
+
+  /*
+   * Une fiche n'est liée publiquement que si son statut global
+   * est ready dans la langue actuellement affichée.
+   */
+  if (!["fr", "en", "es"].includes(lang)) return null;
+  if (row[`status_${lang}`] !== "ready") return null;
+
+  const slug = getSpeciesSlug(row);
+  if (!slug) return null;
 
   const prefixes = {
     fr: "espece",
