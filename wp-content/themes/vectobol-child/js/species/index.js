@@ -2,7 +2,6 @@ import { loadSpecies } from "./loader.js";
 
 import { initMap, renderSites } from "./renderMap.js";
 import { renderTexts } from "./renderText.js";
-import { renderTitle } from "./renderTitle.js";
 import { renderMeta } from "./renderMeta.js";
 import { renderEcology } from "./renderEcology.js";
 import { renderHeader } from "./renderHeader.js";
@@ -26,8 +25,7 @@ function renderAll(source = "unknown") {
     return;
   }
 
-  renderHeader();
-  renderTitle();
+  renderHeader(data);
   renderTexts();
   renderEcology();
   renderSites();
@@ -84,6 +82,17 @@ async function init() {
     await loadSpecies();
   } catch (e) {
     console.error("[SPECIES] loader failed", e);
+
+    const status = document.getElementById("vb-status");
+    if (status) {
+      status.textContent = e.message || "Fiche espèce indisponible.";
+    }
+
+    const data = window.VECTOBOL?.data;
+    if (data) {
+      data.ready = false;
+    }
+
     return;
   }
 
@@ -93,8 +102,19 @@ async function init() {
 
   scheduleRender("init");
 
-  watchLanguageChange(() => {
-    scheduleRender("lang-change");
+  watchLanguageChange(async () => {
+    try {
+      await loadSpecies();
+      initMap();
+      scheduleRender("lang-change");
+    } catch (error) {
+      console.error("[SPECIES] language reload failed", error);
+
+      const status = document.getElementById("vb-status");
+      if (status) {
+        status.textContent = error.message || "Fiche espèce indisponible.";
+      }
+    }
   });
 
   window.addEventListener("load", () => {
