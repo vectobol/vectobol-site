@@ -52,7 +52,24 @@ export async function loadSpecies() {
   }
 
   if (!response.ok) {
-    const message = payload?.message || "Fiche espèce indisponible.";
+    const unavailableMessages = {
+      fr: "Fiche espèce indisponible dans cette langue.",
+      en: "Species sheet unavailable in this language.",
+      es: "Ficha de especie no disponible en este idioma."
+    };
+
+    const invalidMessages = {
+      fr: "Paramètres de fiche espèce invalides.",
+      en: "Invalid species sheet parameters.",
+      es: "Parámetros de ficha de especie no válidos."
+    };
+
+    const message = response.status === 404
+      ? unavailableMessages[lang]
+      : response.status === 400
+        ? invalidMessages[lang]
+        : (payload?.message || unavailableMessages[lang]);
+
     const error = new Error(message);
     error.status = response.status;
     error.code = payload?.code || "species_api_error";
