@@ -1,274 +1,115 @@
 /* =========================================================
    SPECIES DATA LOADER
-   Source :
-   - taxonomy + species content → SQL via REST API
-   - occurrences → JSON REDCap, inchangé
-========================================================= */
-
-
-function safeFetch(url) {
-
-  return fetch(url)
-    .then(res => {
-
-      if (!res.ok) {
-
-        console.warn("[FETCH FAIL]", url);
-
-        return null;
-      }
-
-      return res.json();
-
-    })
-    .catch(err => {
-
-      console.error("[FETCH ERROR]", url, err);
-
-      return null;
-    });
-}
-
-
-/* =========================================================
-   GET SPECIES FROM URL
+   Source unique : API REST du plugin VECTOBOL.
+   Aucune dépendance à Elementor ni aux anciens fichiers JSON.
 ========================================================= */
 
 function getSpeciesFromURL() {
-
   const url = new URL(window.location.href);
-
   return url.searchParams.get("species");
 }
 
+function getCurrentLanguage() {
+  const language = (
+    document.documentElement.lang || "fr"
+  ).toLowerCase().split("-")[0];
 
-/* =========================================================
-   LOAD SPECIES
-========================================================= */
+  return ["fr", "en", "es"].includes(language)
+    ? language
+    : "fr";
+}
 
 export async function loadSpecies() {
-
   const slug = getSpeciesFromURL();
 
-
   if (!slug) {
-
-    console.error("[SPECIES] Missing species in URL");
-
-    return;
+    throw new Error("[SPECIES] Paramètre species absent de l'URL.");
   }
 
+  const lang = getCurrentLanguage();
 
-  /*
-   * Normalisation :
-   *
-   * panstrongylus-noireaui
-   *        ↓
-   * panstrongylus_noireaui
-   */
+  const apiUrl = new URL(
+    `/wp-json/vectobol/v1/species/${encodeURIComponent(slug)}`,
+    window.location.origin
+  );
 
-  const key = slug.replaceAll("-", "_");
+  apiUrl.searchParams.set("lang", lang);
 
+  const response = await fetch(apiUrl.toString(), {
+    method: "GET",
+    headers: {
+      "Accept": "application/json"
+    },
+    credentials: "same-origin"
+  });
 
-  /* =======================================================
-     URLS
-  ======================================================= */
+  let payload;
 
-  const apiUrl =
-    `${window.location.origin}/wp-json/vectobol/v1/species/${encodeURIComponent(key)}`;
-
-
-  const occurrencesUrl =
-    `${window.location.origin}/wp-content/data/vectobol/production/occurrences.json`;
-
-
-  /* =======================================================
-     LOAD DATA
-  ======================================================= */
-
-  const [species, occurrences] = await Promise.all([
-
-    safeFetch(apiUrl),
-
-    safeFetch(occurrencesUrl)
-
-  ]);
-
-
-  /* =======================================================
-     CHECK SPECIES DATA
-  ======================================================= */
-
-  if (!species) {
-
-    console.error(
-      "[SPECIES] SQL species data could not be loaded"
-    );
-
-    return;
+  try {
+    payload = await response.json();
+  } catch (error) {
+    throw new Error("[SPECIES] Réponse API non JSON.");
   }
 
+  if (!response.ok) {
+    const message = payload?.message || "Fiche espèce indisponible.";
+    const error = new Error(message);
+    error.status = response.status;
+    error.code = payload?.code || "species_api_error";
+    throw error;
+  }
 
-  /* =======================================================
-     GLOBAL STATE
-  ======================================================= */
+  if (
+    !payload?.species ||
+    !payload?.content ||
+    !Array.isArray(payload?.photos) ||
+    !Array.isArray(payload?.collection_sites)
+  ) {
+    throw new Error("[SPECIES] Structure JSON de l'API invalide.");
+  }
+
+  const taxonomy = payload.species.taxonomy || {};
 
   window.VECTOBOL = window.VECTOBOL || {};
 
-
   window.VECTOBOL.data = {
+    slug: payload.species.slug || slug,
+    key: payload.species.taxon_key || "",
+    language: payload.content.language || lang,
 
-    /*
-     * Basic identifiers
-     */
-
-    slug: species.slug || slug,
-
-    key: species.key || key,
-
-
-    /*
-     * Taxonomy
-     *
-     * Compatible with renderTitle.js
-     */
-
-    taxonomy: species.taxonomy || {},
-
-    authority: species.authority || {},
-
-
-    /*
-     * Species content
-     *
-     * Compatible with renderEcology.js
-     */
-
-    ecology: {
-
-      key: species.key || key,
-
-      slug: species.slug || slug,
-
-      has_ecology: true,
-
-
-      /* Meta */
-
-      redaction:
-        species.sheet_author || "",
-
-
-      /*
-       * Current SQL content
-       */
-
-      systematics_fr:
-        species.systematics_fr || "",
-
-      systematics_en:
-        species.systematics_en || "",
-
-      systematics_es:
-        species.systematics_es || "",
-
-
-      bioecology_fr:
-        species.bioecology_fr || "",
-
-      bioecology_en:
-        species.bioecology_en || "",
-
-      bioecology_es:
-        species.bioecology_es || "",
-
-
-      pathogens_fr:
-        species.pathogens_fr || "",
-
-      pathogens_en:
-        species.pathogens_en || "",
-
-      pathogens_es:
-        species.pathogens_es || "",
-
-
-      distribution_fr:
-        species.distribution_fr || "",
-
-      distribution_en:
-        species.distribution_en || "",
-
-      distribution_es:
-        species.distribution_es || "",
-
-
-      bolivia_fr:
-        species.bolivia_fr || "",
-
-      bolivia_en:
-        species.bolivia_en || "",
-
-      bolivia_es:
-        species.bolivia_es || "",
-
-
-      bibliography:
-        species.bibliography || "",
-
-
-      /*
-       * Status
-       */
-
-      status_fr:
-        species.status_fr || "draft",
-
-      status_en:
-        species.status_en || "draft",
-
-      status_es:
-        species.status_es || "draft",
-
-
-      /*
-       * Dates
-       */
-
-      updated_at:
-        species.updated_at || {}
-
+    taxonomy,
+    authority: {
+      author: taxonomy.author || "",
+      year: taxonomy.year || null,
+      parentheses: Boolean(taxonomy.author_parentheses)
     },
 
+    ecology: {
+      key: payload.species.taxon_key || "",
+      slug: payload.species.slug || slug,
+      has_ecology: true,
+      redaction: payload.content.sheet_author || "",
+      last_updated: payload.content.last_updated || null,
+      sections: payload.content.sections || {},
+      bibliography: payload.content.bibliography || ""
+    },
 
-    /*
-     * Occurrences
-     *
-     * Still loaded from the existing JSON.
-     */
+    photos: payload.photos,
+    collection_sites: payload.collection_sites,
 
-    occurrences:
-      Array.isArray(occurrences)
-        ? occurrences
-        : [],
-
-
-    /*
-     * Loader state
-     */
-
-    ready: true
-
+    ready: true,
+    error: null
   };
 
-
-  /* =======================================================
-     DEBUG
-  ======================================================= */
-
-  console.log(
-    "[SPECIES] SQL DATA LOADED",
-    window.VECTOBOL.data
+  console.info(
+    "[SPECIES] Fiche chargée depuis l'API VECTOBOL",
+    {
+      slug: window.VECTOBOL.data.slug,
+      language: window.VECTOBOL.data.language,
+      media: payload.photos.length,
+      collectionSites: payload.collection_sites.length
+    }
   );
 
+  return window.VECTOBOL.data;
 }
