@@ -16,6 +16,47 @@ console.log("[SPECIES] APP LOADED");
    RENDER PIPELINE
 ========================= */
 
+function showLoadError(error) {
+  const message = error?.message || "Fiche espèce indisponible.";
+
+  const data = window.VECTOBOL?.data;
+  if (data) {
+    data.ready = false;
+  }
+
+  document.querySelectorAll(
+    '[data-i18n="systematics"],' +
+    '[data-i18n="bioecology"],' +
+    '[data-i18n="pathogens"],' +
+    '[data-i18n="distribution"],' +
+    '[data-i18n="bolivia"],' +
+    '[data-i18n="bibliography"]'
+  ).forEach((element) => element.replaceChildren());
+
+  const gallery =
+    document.getElementById("photo_band") ||
+    document.querySelector("[data-vb-gallery]");
+
+  if (gallery) {
+    gallery.replaceChildren();
+  }
+
+  const metadata = document.getElementById("species_meta");
+  if (metadata) {
+    metadata.replaceChildren();
+  }
+
+  const mapElement = document.getElementById("vb-map");
+  if (mapElement) {
+    mapElement.hidden = true;
+  }
+
+  const status = document.getElementById("vb-status");
+  if (status) {
+    status.textContent = message;
+  }
+}
+
 function renderAll(source = "unknown") {
 
   const data = window.VECTOBOL?.data;
@@ -82,17 +123,7 @@ async function init() {
     await loadSpecies();
   } catch (e) {
     console.error("[SPECIES] loader failed", e);
-
-    const status = document.getElementById("vb-status");
-    if (status) {
-      status.textContent = e.message || "Fiche espèce indisponible.";
-    }
-
-    const data = window.VECTOBOL?.data;
-    if (data) {
-      data.ready = false;
-    }
-
+    showLoadError(e);
     return;
   }
 
@@ -109,11 +140,7 @@ async function init() {
       scheduleRender("lang-change");
     } catch (error) {
       console.error("[SPECIES] language reload failed", error);
-
-      const status = document.getElementById("vb-status");
-      if (status) {
-        status.textContent = error.message || "Fiche espèce indisponible.";
-      }
+      showLoadError(error);
     }
   });
 
