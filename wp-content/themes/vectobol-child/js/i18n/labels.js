@@ -28,6 +28,8 @@ const labels = {
     genus: "Genre",
     subgenus: "Sous-genre",
     species: "Espèce",
+    sheet_author: "Fiche rédigée par",
+    last_update: "Mise à jour",
 
     
 
@@ -127,6 +129,8 @@ const labels = {
     genus: "Genus",
     subgenus: "Subgenus",
     species: "Species",
+    sheet_author: "Fact sheet written by",
+    last_update: "Last updated",
 
        sidebar_newsletter_title: "📬 Scientific newsletter",
       sidebar_newsletter_text: "Get scientific updates from the VECTOBOL project",
@@ -219,6 +223,8 @@ const labels = {
     genus: "Género",
     subgenus: "Subgénero",
     species: "Especie",
+    sheet_author: "Ficha redactada por",
+    last_update: "Última actualización",
 
     sidebar_newsletter_title: "📬 Boletín científico",
     sidebar_newsletter_text: "Reciba las actualizaciones científicas del proyecto VECTOBOL.",
