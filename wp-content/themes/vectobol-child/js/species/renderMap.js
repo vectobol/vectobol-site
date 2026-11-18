@@ -1,118 +1,182 @@
 let map = null;
 let layerGroup = null;
 
+function setStatus(message) {
+  const element = document.getElementById("vb-status");
+
+  if (element) {
+    element.textContent = message;
+  }
+}
+
+function getData() {
+  return window.VECTOBOL?.data || null;
+}
+
+function renderHistoricalMap(element, media) {
+  const figure = document.createElement("figure");
+  figure.className = "vb-historical-map";
+
+  const image = document.createElement("img");
+  image.src = media.full_url || media.image_url;
+  image.alt = media.alt || media.caption || "Historical distribution map";
+  image.loading = "lazy";
+  image.style.maxWidth = "100%";
+  image.style.height = "auto";
+
+  figure.appendChild(image);
+
+  if (media.caption) {
+    const caption = document.createElement("figcaption");
+    caption.textContent = media.caption;
+    figure.appendChild(caption);
+  }
+
+  element.replaceChildren(figure);
+  element.hidden = false;
+  element.style.height = "auto";
+  element.style.minHeight = "0";
+
+  setStatus("Carte historique de distribution");
+}
+
 /* =========================
    INIT MAP
 ========================= */
 export function initMap() {
+  const element = document.getElementById("vb-map");
 
-  const el = document.getElementById("vb-map");
-
-  if (!el) return;
-
-  if (el._leaflet_id) {
-    map = el._leaflet_map || map;
-    if (!layerGroup && map) {
-      layerGroup = L.layerGroup().addTo(map);
-    }
+  if (!element) {
     return;
   }
 
-  map = L.map(el).setView([-15, -65], 5);
-  el._leaflet_map = map;
+  const data = getData();
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap"
-  }).addTo(map);
+  if (!data) {
+    setStatus("Données géographiques indisponibles.");
+    return;
+  }
 
-  layerGroup = L.layerGroup().addTo(map);
+  const sites = Array.isArray(data.collection_sites)
+    ? data.collection_sites
+    : [];
 
-  console.log("Map initialized");
+  if (sites.length === 0) {
+    const historicalMap = (data.photos || []).find(
+      (media) => media.media_type === "historical_map"
+    );
+
+    if (historicalMap) {
+      renderHistoricalMap(element, historicalMap);
+    } else {
+      element.hidden = true;
+      setStatus("Aucune donnée géographique disponible.");
+    }
+
+    return;
+  }
+
+  if (!window.L) {
+    setStatus("La bibliothèque cartographique n'est pas disponible.");
+    return;
+  }
+
+  element.hidden = false;
+
+  if (element._leaflet_id && map) {
+    return;
+  }
+
+  map = window.L.map(element).setView([-15, -65], 5);
+
+  window.L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+      attribution: "© OpenStreetMap"
+    }
+  ).addTo(map);
+
+  layerGroup = window.L.layerGroup().addTo(map);
 }
 
 /* =========================
-   STATUS
-========================= */
-function setStatus(text) {
-  const el = document.getElementById("vb-status");
-  if (el) el.textContent = text;
-}
-
-/* =========================
-   RENDER SITES
+   RENDER COLLECTION SITES
 ========================= */
 export function renderSites() {
-
-  if (!map || !layerGroup) return;
-
-  const data = window.VECTOBOL?.data;
-
-  if (!data || !Array.isArray(data.occurrences)) {
-    console.warn("Occurrences not ready yet");
+  if (!map || !layerGroup) {
     return;
   }
 
-  const slugKey = data.key;
-
-  const filtered = data.occurrences.filter(p => {
-
-      if (!p) return false;
-
-      return p.species_key === slugKey;
-    });
-
-
-    // Un point = un record_id
-    const points = [
-      ...new Map(
-        filtered.map(p => [
-          p.record_id,
-          p
-        ])
-      ).values()
-    ];
-
+  const data = getData();
+  const sites = Array.isArray(data?.collection_sites)
+    ? data.collection_sites
+    : [];
 
   layerGroup.clearLayers();
 
-  if (!points.length) {
-    setStatus("Aucune occurrence");
-
-    layerGroup.clearLayers();
-
-    map.setView([-16.29, -63.58], 7);
-
+  if (!sites.length) {
+    setStatus("Aucun site de collecte VECTOBOL.");
     return;
   }
-    
-  setStatus(`${points.length} points de collecte`);
 
   const bounds = [];
 
-  for (const p of points) {
+  sites.forEach((site) => {
+    const latitude = Number(site.latitude);
+    const longitude = Number(site.longitude);
 
-    const lat = Number(p.latitude);
-    const lon = Number(p.longitude);
+    if (
+      !Number.isFinite(latitude) ||
+      !Number.isFinite(longitude) ||
+      latitude < -90 ||
+      latitude > 90 ||
+      longitude < -180 ||
+      longitude > 180
+    ) {
+      return;
+    }
 
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) continue;
+    const point = [latitude, longitude];
+    bounds.push(point);
 
-    bounds.push([lat, lon]);
+    const popup = document.createElement("div");
+    const record = document.createElement("strong");
+    record.textContent = site.record_id || "";
+    popup.appendChild(record);
 
-    L.circleMarker([lat, lon], {
+    const administrativeNames = [
+      site.admin3_name,
+      site.admin2_name,
+      site.admin1_name
+    ].filter(Boolean);
+
+    if (administrativeNames.length) {
+      const details = document.createElement("div");
+      details.textContent = administrativeNames.join(", ");
+      popup.appendChild(details);
+    }
+
+    window.L.circleMarker(point, {
       radius: 5,
       color: "#1f78b4",
       fillColor: "#1f78b4",
       fillOpacity: 1,
       weight: 1
     })
-    .bindPopup(`
-      <b>${p.genus ?? ""} ${p.species ?? ""}</b><br>
-      ${p.sample_admin1 ?? ""} ${p.sample_admin2 ?? ""}
-    `)
-    .addTo(layerGroup);
+      .bindPopup(popup)
+      .addTo(layerGroup);
+  });
+
+  if (!bounds.length) {
+    setStatus("Aucun site ne possède de coordonnées cartographiables.");
+    return;
   }
 
-  if (bounds.length) {
+  setStatus(`${bounds.length} sites de collecte VECTOBOL`);
+
+  if (bounds.length === 1) {
+    map.setView(bounds[0], 8);
+  } else {
     map.fitBounds(bounds, { padding: [20, 20] });
   }
 }
