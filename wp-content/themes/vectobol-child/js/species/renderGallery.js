@@ -4,17 +4,41 @@ function getLanguage() {
     .split("-")[0];
 }
 
-function getNoMediaLabel() {
+function getGalleryLabels() {
   const labels = {
-    fr: "Aucun média disponible",
-    en: "No media available",
-    es: "No hay medios disponibles"
+    fr: {
+      empty: "Aucun média disponible",
+      viewer: "Visionneuse de médias",
+      close: "Fermer",
+      previous: "Média précédent",
+      next: "Média suivant",
+      zoom: "Agrandir",
+      open: "Ouvrir le média"
+    },
+    en: {
+      empty: "No media available",
+      viewer: "Media viewer",
+      close: "Close",
+      previous: "Previous media",
+      next: "Next media",
+      zoom: "Zoom",
+      open: "Open media"
+    },
+    es: {
+      empty: "No hay medios disponibles",
+      viewer: "Visor de medios",
+      close: "Cerrar",
+      previous: "Medio anterior",
+      next: "Medio siguiente",
+      zoom: "Ampliar",
+      open: "Abrir medio"
+    }
   };
 
   return labels[getLanguage()] || labels.fr;
 }
 
-function buildLightbox(media, initialIndex) {
+function buildLightbox(media, initialIndex, labels) {
   const previous = document.querySelector(".vb-media-lightbox");
 
   if (previous) {
@@ -29,7 +53,7 @@ function buildLightbox(media, initialIndex) {
   dialog.className = "vb-media-lightbox";
   dialog.setAttribute("role", "dialog");
   dialog.setAttribute("aria-modal", "true");
-  dialog.setAttribute("aria-label", "Media viewer");
+  dialog.setAttribute("aria-label", labels.viewer);
   dialog.tabIndex = -1;
   dialog.hidden = true;
 
@@ -40,25 +64,25 @@ function buildLightbox(media, initialIndex) {
   closeButton.type = "button";
   closeButton.className = "vb-media-lightbox-close";
   closeButton.textContent = "×";
-  closeButton.setAttribute("aria-label", "Close");
+  closeButton.setAttribute("aria-label", labels.close);
 
   const previousButton = document.createElement("button");
   previousButton.type = "button";
   previousButton.className = "vb-media-lightbox-previous";
   previousButton.textContent = "‹";
-  previousButton.setAttribute("aria-label", "Previous media");
+  previousButton.setAttribute("aria-label", labels.previous);
 
   const nextButton = document.createElement("button");
   nextButton.type = "button";
   nextButton.className = "vb-media-lightbox-next";
   nextButton.textContent = "›";
-  nextButton.setAttribute("aria-label", "Next media");
+  nextButton.setAttribute("aria-label", labels.next);
 
   const zoomButton = document.createElement("button");
   zoomButton.type = "button";
   zoomButton.className = "vb-media-lightbox-zoom";
   zoomButton.textContent = "+";
-  zoomButton.setAttribute("aria-label", "Zoom");
+  zoomButton.setAttribute("aria-label", labels.zoom);
 
   const image = document.createElement("img");
   image.className = "vb-media-lightbox-image";
@@ -175,12 +199,13 @@ export function renderGallery() {
   }
 
   const media = window.VECTOBOL?.data?.photos || [];
+  const labels = getGalleryLabels();
 
   container.replaceChildren();
 
   if (!media.length) {
     const empty = document.createElement("em");
-    empty.textContent = getNoMediaLabel();
+    empty.textContent = labels.empty;
     container.appendChild(empty);
     return;
   }
@@ -188,7 +213,7 @@ export function renderGallery() {
   const gallery = document.createElement("div");
   gallery.className = "vb-species-gallery";
 
-  const openLightbox = buildLightbox(media, 0);
+  const openLightbox = buildLightbox(media, 0, labels);
 
   media.forEach((item, index) => {
     const figure = document.createElement("figure");
@@ -200,7 +225,7 @@ export function renderGallery() {
     button.className = "vb-species-gallery-trigger";
     button.setAttribute(
       "aria-label",
-      item.caption || item.alt || `Open media ${index + 1}`
+      item.caption || item.alt || `${labels.open} ${index + 1}`
     );
 
     const image = document.createElement("img");
