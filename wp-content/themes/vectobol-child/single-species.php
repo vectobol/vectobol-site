@@ -7,6 +7,7 @@ get_header();
   <!-- HERO -->
   <section class="vb-hero vb-card">
     <h1 id="species_header" class="vb-title"></h1>
+    <div id="vb-species-message" class="vb-species-message" role="status" aria-live="polite" hidden></div>
     <div id="species_meta" class="vb-meta"></div>
   </section>
 
@@ -58,7 +59,8 @@ get_header();
 
       <div class="vb-card vb-sticky">
         <h2 id="label_collectes">Collectes</h2>
-        <div id="map"></div>
+        <div id="vb-map"></div>
+        <div id="vb-status" class="vb-map-status" role="status" aria-live="polite"></div>
       </div>
 
     </aside>
