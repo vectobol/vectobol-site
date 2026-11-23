@@ -53,6 +53,40 @@ function getData() {
   return window.VECTOBOL?.data || null;
 }
 
+function isMappableSite(site) {
+  if (
+    site?.latitude === null ||
+    site?.latitude === "" ||
+    site?.longitude === null ||
+    site?.longitude === ""
+  ) {
+    return false;
+  }
+
+  const latitude = Number(site.latitude);
+  const longitude = Number(site.longitude);
+
+  return (
+    Number.isFinite(latitude) &&
+    Number.isFinite(longitude) &&
+    latitude >= -90 &&
+    latitude <= 90 &&
+    longitude >= -180 &&
+    longitude <= 180
+  );
+}
+
+function showMapCard(element) {
+  const card = element.closest(".vb-card");
+  if (card) card.hidden = false;
+}
+
+function hideMapCard(element) {
+  element.hidden = true;
+  const card = element.closest(".vb-card");
+  if (card) card.hidden = true;
+}
+
 function renderHistoricalMap(element, media) {
   const figure = document.createElement("figure");
   figure.className = "vb-historical-map";
@@ -93,28 +127,33 @@ export function initMap() {
   const data = getData();
 
   if (!data) {
-    setStatus(getMapLabels().noData);
+    hideMapCard(element);
     return;
   }
 
   const sites = Array.isArray(data.collection_sites)
-    ? data.collection_sites
+    ? data.collection_sites.filter(isMappableSite)
     : [];
 
+  // Les points VECTOBOL ont priorité dès qu'au moins un point
+  // possède des coordonnées réellement cartographiables.
   if (sites.length === 0) {
-    const historicalMap = (data.photos || []).find(
-      (media) => media.media_type === "historical_map"
-    );
+    const historicalMap = data.historical_map ||
+      (data.photos || []).find(
+        media => media.media_type === "historical_map"
+      );
 
     if (historicalMap) {
+      showMapCard(element);
       renderHistoricalMap(element, historicalMap);
     } else {
-      element.hidden = true;
-      setStatus(getMapLabels().noData);
+      hideMapCard(element);
     }
 
     return;
   }
+
+  showMapCard(element);
 
   if (!window.L) {
     setStatus(getMapLabels().unavailable);
@@ -149,13 +188,13 @@ export function renderSites() {
 
   const data = getData();
   const sites = Array.isArray(data?.collection_sites)
-    ? data.collection_sites
+    ? data.collection_sites.filter(isMappableSite)
     : [];
 
   layerGroup.clearLayers();
 
   if (!sites.length) {
-    setStatus(getMapLabels().noSites);
+    setStatus(getMapLabels().noCoordinates);
     return;
   }
 
