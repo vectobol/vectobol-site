@@ -18,33 +18,33 @@ get_header();
     <div class="vb-col vb-main">
 
       <div class="vb-card">
-        <h2 id="label_systematique"></h2>
-        <div id="txt_systematique"></div>
+        <h2 id="label_systematique" data-label="systematique">Systématique</h2>
+        <div id="txt_systematique" data-i18n="systematics"></div>
       </div>
 
       <div class="vb-card">
-        <h2 id="label_bio_ecologie"></h2>
-        <div id="txt_bio_ecologie"></div>
+        <h2 id="label_bio_ecologie" data-label="bioecologie">Bioécologie</h2>
+        <div id="txt_bio_ecologie" data-i18n="bioecology"></div>
       </div>
 
       <div class="vb-card">
-        <h2 id="label_pathogenes"></h2>
-        <div id="txt_pathogenes"></div>
+        <h2 id="label_pathogenes" data-label="pathogenes">Pathogènes</h2>
+        <div id="txt_pathogenes" data-i18n="pathogens"></div>
       </div>
 
       <div class="vb-card">
-        <h2 id="label_distribution"></h2>
-        <div id="txt_distribution"></div>
+        <h2 id="label_distribution" data-label="distribution">Distribution</h2>
+        <div id="txt_distribution" data-i18n="distribution"></div>
       </div>
 
       <div class="vb-card">
-        <h2 id="label_bolivie"></h2>
-        <div id="txt_bolivie"></div>
+        <h2 id="label_bolivie" data-label="bolivie">En Bolivie...</h2>
+        <div id="txt_bolivie" data-i18n="bolivia"></div>
       </div>
 
       <div class="vb-card">
-        <h2 id="label_bibliographie"></h2>
-        <div id="txt_bibliographie"></div>
+        <h2 id="label_bibliographie" data-label="bibliographie">Bibliographie</h2>
+        <div id="txt_bibliographie" data-i18n="bibliography"></div>
       </div>
 
     </div>
