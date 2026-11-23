@@ -52,27 +52,64 @@ export async function loadSpecies() {
   }
 
   if (!response.ok) {
-    const unavailableMessages = {
-      fr: "Fiche espèce indisponible dans cette langue.",
-      en: "Species sheet unavailable in this language.",
-      es: "Ficha de especie no disponible en este idioma."
+    const messages = {
+      fr: {
+        species_language_unavailable: "Cette fiche espèce n’est pas encore disponible en français.",
+        species_not_found: "Cette espèce n’existe pas dans le référentiel VECTOBOL ou n’est pas publiée.",
+        invalid: "Paramètres de fiche espèce invalides.",
+        technical: "Une erreur technique empêche actuellement le chargement de cette fiche."
+      },
+      en: {
+        species_language_unavailable: "This species sheet is not yet available in English.",
+        species_not_found: "This species does not exist in the VECTOBOL reference or is not published.",
+        invalid: "Invalid species sheet parameters.",
+        technical: "A technical error currently prevents this species sheet from loading."
+      },
+      es: {
+        species_language_unavailable: "Esta ficha de especie todavía no está disponible en español.",
+        species_not_found: "Esta especie no existe en el catálogo de referencia VECTOBOL o no está publicada.",
+        invalid: "Parámetros de ficha de especie no válidos.",
+        technical: "Un error técnico impide actualmente cargar esta ficha."
+      }
     };
 
-    const invalidMessages = {
-      fr: "Paramètres de fiche espèce invalides.",
-      en: "Invalid species sheet parameters.",
-      es: "Parámetros de ficha de especie no válidos."
-    };
+    const code = payload?.code || "species_api_error";
+    const languageMessages = messages[lang] || messages.fr;
+    const message = code === "species_language_unavailable"
+      ? languageMessages.species_language_unavailable
+      : code === "species_not_found"
+        ? languageMessages.species_not_found
+        : response.status === 400
+          ? languageMessages.invalid
+          : languageMessages.technical;
 
-    const message = response.status === 404
-      ? unavailableMessages[lang]
-      : response.status === 400
-        ? invalidMessages[lang]
-        : (payload?.message || unavailableMessages[lang]);
+    // L'API fournit les données taxonomiques même si la langue
+    // demandée n'est pas publiée : le titre reste donc affichable.
+    const unavailableSpecies = payload?.data?.species;
+    if (unavailableSpecies?.taxonomy) {
+      const taxonomy = unavailableSpecies.taxonomy;
+      window.VECTOBOL = window.VECTOBOL || {};
+      window.VECTOBOL.data = {
+        slug: unavailableSpecies.slug || slug,
+        key: unavailableSpecies.taxon_key || "",
+        language: lang,
+        taxonomy,
+        authority: {
+          author: taxonomy.author || "",
+          year: taxonomy.year ?? null,
+          parentheses: Boolean(taxonomy.author_parentheses)
+        },
+        photos: [],
+        historical_map: null,
+        collection_sites: [],
+        ready: false,
+        error: code
+      };
+    }
 
     const error = new Error(message);
     error.status = response.status;
-    error.code = payload?.code || "species_api_error";
+    error.code = code;
     throw error;
   }
 
@@ -111,7 +148,12 @@ export async function loadSpecies() {
       bibliography: payload.content.bibliography || ""
     },
 
-    photos: payload.photos,
+    photos: payload.photos.filter(
+      media => media.media_type === "photo"
+    ),
+    historical_map: payload.historical_map || payload.photos.find(
+      media => media.media_type === "historical_map"
+    ) || null,
     collection_sites: payload.collection_sites,
 
     ready: true,
