@@ -54,19 +54,19 @@ export async function loadSpecies() {
   if (!response.ok) {
     const messages = {
       fr: {
-        species_language_unavailable: "Cette fiche espèce n’est pas encore disponible en français.",
+        species_language_unavailable: "Cette fiche espèce n’est pas encore disponible en français. Son contenu est actuellement en préparation ou en cours de révision scientifique.",
         species_not_found: "Cette espèce n’existe pas dans le référentiel VECTOBOL ou n’est pas publiée.",
         invalid: "Paramètres de fiche espèce invalides.",
         technical: "Une erreur technique empêche actuellement le chargement de cette fiche."
       },
       en: {
-        species_language_unavailable: "This species sheet is not yet available in English.",
+        species_language_unavailable: "This species sheet is not yet available in English. Its content is currently being prepared or undergoing scientific review.",
         species_not_found: "This species does not exist in the VECTOBOL reference or is not published.",
         invalid: "Invalid species sheet parameters.",
         technical: "A technical error currently prevents this species sheet from loading."
       },
       es: {
-        species_language_unavailable: "Esta ficha de especie todavía no está disponible en español.",
+        species_language_unavailable: "Esta ficha de especie todavía no está disponible en español. Su contenido está en preparación o en proceso de revisión científica.",
         species_not_found: "Esta especie no existe en el catálogo de referencia VECTOBOL o no está publicada.",
         invalid: "Parámetros de ficha de especie no válidos.",
         technical: "Un error técnico impide actualmente cargar esta ficha."
