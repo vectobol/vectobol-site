@@ -1,6 +1,6 @@
 
 
-export const labels = {
+const labels = {
   fr: {
     systematique: "Systématique",
     bioecologie: "Bioécologie",
@@ -46,12 +46,12 @@ export const labels = {
   }
 };
 
-export function getLang() {
+function getLang() {
   const lang = document.documentElement.lang;
   return lang ? lang.toLowerCase().split("-")[0] : "fr";
 }
 
-export function t(key) {
+function t(key) {
   const lang = getLang();
   return labels?.[lang]?.[key]
     ?? labels?.fr?.[key]
