@@ -17,11 +17,25 @@ console.log("[SPECIES] APP LOADED");
 ========================= */
 
 function showLoadError(error) {
-  const message = error?.message || "Fiche espèce indisponible.";
+  const message = error?.message || "Erreur lors du chargement de la fiche espèce.";
 
   const data = window.VECTOBOL?.data;
   if (data) {
     data.ready = false;
+    if (data.taxonomy) {
+      renderHeader(data);
+    }
+  }
+
+  const grid = document.querySelector(".vb-grid");
+  if (grid) {
+    grid.hidden = true;
+  }
+
+  const speciesMessage = document.getElementById("vb-species-message");
+  if (speciesMessage) {
+    speciesMessage.textContent = message;
+    speciesMessage.hidden = false;
   }
 
   document.querySelectorAll(
@@ -50,11 +64,6 @@ function showLoadError(error) {
   if (mapElement) {
     mapElement.hidden = true;
   }
-
-  const status = document.getElementById("vb-status");
-  if (status) {
-    status.textContent = message;
-  }
 }
 
 function renderAll(source = "unknown") {
@@ -64,6 +73,17 @@ function renderAll(source = "unknown") {
   if (!data || !data.ready) {
     console.warn("[SPECIES] Render skipped: data not ready");
     return;
+  }
+
+  const grid = document.querySelector(".vb-grid");
+  if (grid) {
+    grid.hidden = false;
+  }
+
+  const speciesMessage = document.getElementById("vb-species-message");
+  if (speciesMessage) {
+    speciesMessage.hidden = true;
+    speciesMessage.textContent = "";
   }
 
   renderHeader(data);
