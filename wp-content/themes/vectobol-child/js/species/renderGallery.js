@@ -198,7 +198,9 @@ export function renderGallery() {
     return;
   }
 
-  const media = window.VECTOBOL?.data?.photos || [];
+  const media = (window.VECTOBOL?.data?.photos || []).filter(
+    item => item.media_type === "photo"
+  );
   const labels = getGalleryLabels();
 
   container.replaceChildren();
