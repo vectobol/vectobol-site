@@ -131,7 +131,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script(
         'vectobol-species',
         get_stylesheet_directory_uri() . '/js/species/index.js',
-        ['leaflet'],
+        ['leaflet', 'vectobol-i18n'],
         file_exists($js_path) ? filemtime($js_path) : null,
         true
     );
@@ -259,6 +259,7 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
     $modules = [
         'vectobol-list',
+        'vectobol-i18n',
         'vectobol-species',
         'vectobol-collaborators',
         'vectobol-occurrences'
@@ -598,13 +599,17 @@ add_action('wp_enqueue_scripts', function () {
 
   if (is_admin()) return;
 
-  wp_enqueue_script(
-    'vectobol-i18n',
-    get_stylesheet_directory_uri() . '/js/i18n/labels.js',
-    [],
-    filemtime(get_stylesheet_directory() . '/js/i18n/labels.js'),
-    true
-  );
+  $i18n_js_path = get_stylesheet_directory() . '/js/species/labels.js';
+
+  if (file_exists($i18n_js_path)) {
+    wp_enqueue_script(
+      'vectobol-i18n',
+      get_stylesheet_directory_uri() . '/js/species/labels.js',
+      [],
+      filemtime($i18n_js_path),
+      true
+    );
+  }
 
 
   wp_enqueue_script(
