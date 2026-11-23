@@ -8,7 +8,7 @@ export const labels = {
     distribution: "Distribution",
     bolivie: "En Bolivie...",
     bibliographie: "Bibliographie",
-    collectes: "Points de collecte VectoBol",
+    collectes: "Cartographie",
     photos: "Photos",
 
     sheet_author: "Fiche rédigée par",
@@ -24,7 +24,7 @@ export const labels = {
     distribution: "Distribution",
     bolivie: "In Bolivia...",
     bibliographie: "Bibliography",
-    collectes: "VectoBol records",
+    collectes: "Mapping",
     photos: "Photos",
 
     sheet_author: "Fact sheet written by",
@@ -38,7 +38,7 @@ export const labels = {
     distribution: "Distribución",
     bolivie: "En Bolivia...",
     bibliographie: "Bibliografía",
-    collectes: "Puntos de colecta VectoBol",
+    collectes: "Cartografía",
     photos: "Fotos",
 
     sheet_author: "Ficha redactada por",
