@@ -259,7 +259,6 @@ add_filter('script_loader_tag', function ($tag, $handle, $src) {
 
     $modules = [
         'vectobol-list',
-        'vectobol-i18n',
         'vectobol-species',
         'vectobol-collaborators',
         'vectobol-occurrences'
