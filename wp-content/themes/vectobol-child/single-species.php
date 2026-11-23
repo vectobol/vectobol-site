@@ -53,12 +53,12 @@ get_header();
     <aside class="vb-col vb-side">
 
       <div class="vb-card vb-sticky">
-        <h2 id="label_photos">Photos</h2>
+        <h2 id="label_photos" data-label="photos">Photos</h2>
         <div id="photo_band" class="vb-photo-band"></div>
       </div>
 
       <div class="vb-card vb-sticky">
-        <h2 id="label_collectes">Collectes</h2>
+        <h2 id="label_collectes" data-label="collectes">Cartographie</h2>
         <div id="vb-map"></div>
         <div id="vb-status" class="vb-map-status" role="status" aria-live="polite"></div>
       </div>
