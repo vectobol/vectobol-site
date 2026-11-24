@@ -205,3 +205,86 @@ body.vb-lightbox-open {
   margin-top: 0.5rem;
   font-size: 0.9rem;
 }
+
+
+/* =========================================================
+   NATIVE SPECIES PAGE TEMPLATE — SINGLE CONTENT COLUMN
+========================================================= */
+
+.vb-species-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.vb-species-header {
+  margin: 0 0 1.5rem;
+}
+
+.vb-species-title {
+  margin: 0;
+  line-height: 1.25;
+}
+
+.vb-taxonomic-authority {
+  font-size: 0.78em;
+  font-weight: 400;
+  white-space: normal;
+}
+
+.vb-meta {
+  margin-top: 0.65rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.vb-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.vb-grid[hidden] {
+  display: none !important;
+}
+
+.vb-species-section {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.vb-species-section > h2 {
+  margin: 0 0 1rem;
+}
+
+.vb-species-section > :last-child {
+  margin-bottom: 0;
+}
+
+.vb-species-map #vb-map {
+  width: 100%;
+  min-height: 380px;
+}
+
+.vb-species-map #vb-map[hidden] {
+  display: none !important;
+}
+
+.vb-species-map #vb-status:empty {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .vb-species-section {
+    padding: 1rem;
+  }
+
+  .vb-species-map #vb-map {
+    min-height: 300px;
+  }
+}
