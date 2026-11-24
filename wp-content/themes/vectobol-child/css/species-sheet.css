@@ -326,3 +326,172 @@ body.vb-lightbox-open {
   font-size: 1.02rem;
   line-height: 1.5;
 }
+
+
+/* =========================================================
+   MEDIA LIGHTBOX — PROGRESSIVE ZOOM + PAN + TOUCH
+   Overrides for the improved viewer in renderGallery.js.
+========================================================= */
+
+.vb-media-lightbox {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.vb-media-lightbox-panel {
+  width: min(1400px, 100%);
+  gap: 0.65rem;
+}
+
+.vb-media-lightbox-viewport {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: min(72vh, 900px);
+  min-height: 180px;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background: rgba(0, 0, 0, 0.18);
+  cursor: grab;
+}
+
+.vb-media-lightbox-viewport.is-zoomed,
+.vb-media-lightbox-image.is-zoomed {
+  cursor: grab;
+}
+
+.vb-media-lightbox-viewport:active {
+  cursor: grabbing;
+}
+
+.vb-media-lightbox-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transform-origin: center center;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.vb-media-lightbox-toolbar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  min-height: 2.8rem;
+}
+
+.vb-media-lightbox button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(255,255,255,0.65);
+  border-radius: 5px;
+  color: #fff;
+  background: rgba(25,25,25,0.82);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.vb-media-lightbox button:hover:not(:disabled) {
+  background: rgba(75,75,75,0.95);
+}
+
+.vb-media-lightbox button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+.vb-media-lightbox button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.vb-media-lightbox-close {
+  position: absolute !important;
+  top: 0.25rem;
+  right: 0.25rem;
+  z-index: 5;
+  font-size: 1.8rem !important;
+}
+
+.vb-media-lightbox-previous,
+.vb-media-lightbox-next {
+  position: absolute !important;
+  top: 42%;
+  z-index: 4;
+  min-width: 2.8rem !important;
+  min-height: 3.2rem !important;
+  font-size: 2rem !important;
+}
+
+.vb-media-lightbox-previous {
+  left: 0.25rem;
+}
+
+.vb-media-lightbox-next {
+  right: 0.25rem;
+}
+
+.vb-media-lightbox-zoom-level {
+  min-width: 3.8rem;
+  color: #fff;
+  text-align: center;
+  font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.vb-media-lightbox-caption {
+  width: min(900px, 100%);
+  max-height: 16vh;
+  padding: 0 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .vb-media-lightbox {
+    padding: 0.35rem;
+  }
+
+  .vb-media-lightbox-viewport {
+    height: 68vh;
+    min-height: 160px;
+  }
+
+  .vb-media-lightbox-toolbar {
+    gap: 0.35rem;
+  }
+
+  .vb-media-lightbox button {
+    min-width: 2.35rem;
+    min-height: 2.35rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .vb-media-lightbox-previous {
+    left: 0.1rem;
+  }
+
+  .vb-media-lightbox-next {
+    right: 0.1rem;
+  }
+
+  .vb-media-lightbox-caption {
+    max-height: 18vh;
+    font-size: 0.9rem;
+  }
+}
