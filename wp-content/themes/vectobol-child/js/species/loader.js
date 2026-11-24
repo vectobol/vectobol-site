@@ -148,9 +148,14 @@ export async function loadSpecies() {
       bibliography: payload.content.bibliography || ""
     },
 
-    // Conserver tous les médias : le filtrage par type est effectué
-    // uniquement dans les composants qui ont une fonction spécifique.
-    photos: payload.photos,
+    // La galerie reçoit tous les médias. Le champ "media" est fourni
+    // par la nouvelle API; le fallback conserve la compatibilité antérieure.
+    photos: Array.isArray(payload.media)
+      ? payload.media
+      : [
+          ...payload.photos,
+          ...(payload.historical_map ? [payload.historical_map] : [])
+        ],
     historical_map: payload.historical_map || payload.photos.find(
       media => media.media_type === "historical_map"
     ) || null,
