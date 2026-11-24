@@ -318,16 +318,21 @@ body.vb-lightbox-open {
   line-height: 1.5;
 }
 
-/* Légère réduction de la taille du texte scientifique */
+/* Le corps du texte conserve la taille normale du thème.
+   On évite une réduction globale qui nuit à la lisibilité. */
 .vb-species-section {
-  font-size: 0.94rem;
   line-height: 1.65;
 }
 
 .vb-species-section p,
 .vb-species-section li {
-  font-size: inherit;
   line-height: inherit;
+}
+
+/* Titres des photos : même taille que le crédit de rédaction */
+.vb-media-caption {
+  font-size: 1.02rem;
+  line-height: 1.5;
 }
 
 .vb-species-section > h2 {
