@@ -318,25 +318,11 @@ body.vb-lightbox-open {
   line-height: 1.5;
 }
 
-/* Corps du texte : légère réduction pour mieux hiérarchiser les titres. */
-.vb-species-section {
-  font-size: 0.97rem;
-  line-height: 1.65;
-}
+/* Corps du texte et titres de section :
+   retour à la typographie native du thème, comme dans la première version. */
 
-.vb-species-section p,
-.vb-species-section li {
-  line-height: inherit;
-}
-
-/* Titres des photos : même taille que le crédit de rédaction */
+/* Titres des photos : conserver la taille validée */
 .vb-media-caption {
   font-size: 1.02rem;
   line-height: 1.5;
-}
-
-.vb-species-section > h2 {
-  font-size: 1.35rem;
-  line-height: 1.35;
-  font-weight: 600;
 }
