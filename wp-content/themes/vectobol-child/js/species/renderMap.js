@@ -10,6 +10,8 @@ function getLanguage() {
 function getMapLabels() {
   const labels = {
     fr: {
+      collectionTitle: "Points de collecte VECTOBOL",
+      historicalTitle: "Carte historique",
       historical: "Carte historique de distribution",
       noData: "Aucune donnée géographique disponible.",
       unavailable: "La bibliothèque cartographique n'est pas disponible.",
@@ -19,6 +21,8 @@ function getMapLabels() {
       historicalAlt: "Carte historique de distribution"
     },
     en: {
+      collectionTitle: "VECTOBOL collection sites",
+      historicalTitle: "Historical map",
       historical: "Historical distribution map",
       noData: "No geographic data available.",
       unavailable: "The mapping library is unavailable.",
@@ -28,6 +32,8 @@ function getMapLabels() {
       historicalAlt: "Historical distribution map"
     },
     es: {
+      collectionTitle: "Sitios de colecta VECTOBOL",
+      historicalTitle: "Mapa histórico",
       historical: "Mapa histórico de distribución",
       noData: "No hay datos geográficos disponibles.",
       unavailable: "La biblioteca cartográfica no está disponible.",
@@ -46,6 +52,14 @@ function setStatus(message) {
 
   if (element) {
     element.textContent = message;
+  }
+}
+
+function setMapTitle(title) {
+  const element = document.getElementById("label_collectes");
+
+  if (element) {
+    element.textContent = title;
   }
 }
 
@@ -111,6 +125,7 @@ function renderHistoricalMap(element, media) {
   element.style.height = "auto";
   element.style.minHeight = "0";
 
+  setMapTitle(getMapLabels().historicalTitle);
   setStatus(getMapLabels().historical);
 }
 
@@ -182,14 +197,27 @@ export function initMap() {
    RENDER COLLECTION SITES
 ========================= */
 export function renderSites() {
-  if (!map || !layerGroup) {
-    return;
-  }
-
   const data = getData();
   const sites = Array.isArray(data?.collection_sites)
     ? data.collection_sites.filter(isMappableSite)
     : [];
+
+  if (sites.length > 0) {
+    setMapTitle(getMapLabels().collectionTitle);
+  } else {
+    const historicalMap = data?.historical_map ||
+      (data?.photos || []).find(
+        media => media.media_type === "historical_map"
+      );
+
+    if (historicalMap) {
+      setMapTitle(getMapLabels().historicalTitle);
+    }
+  }
+
+  if (!map || !layerGroup) {
+    return;
+  }
 
   layerGroup.clearLayers();
 
