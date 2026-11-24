@@ -198,9 +198,11 @@ export function renderGallery() {
     return;
   }
 
-  const media = (window.VECTOBOL?.data?.photos || []).filter(
-    item => item.media_type === "photo"
-  );
+  // La galerie présente tous les médias associés à l'espèce,
+  // quel que soit leur type (photo, carte historique, illustration, etc.).
+  const media = Array.isArray(window.VECTOBOL?.data?.photos)
+    ? window.VECTOBOL.data.photos
+    : [];
   const labels = getGalleryLabels();
 
   container.replaceChildren();
