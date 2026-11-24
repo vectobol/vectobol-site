@@ -1,0 +1,19 @@
+/* =========================================================
+   VECTOBOL — CONTACT PAGE
+   Encadrement discret du formulaire Forminator dans Gutenberg.
+========================================================= */
+
+.vb-contact-form {
+    box-sizing: border-box;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border: 1px solid #e1e6e4;
+    border-radius: 8px;
+    background: #f7f8f7;
+}
+
+@media (max-width: 600px) {
+    .vb-contact-form {
+        padding: 1rem;
+    }
+}
