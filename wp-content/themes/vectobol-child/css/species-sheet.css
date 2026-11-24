@@ -24,7 +24,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .vb-species-gallery-trigger img {
