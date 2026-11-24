@@ -15,7 +15,6 @@ function getGalleryLabels() {
       zoomIn: "Agrandir",
       zoomOut: "Réduire",
       reset: "Réinitialiser le zoom",
-      fit: "Ajuster à la fenêtre",
       zoomLevel: "Niveau de zoom",
       open: "Ouvrir le média"
     },
@@ -28,7 +27,6 @@ function getGalleryLabels() {
       zoomIn: "Zoom in",
       zoomOut: "Zoom out",
       reset: "Reset zoom",
-      fit: "Fit to window",
       zoomLevel: "Zoom level",
       open: "Open media"
     },
@@ -41,7 +39,6 @@ function getGalleryLabels() {
       zoomIn: "Ampliar",
       zoomOut: "Reducir",
       reset: "Restablecer zoom",
-      fit: "Ajustar a la ventana",
       zoomLevel: "Nivel de zoom",
       open: "Abrir medio"
     }
@@ -138,16 +135,11 @@ function buildLightbox(media, labels) {
   const resetButton = makeToolButton(
     "vb-media-lightbox-reset", "↺", labels.reset
   );
-  const fitButton = makeToolButton(
-    "vb-media-lightbox-fit", "□", labels.fit
-  );
-
   toolbar.append(
     zoomOutButton,
     zoomLevel,
     zoomInButton,
-    resetButton,
-    fitButton
+    resetButton
   );
 
   const caption = document.createElement("div");
@@ -297,7 +289,6 @@ function buildLightbox(media, labels) {
   });
 
   resetButton.addEventListener("click", resetZoom);
-  fitButton.addEventListener("click", resetZoom);
 
   viewport.addEventListener("wheel", (event) => {
     event.preventDefault();
