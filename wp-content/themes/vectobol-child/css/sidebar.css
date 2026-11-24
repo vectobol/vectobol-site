@@ -387,11 +387,5 @@
         box-sizing: border-box;
     }
 
-    /* Sur petit écran, le hamburger suffit : le libellé
-       "Menu" est masqué pour éviter la coupure dans l'en-tête. */
-    .oceanwp-mobile-menu-icon .oceanwp-text {
-        display: none;
-    }
-
 }
 
