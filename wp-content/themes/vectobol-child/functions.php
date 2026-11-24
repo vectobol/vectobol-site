@@ -55,6 +55,28 @@ add_action('wp_enqueue_scripts', function () {
 /* =========================================================
    2. LIST PIPELINE (TABLE TAXO)
 ========================================================= */
+/* =========================================================
+   1 bis. SIDEBAR + NEWSLETTER CSS
+   Chargement sur toutes les pages publiques.
+========================================================= */
+add_action('wp_enqueue_scripts', function () {
+
+    if (is_admin()) return;
+
+    $sidebar_css_path = get_stylesheet_directory() . '/css/sidebar.css';
+
+    if (file_exists($sidebar_css_path)) {
+        wp_enqueue_style(
+            'vectobol-sidebar',
+            get_stylesheet_directory_uri() . '/css/sidebar.css',
+            ['vectobol-child-style'],
+            filemtime($sidebar_css_path)
+        );
+    }
+
+});
+
+
 add_action('wp_enqueue_scripts', function () {
 
     if (!vb_is_list_page()) return;
