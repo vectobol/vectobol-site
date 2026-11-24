@@ -7,7 +7,10 @@ define('VECTOBOL_CACHE_VERSION', 'v1');
    1. CONTEXT DETECTION
 ========================================================= */
 function vb_is_species_template() {
-    return !empty($_GET['species']);
+    return (
+        !empty($_GET['species']) &&
+        is_page_template('page-templates/template-species-sheet.php')
+    );
 }
 
 function vb_is_list_page() {
