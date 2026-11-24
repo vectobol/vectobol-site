@@ -364,3 +364,34 @@
         font-size: 21px;
     }
 }
+
+/* =========================
+   ADAPTATION PETITS ÉCRANS
+========================= */
+
+@media (max-width: 480px) {
+
+    /* La sidebar occupe la largeur réellement disponible,
+       sans dépasser celle de son conteneur. */
+    .vb-sidebar {
+        width: 100%;
+        max-width: 320px;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .vb-box {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Sur petit écran, le hamburger suffit : le libellé
+       "Menu" est masqué pour éviter la coupure dans l'en-tête. */
+    .oceanwp-mobile-menu-icon .oceanwp-text {
+        display: none;
+    }
+
+}
+
