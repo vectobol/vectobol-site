@@ -63,6 +63,18 @@ add_action('wp_enqueue_scripts', function () {
 
     if (is_admin()) return;
 
+    // CSS du formulaire de la page Contact (classe vb-contact-form).
+    $contact_css_path = get_stylesheet_directory() . '/css/contact.css';
+
+    if (file_exists($contact_css_path)) {
+        wp_enqueue_style(
+            'vectobol-contact',
+            get_stylesheet_directory_uri() . '/css/contact.css',
+            ['vectobol-child-style'],
+            filemtime($contact_css_path)
+        );
+    }
+
     $sidebar_css_path = get_stylesheet_directory() . '/css/sidebar.css';
 
     if (file_exists($sidebar_css_path)) {
