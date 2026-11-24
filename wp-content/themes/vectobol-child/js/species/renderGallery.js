@@ -373,7 +373,9 @@ function buildLightbox(media, labels) {
   viewport.addEventListener("pointercancel", finishPointer);
   viewport.addEventListener("lostpointercapture", finishPointer);
 
-  image.addEventListener("dblclick", (event) => {
+  // Le double-clic est écouté sur la zone d'affichage :
+  // les événements de pointeur sont capturés par le viewport.
+  viewport.addEventListener("dblclick", (event) => {
     event.preventDefault();
     if (scale > 1) {
       resetZoom();
