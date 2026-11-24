@@ -149,6 +149,13 @@ async function init() {
 
   console.log("[SPECIES] DATA:", window.VECTOBOL?.data);
 
+  // Leaflet doit mesurer un conteneur visible pour calculer
+  // correctement les dimensions de la carte.
+  const grid = document.querySelector(".vb-grid");
+  if (grid) {
+    grid.hidden = false;
+  }
+
   initMap();
 
   scheduleRender("init");
