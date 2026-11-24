@@ -318,9 +318,9 @@ body.vb-lightbox-open {
   line-height: 1.5;
 }
 
-/* Le corps du texte conserve la taille normale du thème.
-   On évite une réduction globale qui nuit à la lisibilité. */
+/* Corps du texte : légère réduction pour mieux hiérarchiser les titres. */
 .vb-species-section {
+  font-size: 0.97rem;
   line-height: 1.65;
 }
 
@@ -336,6 +336,7 @@ body.vb-lightbox-open {
 }
 
 .vb-species-section > h2 {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   line-height: 1.35;
+  font-weight: 600;
 }
