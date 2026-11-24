@@ -601,12 +601,12 @@ add_action('wp_enqueue_scripts', function () {
 
   if (is_admin()) return;
 
-  $i18n_js_path = get_stylesheet_directory() . '/js/species/labels.js';
+  $i18n_js_path = get_stylesheet_directory() . '/js/i18n/labels.js';
 
   if (file_exists($i18n_js_path)) {
     wp_enqueue_script(
       'vectobol-i18n',
-      get_stylesheet_directory_uri() . '/js/species/labels.js',
+      get_stylesheet_directory_uri() . '/js/i18n/labels.js',
       [],
       filemtime($i18n_js_path),
       true
