@@ -1,0 +1,366 @@
+/* =========================================================
+   VECTOBOL — SIDEBAR ET NEWSLETTER
+   Styles de la barre latérale globale et de sa fenêtre modale.
+========================================================= */
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.vb-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 320px;
+}
+
+.vb-box {
+    background: #ffffff;
+    border: 1px solid #e6e9ef;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.vb-box h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+    color: #1f3b57;
+}
+
+.vb-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vb-box ul li {
+    margin: 6px 0;
+}
+
+.vb-box a {
+    text-decoration: none;
+    color: #2b6cb0;
+}
+
+.vb-box a:hover {
+    text-decoration: underline;
+}
+
+.vb-muted {
+    background: #f7f9fc;
+}
+
+/* Titre de la recherche d'espèces */
+
+#vb-species-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+#vb-species-title::first-letter {
+    text-transform: capitalize;
+}
+
+/* Recherche d'espèces */
+
+.vb-species-search-wrapper {
+    position: relative;
+}
+
+#speciesSearch {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    font-size: 13px;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+}
+
+#speciesSearch:focus {
+    outline: none;
+    border-color: #2b6cb0;
+    box-shadow: 0 0 0 2px rgba(43, 108, 176, 0.15);
+}
+
+#speciesSuggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.vb-suggestion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s ease;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.vb-suggestion:last-child {
+    border-bottom: none;
+}
+
+.vb-suggestion:hover {
+    background: #f2f6ff;
+}
+
+.vb-suggestion strong {
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.vb-suggestion::after {
+    content: "›";
+    color: #9aa7b2;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.vb-no-result {
+    padding: 10px;
+    font-size: 13px;
+    color: #7a8a9a;
+    font-style: italic;
+}
+
+/* Sidebar OceanWP sticky */
+
+#right-sidebar {
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+}
+
+/* Autorise le sticky si ce conteneur est utilisé. */
+.main-wrapper {
+    overflow: visible;
+}
+
+/* Bouton d'ouverture de la newsletter */
+
+.vb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 22px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #3b82c4;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.vb-btn:hover {
+    background: #326fa8;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.vb-btn:active {
+    transform: translateY(0);
+}
+
+/* =========================
+   NEWSLETTER MODALE
+========================= */
+
+.nl-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.55);
+    z-index: 99999;
+    padding: 20px;
+}
+
+.nl-box {
+    width: min(450px, 95vw);
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 32px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    animation: nlFadeIn 0.25s ease-out;
+    font-family: inherit;
+}
+
+.nl-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 22px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nl-close:hover {
+    background: #e2e8f0;
+}
+
+.nl-title {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e3a5f;
+}
+
+.nl-subtitle {
+    margin: 0 0 24px;
+    color: #64748b;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.nl-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 15px;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.nl-input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.nl-button {
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0 !important;
+    padding: 12px 34px;
+    min-width: 160px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.nl-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nl-button:active {
+    transform: translateY(0);
+}
+
+.nl-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.nl-error {
+    min-height: 18px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #dc2626;
+}
+
+.nl-status {
+    display: block;
+    min-height: 18px;
+    max-width: 320px;
+    margin: 30px auto 10px;
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.6;
+    text-align: center;
+    color: #15803d;
+    animation: nlFadeIn 0.3s ease;
+}
+
+/* État après inscription réussie */
+
+.nl-success .nl-subtitle,
+.nl-success .nl-input,
+.nl-success .nl-error,
+.nl-success .nl-button {
+    display: none;
+}
+
+.nl-success .nl-title {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.nl-success .nl-status::before {
+    content: "✓";
+    display: block;
+    font-size: 56px;
+    font-weight: 700;
+    color: #16a34a;
+    margin-bottom: 14px;
+}
+
+/* Animations */
+
+@keyframes nlFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptation mobile */
+
+@media (max-width: 480px) {
+    .nl-box {
+        padding: 24px;
+    }
+
+    .nl-title {
+        font-size: 21px;
+    }
+}
