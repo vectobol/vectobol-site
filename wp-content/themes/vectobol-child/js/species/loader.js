@@ -148,9 +148,9 @@ export async function loadSpecies() {
       bibliography: payload.content.bibliography || ""
     },
 
-    photos: payload.photos.filter(
-      media => media.media_type === "photo"
-    ),
+    // Conserver tous les médias : le filtrage par type est effectué
+    // uniquement dans les composants qui ont une fonction spécifique.
+    photos: payload.photos,
     historical_map: payload.historical_map || payload.photos.find(
       media => media.media_type === "historical_map"
     ) || null,
