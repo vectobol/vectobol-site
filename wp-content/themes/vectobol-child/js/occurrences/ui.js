@@ -7,6 +7,79 @@ import { updateCount, updateExpression, updateFilterError } from "./expression.j
 let rebuildingUI = false;
 let suppressApply = false;
 
+const GEOGRAPHIC_PARENT = {
+  sample_admin2: "sample_admin1",
+  sample_admin3: "sample_admin2"
+};
+
+function selectedGeographicValues(fieldKey) {
+  const values = [];
+  document.querySelectorAll(".filter-row").forEach(row => {
+    const field = row.querySelector(".field")?.value || "";
+    const operator = row.querySelector(".op")?.value || "";
+    if (field !== fieldKey || !["eq", "within"].includes(operator)) return;
+    const input = row.querySelector(".searchable-input, .val");
+    const value = input?.dataset?.value || input?.value || "";
+    if (value !== "") values.push(String(value));
+  });
+  return [...new Set(values)];
+}
+
+function geographicOptions(fieldKey, operator) {
+  const allValues = state.index[fieldKey] || [];
+  if (operator !== "within") return allValues;
+  const parentKey = GEOGRAPHIC_PARENT[fieldKey];
+  if (!parentKey) return allValues;
+  const parentValues = new Set(selectedGeographicValues(parentKey));
+  if (!parentValues.size) return allValues;
+  const values = new Set();
+  (state.sites || []).forEach(site => {
+    if (!parentValues.has(String(site[parentKey] ?? ""))) return;
+    const value = site[fieldKey];
+    if (value !== null && value !== undefined && String(value).trim() !== "") {
+      values.add(String(value));
+    }
+  });
+  return [...values].sort();
+}
+
+function refreshGeographicControls() {
+  if (rebuildingUI) return;
+  document.querySelectorAll(".filter-row").forEach(row => {
+    const fieldKey = row.querySelector(".field")?.value || "";
+    const parentKey = GEOGRAPHIC_PARENT[fieldKey];
+    if (!parentKey) return;
+    const operator = row.querySelector(".op");
+    if (!operator) return;
+    const parentValues = selectedGeographicValues(parentKey);
+    const type = state.varType?.[fieldKey] || "categorical";
+    const currentOperator = operator.value;
+    const currentValue = row.querySelector(".searchable-input")?.dataset?.value || "";
+    const options = getOperators(type).slice();
+    if (parentValues.length) {
+      options.push({
+        v: "within",
+        l: state.lang === "fr" ? "dans" : state.lang === "es" ? "dentro de" : "within"
+      });
+    }
+    operator.innerHTML = '<option value="">' + ui("operator") + '</option>';
+    options.forEach(optionData => {
+      const option = document.createElement("option");
+      option.value = optionData.v;
+      option.textContent = optionData.l;
+      operator.appendChild(option);
+    });
+    const validOperator = options.some(option => option.v === currentOperator);
+    operator.value = validOperator ? currentOperator : "";
+    if (typeof row._updateValueOptions === "function") {
+      row._updateValueOptions(
+        geographicOptions(fieldKey, operator.value),
+        validOperator ? currentValue : ""
+      );
+    }
+  });
+}
+
 function createSearchableValue(values, fieldKey, apply) {
   const wrapper = document.createElement("div");
   wrapper.className = "searchable-select";
@@ -17,7 +90,7 @@ function createSearchableValue(values, fieldKey, apply) {
   const list = document.createElement("div");
   list.className = "searchable-list";
 
-  const unique = [...new Set(values)]
+  let unique = [...new Set(values)]
     .filter(value => value !== null && value !== undefined)
     .map(String)
     .sort();
@@ -59,6 +132,19 @@ function createSearchableValue(values, fieldKey, apply) {
     list.style.display = list.children.length ? "block" : "none";
   }
 
+  function setOptions(nextValues, selectedValue = input.dataset.value || "") {
+    unique = [...new Set(nextValues)]
+      .filter(value => value !== null && value !== undefined)
+      .map(String)
+      .sort();
+    const selected = String(selectedValue ?? "");
+    const valid = selected && unique.includes(selected) ? selected : "";
+    input.dataset.value = valid;
+    input.value = valid ? capitalize(getLabel(valid)) : "";
+    refresh("");
+    return valid;
+  }
+
   input.addEventListener("focus", () => refresh(""));
 
   input.addEventListener("input", () => {
@@ -79,7 +165,8 @@ function createSearchableValue(values, fieldKey, apply) {
 
   return {
     element: wrapper,
-    getValue: () => input.dataset.value || ""
+    getValue: () => input.dataset.value || "",
+    setOptions
   };
 }
 
@@ -117,15 +204,19 @@ function createRow(container, apply, hydrate = false) {
   let valueElement = null;
 
   function setSelect(values, fieldKey) {
-    const searchable = createSearchableValue(values, fieldKey, apply);
+    const searchable = createSearchableValue(values, fieldKey, () => {
+      refreshGeographicControls();
+      apply();
+    });
     valueBox.innerHTML = "";
     valueBox.appendChild(searchable.element);
-
     valueElement = {
       get value() {
         return searchable.getValue();
       }
     };
+    row._updateValueOptions = (nextValues, selectedValue) =>
+      searchable.setOptions(nextValues, selectedValue);
   }
 
   function setInput() {
@@ -133,7 +224,10 @@ function createRow(container, apply, hydrate = false) {
     input.className = "val";
     input.type = "text";
     input.placeholder = ui("type");
-    input.oninput = apply;
+    input.oninput = () => {
+      refreshGeographicControls();
+      apply();
+    };
 
     valueBox.innerHTML = "";
     valueBox.appendChild(input);
@@ -178,11 +272,13 @@ function createRow(container, apply, hydrate = false) {
 
     operator.selectedIndex = 0;
     add.disabled = false;
+    refreshGeographicControls();
     apply();
   };
 
   operator.onchange = () => {
     if (rebuildingUI) return;
+    refreshGeographicControls();
     apply();
   };
 
@@ -214,6 +310,7 @@ function createRow(container, apply, hydrate = false) {
     const group = row.closest(".filter-group");
 
     row.remove();
+    refreshGeographicControls();
 
     // A group with no conditions is no longer a real filter group.
     // Remove it together with its inter-group connector.
@@ -409,6 +506,7 @@ function rebuildFiltersFromAST(ast, apply) {
   rebuildingUI = false;
   suppressApply = false;
   renumberGroups();
+  refreshGeographicControls();
 }
 
 function updateStaticTexts() {
@@ -501,6 +599,7 @@ export function initUI(apply) {
     resetButton.onclick = () => {
       panel.innerHTML = "";
       createGroup(panel, apply);
+      refreshGeographicControls();
       state.filterError = null;
 
       // The blank row is only a UI placeholder. buildAST() ignores it,
