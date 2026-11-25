@@ -55,17 +55,31 @@ Or, dans le thème enfant, MarkerCluster est chargé comme un script classique v
 - `wp-content/themes/vectobol-child/functions.php` : déclarations des styles et scripts Leaflet / MarkerCluster.
 - `wp-content/themes/vectobol-child/js/occurrences/map.js` : appel à `L.markerClusterGroup()` (en particulier autour de la ligne 183 au moment du diagnostic).
 
-### État et décision à suivre
+### Correction et validation sur LocalWP — 25 novembre 2026
 
-- [ ] Corriger les URL CDN afin de fixer explicitement les versions utilisées.
-- [ ] Tester une combinaison moderne compatible avec le chargement actuel : Leaflet 1.9.4 et MarkerCluster 2.0.0 avec le fichier global prévu pour le chargement sans modules ES (par exemple `leaflet.markercluster-global.js`). **Cette combinaison reste à tester sur LocalWP ; elle n'est pas encore validée pour VECTOBOL.**
-- [ ] Vérifier que la fonction `L.markerClusterGroup()` est bien disponible après chargement.
-- [ ] Vérifier l'affichage des marqueurs, le regroupement, le zoom, le clic sur les clusters et les filtres.
-- [ ] Vérifier le comportement sur mobile et dans les trois langues.
-- [ ] En cas d'échec, solution de repli conservatrice : Leaflet 1.9.4 avec MarkerCluster 1.5.3, chargés avec leurs fichiers classiques compatibles.
-- [ ] Ne déployer sur OVH qu'après validation explicite sur LocalWP.
+Les versions CDN ont été fixées dans `wp-content/themes/vectobol-child/functions.php` :
 
-**Important :** ne pas remplacer simplement l'URL par une autre URL non versionnée. Le problème observé montre précisément le risque de cette pratique.
+- Leaflet **1.9.4** (CSS et JavaScript).
+- Leaflet.markercluster **2.0.0-beta.2**, avec le fichier JavaScript global `leaflet.markercluster-global.js`.
+- Feuille CSS `MarkerCluster.Default.css` de la même version.
+
+Deux corrections successives ont été nécessaires :
+
+1. Remplacement des URL non versionnées et du fichier JavaScript ES module par les URL versionnées et le bundle global. Commit Git : `9eb9f89a83deb72f7053b8d49f04f97adfaa1952`.
+2. Correction de la dépendance WordPress du CSS MarkerCluster : la feuille de style dépend maintenant du handle CSS `leaflet`, et non du handle JavaScript `leaflet-markercluster`. Commit Git : `22460d657eb9fddec3ad79318cedf13a95c62e10`.
+
+**Résultats vérifiés sur LocalWP :**
+
+- `L.version` retourne `1.9.4`.
+- `typeof L.markerClusterGroup` et `typeof L.MarkerClusterGroup` confirment la disponibilité de l'API MarkerCluster.
+- La feuille `MarkerCluster.Default.css` est bien présente dans `document.styleSheets`.
+- Les cercles de regroupement sont de nouveau visibles.
+- La console ne signale plus d'erreur JavaScript liée à Leaflet / MarkerCluster.
+- La carte affiche 890 marqueurs en mode cluster.
+
+**État : incident d'affichage résolu et correction validée sur LocalWP.** La version MarkerCluster 2.0.0-beta.2 reste une version bêta : sa stabilité à long terme et sa compatibilité lors de futures mises à jour doivent être surveillées. Les tests détaillés sur mobile, dans les trois langues et sur les interactions de zoom / clic restent à effectuer dans le cadre des tests fonctionnels généraux.
+
+Aucun déploiement sur OVH n'a été effectué.
 
 ## 3. Composants à surveiller
 
@@ -76,8 +90,8 @@ Or, dans le thème enfant, MarkerCluster est chargé comme un script classique v
 | Thème OceanWP | Thème utilisé sur le site | Suivre les mises à jour et tester les modèles de pages |
 | Thème enfant `vectobol-child` | Contient les adaptations spécifiques VECTOBOL | Versionner toutes les modifications dans Git ; éviter les changements directs non tracés |
 | Plugin VECTOBOL | Plugin spécifique, dépôt séparé `vectobol-plugin` | Suivre les évolutions du schéma SQL, des API REST et des interfaces d'administration |
-| Leaflet | Chargé depuis un CDN ; version non fixée dans le code observé | Fixer une version ; surveiller les évolutions de l'API et la compatibilité des extensions |
-| Leaflet.markercluster | Incident de résolution CDN vers 2.0.0 et de chargement ES module | Fixer la version et le fichier de distribution ; tester avant déploiement |
+| Leaflet | Version 1.9.4 fixée dans le thème enfant et testée sur LocalWP | Surveiller les évolutions de l'API ; réévaluer Leaflet 2.x uniquement lorsqu'une version stable sera disponible |
+| Leaflet.markercluster | Version 2.0.0-beta.2 fixée ; bundle global et CSS testés sur LocalWP | Version bêta : surveiller les régressions et réévaluer une version stable ; tester avant déploiement |
 | Polylang | Gestion des versions FR / EN / ES | Vérifier les associations de pages, les slugs et les menus après mise à jour |
 | Yoast SEO | Extension SEO utilisée | Surveiller les mises à jour et contrôler les métadonnées / sitemaps |
 | Complianz | Gestion du consentement | Vérifier le bandeau, les catégories de cookies et le blocage des scripts concernés |
@@ -164,7 +178,9 @@ Après toute mise à jour touchant WordPress, le thème, le plugin ou les biblio
 |---|---|---|
 | 25-11-2026 | Incident MarkerCluster | Cause technique identifiée : le CDN non versionné sert MarkerCluster 2.0.0 au format ES module, alors que le site le charge comme script classique |
 | 25-11-2026 | Évolution Leaflet | Pas d'obligation de migrer immédiatement vers Leaflet 2.x ; privilégier une migration seulement après stabilisation de la version et validation de l'écosystème |
-| 25-11-2026 | Test MarkerCluster 2 | À évaluer avec Leaflet 1.9.4 et le fichier global ; non validé à ce stade |
+| 25-11-2026 | Test MarkerCluster 2 | Validé sur LocalWP avec Leaflet 1.9.4, MarkerCluster 2.0.0-beta.2 global et CSS par défaut ; cercles visibles, pas d'erreur console liée à la carte |
+| 25-11-2026 | Dépendance CSS MarkerCluster | Correction du handle de dépendance WordPress : le CSS dépend de `leaflet`, pas du script `leaflet-markercluster` |
+| 25-11-2026 | Collections sans coordonnées | 914 collections chargées ; 890 ont des coordonnées valides et sont cartographiées ; 24 ont latitude et longitude nulles et ne sont donc pas affichées. L'utilisateur considère ces absences cohérentes avec ses souvenirs des collectes. Non vérifié directement dans REDCap, faute d'accès au projet au moment du contrôle. Aucune donnée modifiée.
 
 ## 8. Informations restant à inventorier
 
