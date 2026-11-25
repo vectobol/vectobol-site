@@ -74,28 +74,3 @@ body.admin-bar #site-header {
 
 }
 
-/* ==========================================================
-   HOME VECTOBOL — PIED DE PAGE EN BAS DE FENÊTRE
-   Page WordPress : 15372
-   Comportement limité à la nouvelle page d'accueil.
-   Le body possède déjà un padding-top de 50px pour compenser
-   le header fixe ; cette hauteur est donc déduite du viewport.
-========================================================== */
-
-@media screen and (min-width: 768px) {
-
-    body.page-id-15372 #wrap {
-        min-height: calc(100vh - 50px);
-        display: flex;
-        flex-direction: column;
-    }
-
-    body.page-id-15372 #main {
-        flex: 1 0 auto;
-    }
-
-    body.page-id-15372 #footer {
-        flex-shrink: 0;
-    }
-
-}
