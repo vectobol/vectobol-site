@@ -40,6 +40,7 @@ export function updateExpression(ast) {
   const operatorLabels = {
     eq: "=",
     neq: "≠",
+    within: state.lang === "fr" ? "dans" : state.lang === "es" ? "dentro de" : "within",
     gt: ">",
     lt: "<",
     gte: "≥",
