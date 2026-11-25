@@ -18,8 +18,11 @@ function selectedGeographicValues(fieldKey) {
     const field = row.querySelector(".field")?.value || "";
     const operator = row.querySelector(".op")?.value || "";
     if (field !== fieldKey || !["eq", "within"].includes(operator)) return;
-    const input = row.querySelector(".searchable-input, .val");
-    const value = input?.dataset?.value || input?.value || "";
+    const searchable = row.querySelector(".searchable-input");
+    const input = searchable || row.querySelector(".val");
+    const value = searchable
+      ? (searchable.dataset?.value || "")
+      : (input?.dataset?.value || input?.value || "");
     if (value !== "") values.push(String(value));
   });
   return [...new Set(values)];
