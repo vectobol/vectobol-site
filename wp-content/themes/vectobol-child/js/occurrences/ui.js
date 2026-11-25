@@ -7,7 +7,7 @@ import { updateCount, updateExpression, updateFilterError } from "./expression.j
 let rebuildingUI = false;
 let suppressApply = false;
 
-function createSearchableValue(values, fieldKey, apply, initialValue = "") {
+function createSearchableValue(values, fieldKey, apply) {
   const wrapper = document.createElement("div");
   wrapper.className = "searchable-select";
 
@@ -30,11 +30,6 @@ function createSearchableValue(values, fieldKey, apply, initialValue = "") {
     }
 
     return raw || value;
-  }
-
-  if (initialValue !== "") {
-    input.dataset.value = String(initialValue);
-    input.value = getLabel(String(initialValue));
   }
 
   function refresh(filter = "") {
@@ -121,8 +116,8 @@ function createRow(container, apply, hydrate = false) {
 
   let valueElement = null;
 
-  function setSelect(values, fieldKey, initialValue = "") {
-    const searchable = createSearchableValue(values, fieldKey, apply, initialValue);
+  function setSelect(values, fieldKey) {
+    const searchable = createSearchableValue(values, fieldKey, apply);
     valueBox.innerHTML = "";
     valueBox.appendChild(searchable.element);
 
@@ -133,13 +128,11 @@ function createRow(container, apply, hydrate = false) {
     };
   }
 
-  function setInput(initialValue = "") {
+  function setInput() {
     const input = document.createElement("input");
     input.className = "val";
     input.type = "text";
     input.placeholder = ui("type");
-    input.value = initialValue;
-    input.dataset.value = initialValue;
     input.oninput = apply;
 
     valueBox.innerHTML = "";
@@ -169,10 +162,10 @@ function createRow(container, apply, hydrate = false) {
     const type = state.varType?.[key] || "categorical";
     const values = state.index[key] || [];
 
-    getOperators(type, key).forEach(optionData => {
+    getOperators(type).forEach(optionData => {
       const option = document.createElement("option");
       option.value = optionData.v;
-      option.textContent = optionData.v === "within" ? ui("within") : optionData.l;
+      option.textContent = optionData.l;
       operator.appendChild(option);
     });
 
@@ -190,25 +183,6 @@ function createRow(container, apply, hydrate = false) {
 
   operator.onchange = () => {
     if (rebuildingUI) return;
-
-    const key = field.value;
-    const selectedOperator = operator.value;
-
-    if (selectedOperator === "within") {
-      const parentField = key === "sample_admin2"
-        ? "sample_admin1"
-        : key === "sample_admin3"
-          ? "sample_admin2"
-          : null;
-
-      if (parentField) {
-        setSelect(state.index[parentField] || [], parentField);
-      }
-    }
-    else if (key && (key === "sample_admin2" || key === "sample_admin3")) {
-      setSelect(state.index[key] || [], key);
-    }
-
     apply();
   };
 
@@ -382,10 +356,10 @@ function rebuildFiltersFromAST(ast, apply) {
       const type = state.varType?.[rowAst.f] || "categorical";
       operator.innerHTML = `<option value="">${ui("operator")}</option>`;
 
-      getOperators(type, rowAst.f).forEach(optionData => {
+      getOperators(type).forEach(optionData => {
         const option = document.createElement("option");
         option.value = optionData.v;
-        option.textContent = optionData.v === "within" ? ui("within") : optionData.l;
+        option.textContent = optionData.l;
         operator.appendChild(option);
       });
 
@@ -394,21 +368,14 @@ function rebuildFiltersFromAST(ast, apply) {
 
       const value = rowAst.v ?? "";
 
-      if (rowAst.f && type !== "numeric") {
-        if (rowAst.o === "within") {
-          const parentField = rowAst.f === "sample_admin2"
-            ? "sample_admin1"
-            : rowAst.f === "sample_admin3"
-              ? "sample_admin2"
-              : null;
-          setSelect(state.index[parentField] || [], parentField, value);
-        }
-        else {
-          setSelect(state.index[rowAst.f] || [], rowAst.f, value);
-        }
+      if (searchable) {
+        searchable.dataset.value = value;
+        searchable.value = getValueLabelSafe(rowAst.f, value);
       }
-      else if (rowAst.f && type === "numeric") {
-        setInput(value);
+
+      if (input && !searchable) {
+        input.value = value;
+        input.dataset.value = value;
       }
 
       if (!rowAst.f) {
