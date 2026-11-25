@@ -55,7 +55,7 @@ export function getGroupedVariables() {
   };
 }
 
-export function getOperators(type) {
+export function getOperators(type, fieldKey = "") {
   switch (type) {
     case "numeric":
       return [
@@ -69,11 +69,20 @@ export function getOperators(type) {
 
     case "boolean":
     case "categorical":
-    default:
-      return [
+    default: {
+      const operators = [
         { v: "eq", l: "=" },
         { v: "neq", l: "!=" }
       ];
+
+      // Geographic containment: province within department,
+      // municipio within province.
+      if (fieldKey === "sample_admin2" || fieldKey === "sample_admin3") {
+        operators.push({ v: "within", l: "within" });
+      }
+
+      return operators;
+    }
   }
 }
 
@@ -180,13 +189,26 @@ export function evaluateGroup(group, records) {
   const sampleRecords = Array.isArray(records) ? records : [records];
 
   const conditionMatches = row =>
-    sampleRecords.some(record =>
-      evalCondition(
-        record[normField(row.f)],
-        row.o,
-        row.v
-      )
-    );
+    sampleRecords.some(record => {
+      const field = normField(row.f);
+
+      if (row.o === "within") {
+        const parentField = field === "sample_admin2"
+          ? "sample_admin1"
+          : field === "sample_admin3"
+            ? "sample_admin2"
+            : null;
+
+        return Boolean(
+          parentField &&
+          record[field] !== null &&
+          record[field] !== undefined &&
+          String(record[parentField]) === String(row.v)
+        );
+      }
+
+      return evalCondition(record[field], row.o, row.v);
+    });
 
   // The connector displayed on a row connects that row to the
   // following row. This matches the visual order of the filter UI.
