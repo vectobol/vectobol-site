@@ -43,7 +43,8 @@ export function updateExpression(ast) {
     gt: ">",
     lt: "<",
     gte: "≥",
-    lte: "≤"
+    lte: "≤",
+    within: ui("within")
   };
 
   const groupsText = ast.map((group, groupIndex) => {
