@@ -158,6 +158,7 @@ export function evalCondition(x, operator, value) {
 
   switch (operator) {
     case "eq":
+    case "within":
       return numeric ? xNum === vNum : String(x) === String(value);
     case "neq":
       return numeric ? xNum !== vNum : String(x) !== String(value);
