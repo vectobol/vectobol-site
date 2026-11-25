@@ -31,18 +31,40 @@ function selectedGeographicValues(fieldKey) {
 function geographicOptions(fieldKey, operator) {
   const allValues = state.index[fieldKey] || [];
   if (operator !== "within") return allValues;
-  const parentKey = GEOGRAPHIC_PARENT[fieldKey];
-  if (!parentKey) return allValues;
-  const parentValues = new Set(selectedGeographicValues(parentKey));
-  if (!parentValues.size) return allValues;
+  if (!GEOGRAPHIC_PARENT[fieldKey]) return allValues;
+
+  // Apply every selected geographic ancestor, not only the immediate parent.
+  // This is necessary because province names are not unique across Bolivia
+  // (for example, "Cercado" exists in several departments).
+  const constraints = [];
+  let ancestorKey = GEOGRAPHIC_PARENT[fieldKey];
+
+  while (ancestorKey) {
+    const selectedValues = selectedGeographicValues(ancestorKey);
+    if (selectedValues.length) {
+      constraints.push([
+        ancestorKey,
+        new Set(selectedValues.map(String))
+      ]);
+    }
+    ancestorKey = GEOGRAPHIC_PARENT[ancestorKey];
+  }
+
+  if (!constraints.length) return allValues;
+
   const values = new Set();
   (state.sites || []).forEach(site => {
-    if (!parentValues.has(String(site[parentKey] ?? ""))) return;
+    const matchesAncestors = constraints.every(([key, allowedValues]) =>
+      allowedValues.has(String(site[key] ?? ""))
+    );
+    if (!matchesAncestors) return;
+
     const value = site[fieldKey];
     if (value !== null && value !== undefined && String(value).trim() !== "") {
       values.add(String(value));
     }
   });
+
   return [...values].sort();
 }
 
