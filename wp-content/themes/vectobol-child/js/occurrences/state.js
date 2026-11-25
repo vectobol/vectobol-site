@@ -105,8 +105,7 @@ export const UI_LABELS = {
     groupDelete: "Supprimer groupe",
     missingOperator: "Opérateur manquant",
     type: "Saisir une valeur",
-    missingValue: "Valeur manquante",
-    within: "dans"
+    missingValue: "Valeur manquante"
   },
 
   en: {
@@ -123,8 +122,7 @@ export const UI_LABELS = {
     groupDelete: "Delete group",
     missingOperator: "Missing operator",
     type: "Enter a value",
-    missingValue: "Missing value",
-    within: "within"
+    missingValue: "Missing value"
   },
 
   es: {
@@ -141,8 +139,7 @@ export const UI_LABELS = {
     groupDelete: "Eliminar grupo",
     missingOperator: "Falta operador",
     type: "Introducir un valor",
-    missingValue: "Falta valor",
-    within: "dentro de"
+    missingValue: "Falta valor"
   }
 };
 
