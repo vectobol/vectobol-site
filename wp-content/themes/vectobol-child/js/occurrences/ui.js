@@ -385,7 +385,7 @@ function rebuildFiltersFromAST(ast, apply) {
       getOperators(type, rowAst.f).forEach(optionData => {
         const option = document.createElement("option");
         option.value = optionData.v;
-        option.textContent = optionData.l;
+        option.textContent = optionData.v === "within" ? ui("within") : optionData.l;
         operator.appendChild(option);
       });
 
