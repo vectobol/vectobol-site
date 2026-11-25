@@ -43,23 +43,14 @@ export function updateExpression(ast) {
     gt: ">",
     lt: "<",
     gte: "≥",
-    lte: "≤",
-    within: ui("within")
+    lte: "≤"
   };
 
   const groupsText = ast.map((group, groupIndex) => {
     const rowsText = group.rows.map((row, rowIndex) => {
       const label = translate("var", row.f);
       const operator = operatorLabels[row.o] || row.o;
-      const parentField = row.f === "sample_admin2"
-        ? "sample_admin1"
-        : row.f === "sample_admin3"
-          ? "sample_admin2"
-          : null;
-      const valueField = row.o === "within" && parentField
-        ? parentField
-        : row.f;
-      const value = translate("value", valueField, row.v);
+      const value = translate("value", row.f, row.v);
 
       if (rowIndex === 0) {
         return `${label} ${operator} ${value}`;
