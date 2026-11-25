@@ -75,10 +75,15 @@ function refreshGeographicControls() {
     const validOperator = options.some(option => option.v === currentOperator);
     operator.value = validOperator ? currentOperator : "";
     if (typeof row._updateValueOptions === "function") {
-      row._updateValueOptions(
-        geographicOptions(fieldKey, operator.value),
-        validOperator ? currentValue : ""
-      );
+      const nextValues = geographicOptions(fieldKey, operator.value);
+      const signature = JSON.stringify([fieldKey, operator.value, nextValues]);
+      if (row._geoOptionsSignature !== signature) {
+        row._geoOptionsSignature = signature;
+        row._updateValueOptions(
+          nextValues,
+          validOperator ? currentValue : ""
+        );
+      }
     }
   });
 }
@@ -218,6 +223,7 @@ function createRow(container, apply, hydrate = false) {
         return searchable.getValue();
       }
     };
+    row._geoOptionsSignature = null;
     row._updateValueOptions = (nextValues, selectedValue) =>
       searchable.setOptions(nextValues, selectedValue);
   }
