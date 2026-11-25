@@ -17,3 +17,61 @@
         padding: 1rem;
     }
 }
+
+
+/* Coordonnées du laboratoire et carte */
+.vb-contact-details {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin: 1.75rem 0;
+}
+
+.vb-contact-details > .wp-block-column {
+    box-sizing: border-box;
+    padding: 1.5rem;
+    border: 1px solid #dce6e3;
+    border-radius: 10px;
+    background: #f3f7f6;
+}
+
+.vb-contact-details h2,
+.vb-contact-details h3,
+.vb-contact-details h4 {
+    color: #234b53;
+    line-height: 1.35;
+    margin-top: 0;
+}
+
+.vb-contact-details p {
+    line-height: 1.65;
+}
+
+.vb-contact-details #map {
+    min-height: 320px;
+    height: 50vh;
+    border: 1px solid #d5dfdc;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+@media (max-width: 781px) {
+    .vb-contact-details {
+        gap: 1rem;
+    }
+
+    .vb-contact-details > .wp-block-column {
+        padding: 1.1rem;
+    }
+
+    .vb-contact-details #map {
+        min-height: 280px;
+        height: 40vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .vb-contact-details {
+        margin: 1.25rem 0;
+    }
+}
