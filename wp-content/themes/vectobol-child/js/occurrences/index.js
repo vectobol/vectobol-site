@@ -49,7 +49,7 @@ function apply() {
       const allowedSamples = new Set(filteredOccurrences.map(getSampleKey));
 
       state.current = state.samples.filter(sample =>
-        allowedSamples.has(sample.sample_id)
+        allowedSamples.has(sample.record_id)
       );
 
       render(false);
