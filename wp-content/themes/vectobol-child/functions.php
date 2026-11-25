@@ -239,7 +239,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style(
         'leaflet-markercluster-default',
         'https://unpkg.com/leaflet.markercluster@2.0.0-beta.2/dist/MarkerCluster.Default.css',
-        ['leaflet-markercluster'],
+        ['leaflet'],
         null
     );
 
