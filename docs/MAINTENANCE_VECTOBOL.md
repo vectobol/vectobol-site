@@ -99,6 +99,7 @@ Aucun déploiement sur OVH n'a été effectué.
 | Matomo | Version 5.8.x précédemment signalée | Suivre les mises à jour et contrôler la collecte statistique après changement |
 | Forminator | Formulaire de contact | Tester l'envoi, la réception et la protection anti-spam |
 | Elementor | Encore présent sur certaines pages pendant la migration vers Gutenberg | Identifier les pages dépendantes avant toute désactivation ou suppression |
+| Carte générale de la Home | Ancien bloc HTML Elementor charge Leaflet et MarkerCluster directement depuis des URL UNPKG non versionnées | Lors de la migration Gutenberg, supprimer les chargements CDN du bloc et réutiliser les bibliothèques versionnées déjà déclarées par `vectobol-child/functions.php`; vérifier qu'il n'y a ni double chargement ni régression |
 
 Les versions indiquées comme « précédemment observées » sont des repères historiques, pas un relevé garanti de l'état actuel. Faire un inventaire des versions réellement installées sur OVH avant de planifier une mise à niveau.
 
@@ -181,6 +182,7 @@ Après toute mise à jour touchant WordPress, le thème, le plugin ou les biblio
 | 25-11-2026 | Test MarkerCluster 2 | Validé sur LocalWP avec Leaflet 1.9.4, MarkerCluster 2.0.0-beta.2 global et CSS par défaut ; cercles visibles, pas d'erreur console liée à la carte |
 | 25-11-2026 | Dépendance CSS MarkerCluster | Correction du handle de dépendance WordPress : le CSS dépend de `leaflet`, pas du script `leaflet-markercluster` |
 | 25-11-2026 | Collections sans coordonnées | 914 collections chargées ; 890 ont des coordonnées valides et sont cartographiées ; 24 ont latitude et longitude nulles et ne sont donc pas affichées. L'utilisateur considère ces absences cohérentes avec ses souvenirs des collectes. Non vérifié directement dans REDCap, faute d'accès au projet au moment du contrôle. Aucune donnée modifiée.
+| 25-11-2026 | Audit du bloc cartographique de la Home | Le code Elementor charge Leaflet, `MarkerCluster.css`, `MarkerCluster.Default.css`, Leaflet JS et MarkerCluster JS depuis des URL UNPKG non versionnées. Pour la migration Gutenberg, ces chargements doivent être retirés du contenu de page et remplacés par la réutilisation des versions fixées dans le thème enfant (Leaflet 1.9.4 et MarkerCluster 2.0.0-beta.2, bundle global). Constat issu de l'inspection du code fourni ; migration et test LocalWP non encore réalisés. Aucun code du site modifié et aucun déploiement OVH. |
 
 ## 8. Informations restant à inventorier
 
