@@ -172,7 +172,7 @@ function createRow(container, apply, hydrate = false) {
     getOperators(type, key).forEach(optionData => {
       const option = document.createElement("option");
       option.value = optionData.v;
-      option.textContent = optionData.l;
+      option.textContent = optionData.v === "within" ? ui("within") : optionData.l;
       operator.appendChild(option);
     });
 
