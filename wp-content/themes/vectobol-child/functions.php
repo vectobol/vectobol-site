@@ -150,14 +150,14 @@ add_action('wp_enqueue_scripts', function () {
     /* Leaflet : requis uniquement par la fiche espèce. */
     wp_enqueue_style(
         'leaflet',
-        'https://unpkg.com/leaflet/dist/leaflet.css',
+        'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
         [],
         null
     );
 
     wp_enqueue_script(
         'leaflet',
-        'https://unpkg.com/leaflet/dist/leaflet.js',
+        'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
         [],
         null,
         true
@@ -231,21 +231,14 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_style(
         'leaflet',
-        'https://unpkg.com/leaflet/dist/leaflet.css',
+        'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
         [],
         null
     );
 
     wp_enqueue_style(
-        'leaflet-markercluster',
-        'https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css',
-        ['leaflet'],
-        null
-    );
-
-    wp_enqueue_style(
         'leaflet-markercluster-default',
-        'https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css',
+        'https://unpkg.com/leaflet.markercluster@2.0.0-beta.2/dist/MarkerCluster.Default.css',
         ['leaflet-markercluster'],
         null
     );
@@ -253,7 +246,7 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_script(
         'leaflet',
-        'https://unpkg.com/leaflet/dist/leaflet.js',
+        'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
         [],
         null,
         true
@@ -261,7 +254,7 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_enqueue_script(
         'leaflet-markercluster',
-        'https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js',
+        'https://unpkg.com/leaflet.markercluster@2.0.0-beta.2/dist/leaflet.markercluster-global.js',
         ['leaflet'],
         null,
         true
